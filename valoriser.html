@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Valoriser — Portfolio BUT Science des Données</title>
-  <meta name="description" content="Bloc Valoriser : visualisation, dataviz, tableaux de bord et communication des résultats." />
+  <meta name="description" content="Bloc Valoriser : data visualisation, reporting, storytelling et communication des données auprès des décideurs." />
   <link rel="stylesheet" href="style.css" />
   <style>
     #page-progress {
@@ -42,6 +42,171 @@
     .page-valoriser .bloc-tag { color: var(--gold); background: var(--gold-glow); }
     .page-valoriser .bloc-banner::after { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
     .page-valoriser .bloc-banner-glow { background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%); }
+
+    /* Compétences en sous-parties */
+    .competence-block {
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem 1.5rem 1.5rem 2rem;
+      margin-bottom: 2rem;
+      background: var(--surface);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .competence-block h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .competence-block p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin: 0 0 0.75rem;
+    }
+    .competence-block p:last-child { margin-bottom: 0; }
+
+    /* Projets détaillés */
+    .project-detail {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .project-detail-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-detail-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .project-detail-meta h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+    .project-detail-meta .project-context {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .project-detail-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .project-detail-body { grid-template-columns: 1fr; }
+    }
+    .project-detail-col h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .project-detail-col p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    .project-detail-col ul {
+      padding-left: 1.2rem;
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+    .project-detail-col ul li { margin-bottom: 0.3rem; }
+    .project-detail-result {
+      grid-column: 1 / -1;
+      background: color-mix(in srgb, var(--gold) 8%, transparent);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      border-left: 3px solid var(--gold);
+    }
+    .project-detail-result strong { color: var(--gold); }
+
+    /* Points forts / à améliorer */
+    .two-col-eval {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 640px) { .two-col-eval { grid-template-columns: 1fr; } }
+    .eval-box {
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+    .eval-box.positif {
+      background: color-mix(in srgb, var(--gold) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--gold) 25%, transparent);
+    }
+    .eval-box.negatif {
+      background: color-mix(in srgb, var(--text-muted) 8%, transparent);
+      border: 1px solid var(--border);
+    }
+    .eval-box h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .eval-box.positif h4 { color: var(--gold); }
+    .eval-box.negatif h4 { color: var(--text-muted); }
+    .eval-box ul {
+      padding-left: 1.2rem;
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+    .eval-box ul li { margin-bottom: 0.4rem; }
+
+    /* Principes dataviz */
+    .principe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .principe-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .principe-item .principe-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .principe-item h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .principe-item p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
   </style>
 </head>
 <body class="page-valoriser">
@@ -72,44 +237,69 @@
       <span class="bloc-tag">📈 Bloc 3</span>
       <h1>Valoriser les données</h1>
       <p>
-        Visualiser, raconter et convaincre : transformer les résultats en décisions
-        grâce à une communication claire et percutante.
+        Visualiser, raconter et convaincre : rendre les données compréhensibles
+        et utiles pour ceux qui prennent les décisions.
       </p>
     </div>
   </section>
 
-  <!-- DÉFINITION -->
+  <!-- =============================================
+       1. INTRODUCTION DU BLOC
+       ============================================= -->
   <section class="section" id="definition">
     <div class="container">
       <div class="two-col">
         <div class="slide-left">
-          <span class="section-label">Définition</span>
+          <span class="section-label">Définition du bloc</span>
           <h2 class="section-title" style="text-align:left">Qu'est-ce que « Valoriser » ?</h2>
           <div class="divider divider-left mb-2"></div>
           <p>
-            Le bloc <strong class="highlight">Valoriser</strong> regroupe toutes les compétences
-            qui permettent de restituer efficacement les résultats d'une analyse. La meilleure analyse
-            du monde ne sert à rien si elle n'est pas comprise par son destinataire.
+            Une analyse qui n'est pas comprise n'a servi à rien.
+            Le bloc <strong class="highlight">Valoriser</strong> couvre tout ce qui se passe
+            entre le résultat technique et la décision qu'il doit éclairer : choisir les bons
+            graphiques, structurer un rapport, raconter une histoire cohérente avec les données,
+            et adapter son discours à un public qui n'est pas statisticien.
           </p>
           <p>
-            Ce bloc m'a appris à adopter une posture de <strong class="highlight">communicant de la donnée</strong> :
-            adapter mon discours et mes visuels au public cible, choisir les graphiques pertinents,
-            construire des tableaux de bord lisibles et créer des supports qui facilitent la prise de décision.
+            C'est un bloc qui demande deux qualités rarement associées : la rigueur analytique
+            pour ne pas trahir les résultats, et la pédagogie pour les rendre accessibles.
+            Un visuel qui simplifie trop est trompeur. Un visuel qui complexifie trop est inutile.
+            Trouver le bon équilibre est un apprentissage en soi.
           </p>
           <p>
-            Il s'agit du bloc qui fait le pont entre la technique et le métier, entre les données
-            et les décideurs.
+            Dans le référentiel du BUT Science des Données, ce bloc insiste sur la capacité
+            à produire des livrables orientés décision : tableaux de bord, rapports de synthèse,
+            présentations orales, outils de pilotage par KPI.
           </p>
+          <div class="tags-list mt-2">
+            <span class="tag">Data visualisation</span>
+            <span class="tag">Storytelling</span>
+            <span class="tag">Reporting</span>
+            <span class="tag">KPI</span>
+            <span class="tag">Communication</span>
+            <span class="tag">Tableaux de bord</span>
+          </div>
         </div>
         <div class="slide-right">
           <div class="bilan-box">
             <p>
-              « Un graphique bien conçu peut changer une décision stratégique.
-              Un graphique mal conçu peut induire en erreur. Valoriser, c'est
-              porter une responsabilité envers son public. »
+              « Un graphique bien conçu peut changer une décision.
+              Un graphique mal conçu peut l'induire en erreur.
+              J'ai compris ça en restitution de SAÉ : la même analyse, présentée différemment,
+              peut conduire à des conclusions opposées. Valoriser, c'est porter une responsabilité
+              envers les données et envers son audience. »
             </p>
-            <p style="color: var(--gold); font-weight:600; font-size:0.9rem">
-              — Réflexion personnelle, SAÉ 3.03
+            <p style="color: var(--gold); font-weight:600; font-size:0.9rem; margin-bottom:0">
+              — Réflexion personnelle, restitution de SAÉ ACP
+            </p>
+          </div>
+          <div class="card mt-2">
+            <h3 style="font-size:0.95rem">🎯 Le lien avec la décision</h3>
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin:0">
+              La finalité d'une analyse n'est pas le modèle — c'est la décision qu'il aide à prendre.
+              Ce bloc m'a appris à toujours me poser la question avant de construire un visuel :
+              <em>Qui lit ça ? Quelle décision doit-il prendre ? Quelle information est critique
+              pour lui ?</em>
             </p>
           </div>
         </div>
@@ -117,23 +307,173 @@
     </div>
   </section>
 
-  <!-- COMPÉTENCES -->
+  <!-- =============================================
+       2. COMPÉTENCES DÉVELOPPÉES
+       ============================================= -->
   <section class="section section-alt" id="competences">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-label">Compétences</span>
         <h2 class="section-title">Ce que j'ai développé</h2>
         <div class="divider"></div>
+        <p class="section-subtitle" style="margin-top:1rem">
+          Cinq axes de compétences, du graphique individuel à la communication orale complète,
+          construits tout au long du BUT à travers des livrables concrets.
+        </p>
       </div>
 
-      <div class="skills-list fade-in" style="max-width:680px; margin:0 auto">
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">Conception de tableaux de bord interactifs</span>
-            <span class="skill-value">80%</span>
+      <div style="max-width:820px; margin:0 auto">
+
+        <div class="competence-block fade-in">
+          <h3>📊 Data visualisation</h3>
+          <p>
+            La visualisation est l'acte de traduction d'un résultat numérique en une représentation
+            visuelle immédiatement lisible. J'ai appris que le choix du type de graphique est
+            une décision analytique, pas esthétique : une carte de chaleur pour les corrélations,
+            un boxplot pour les distributions par groupe, un graphique de décomposition pour
+            une série temporelle — chaque type répond à une question précise.
+          </p>
+          <p>
+            J'applique des principes de lisibilité systématiques : légendes intégrées plutôt
+            qu'externes, titres descriptifs (ce que montre le graphique, pas juste le nom de la variable),
+            palettes adaptées aux daltoniens, suppression des éléments décoratifs superflus (chartjunk).
+          </p>
+          <div class="tags-list">
+            <span class="tag">Choix du graphique adapté</span>
+            <span class="tag">Lisibilité</span>
+            <span class="tag">matplotlib / seaborn</span>
+            <span class="tag">ggplot2</span>
+            <span class="tag">Palettes accessibles</span>
           </div>
-          <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
         </div>
+
+        <div class="competence-block fade-in">
+          <h3>📑 Reporting structuré</h3>
+          <p>
+            Un rapport n'est pas une liste de résultats. C'est un document qui guide son lecteur
+            du contexte aux conclusions, en justifiant chaque étape. J'ai appris à structurer
+            un rapport analytique : résumé exécutif en tête, développement méthodologique,
+            présentation des résultats, interprétation et recommandations. Chaque section
+            a une fonction précise.
+          </p>
+          <p>
+            L'adaptation au public est centrale : un rapport pour un statisticien inclut
+            les formules, les hypothèses testées et les métriques d'évaluation.
+            Un rapport pour un décideur commence par les conclusions et n'expose la méthode
+            qu'en annexe. J'ai produit les deux formats sur les mêmes analyses.
+          </p>
+          <div class="tags-list">
+            <span class="tag">Structure de rapport</span>
+            <span class="tag">Résumé exécutif</span>
+            <span class="tag">Hiérarchisation</span>
+            <span class="tag">R Markdown</span>
+            <span class="tag">Synthèse</span>
+          </div>
+        </div>
+
+        <div class="competence-block fade-in">
+          <h3>📖 Storytelling de données</h3>
+          <p>
+            Le data storytelling consiste à construire un enchaînement narratif cohérent
+            à partir de plusieurs résultats analytiques. Ce n'est pas de la fiction :
+            c'est la capacité à donner un fil conducteur à des faits, pour qu'ils s'accumulent
+            vers une conclusion forte plutôt que de former une liste disparate de constats.
+          </p>
+          <p>
+            Sur la restitution de l'ACP, j'ai structuré la présentation comme une enquête :
+            d'abord le constat (il existe des groupes distincts dans les données),
+            puis la démonstration (voici comment l'ACP les révèle),
+            puis l'implication (voici ce que ça signifie pour les décisions à prendre).
+            L'enchaînement logique est ce qui rend les résultats mémorables.
+          </p>
+          <div class="tags-list">
+            <span class="tag">Fil narratif</span>
+            <span class="tag">Mise en contexte</span>
+            <span class="tag">Enchaînement logique</span>
+            <span class="tag">Insights actionnables</span>
+          </div>
+        </div>
+
+        <div class="competence-block fade-in">
+          <h3>🎤 Communication et présentation orale</h3>
+          <p>
+            La communication orale est une compétence à part entière, distincte de la qualité
+            de l'analyse elle-même. J'ai développé des réflexes spécifiques : ne pas lire les slides,
+            commencer par la conclusion plutôt que par la méthode, anticiper les questions
+            des non-spécialistes, et gérer les objections sans se retrancher derrière
+            la technicité.
+          </p>
+          <p>
+            Les restitutions devant jury ont été des exercices formatifs. Expliquer un modèle ARIMA
+            ou une ACP à un public qui n'a pas suivi la même formation impose de trouver
+            les bons analogies, de distinguer l'essentiel de l'accessoire.
+          </p>
+          <div class="tags-list">
+            <span class="tag">Présentation orale</span>
+            <span class="tag">Vulgarisation</span>
+            <span class="tag">Gestion des questions</span>
+            <span class="tag">Pédagogie</span>
+            <span class="tag">PowerPoint</span>
+          </div>
+        </div>
+
+        <div class="competence-block fade-in">
+          <h3>📋 Tableaux de bord et outils décisionnels</h3>
+          <p>
+            Un tableau de bord n'est pas une collection de graphiques — c'est un outil de pilotage
+            conçu pour répondre à des questions métier précises. Avant de placer le premier visuel,
+            il faut définir les KPI pertinents, leurs sources, leurs seuils d'alerte et la fréquence
+            de mise à jour attendue. La conception commence par une conversation avec le futur
+            utilisateur, pas par l'ouverture de Power BI.
+          </p>
+          <p>
+            J'ai travaillé sur la hiérarchie visuelle d'un dashboard : l'information la plus critique
+            en haut à gauche, les détails accessibles par interaction, les filtres intuitifs.
+            Un tableau de bord efficace se lit en 30 secondes pour les indicateurs clés
+            et permet d'approfondir en 5 minutes.
+          </p>
+          <div class="tags-list">
+            <span class="tag">Power BI</span>
+            <span class="tag">DAX</span>
+            <span class="tag">KPI</span>
+            <span class="tag">Hiérarchie visuelle</span>
+            <span class="tag">Filtres interactifs</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Principes de dataviz -->
+      <div class="fade-in" style="max-width:820px; margin:2rem auto 0">
+        <h3 style="text-align:center; font-size:1rem; color:var(--text-secondary); margin-bottom:1rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em">
+          Principes appliqués en dataviz
+        </h3>
+        <div class="principe-grid">
+          <div class="principe-item">
+            <span class="principe-icon">🎯</span>
+            <h4>Une question, un graphique</h4>
+            <p>Chaque visualisation répond à une seule question. Trop d'information sur un visuel = aucune information.</p>
+          </div>
+          <div class="principe-item">
+            <span class="principe-icon">👤</span>
+            <h4>Concevoir pour le lecteur</h4>
+            <p>Le graphique est fait pour son destinataire, pas pour son créateur. Son niveau d'expertise détermine tout.</p>
+          </div>
+          <div class="principe-item">
+            <span class="principe-icon">✂️</span>
+            <h4>Supprimer le superflu</h4>
+            <p>Tout élément décoratif qui n'ajoute pas d'information cognitive doit être retiré. La simplicité est un résultat.</p>
+          </div>
+          <div class="principe-item">
+            <span class="principe-icon">🎨</span>
+            <h4>Couleur = signal</h4>
+            <p>La couleur n'est pas esthétique — elle encode de l'information. Utiliser plus de 5-6 couleurs, c'est perdre cette propriété.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barres de compétences -->
+      <div class="skills-list fade-in" style="max-width:680px; margin:2.5rem auto 0">
         <div class="skill-item">
           <div class="skill-header">
             <span class="skill-name">Choix et réalisation de visualisations adaptées</span>
@@ -143,201 +483,383 @@
         </div>
         <div class="skill-item">
           <div class="skill-header">
-            <span class="skill-name">Storytelling des données (data storytelling)</span>
-            <span class="skill-value">75%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">Adaptation du discours au public (technique vs non-technique)</span>
-            <span class="skill-value">82%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" data-width="82%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">Création de rapports et présentations professionnelles</span>
+            <span class="skill-name">Rapports structurés et adaptation au public</span>
             <span class="skill-value">88%</span>
           </div>
           <div class="skill-bar"><div class="skill-fill" data-width="88%"></div></div>
         </div>
         <div class="skill-item">
           <div class="skill-header">
-            <span class="skill-name">Principes de perception visuelle (Gestalt, couleurs)</span>
-            <span class="skill-value">70%</span>
+            <span class="skill-name">Storytelling et enchaînement narratif</span>
+            <span class="skill-value">78%</span>
           </div>
-          <div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="78%"></div></div>
         </div>
-      </div>
-
-      <div class="tags-list fade-in mt-3" style="justify-content:center">
-        <span class="tag">Data visualisation</span>
-        <span class="tag">Tableaux de bord</span>
-        <span class="tag">KPI</span>
-        <span class="tag">Storytelling</span>
-        <span class="tag">Infographie</span>
-        <span class="tag">Design graphique</span>
-        <span class="tag">Reporting</span>
-        <span class="tag">Présentation orale</span>
-        <span class="tag">Lisibilité</span>
-        <span class="tag">Accessibilité</span>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Communication orale et vulgarisation</span>
+            <span class="skill-value">80%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Tableaux de bord Power BI et KPI</span>
+            <span class="skill-value">76%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="76%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Principes de perception visuelle appliqués</span>
+            <span class="skill-value">72%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="72%"></div></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- OUTILS -->
-  <section class="section" id="outils">
+  <!-- =============================================
+       3. MISE EN PRATIQUE — PROJETS DÉTAILLÉS
+       ============================================= -->
+  <section class="section" id="projets">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-label">Outils & Technologies</span>
-        <h2 class="section-title">Outils mobilisés</h2>
+        <span class="section-label">Mise en pratique</span>
+        <h2 class="section-title">Projets & SAÉ</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle" style="margin-top:1rem">
+          Trois situations concrètes où la valorisation des données a constitué
+          l'enjeu principal : produire des livrables compréhensibles et utiles à la décision.
+        </p>
+      </div>
+
+      <!-- SAÉ Restitution ACP -->
+      <div class="project-detail fade-in">
+        <div class="project-detail-header">
+          <div class="project-detail-icon">🔬</div>
+          <div class="project-detail-meta">
+            <div class="project-context">SAÉ — Restitution d'analyse multivariée</div>
+            <h3>Rapport ACP — Visualisation et communication de résultats multivariés</h3>
+          </div>
+        </div>
+        <div class="project-detail-body">
+          <div class="project-detail-col">
+            <h4>Contexte &amp; problématique</h4>
+            <p>
+              À l'issue de l'analyse en composantes principales, la difficulté n'était pas
+              technique — les calculs étaient faits. Le vrai défi était de rendre ces résultats
+              compréhensibles pour un public qui n'avait pas fait le calcul :
+              comment expliquer un biplot à quelqu'un qui n'a jamais vu d'ACP ?
+              Comment donner du sens à des axes abstraits ?
+            </p>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce que j'ai fait concrètement</h4>
+            <ul>
+              <li>Conception des visualisations clés : biplot annoté, cercle des corrélations, graphique des valeurs propres (scree plot)</li>
+              <li>Annotation manuelle des axes avec des étiquettes interprétatives en langage naturel</li>
+              <li>Création d'un dendrogramme pour le clustering hiérarchique associé à l'ACP</li>
+              <li>Rédaction d'un rapport en deux versions : technique (avec métriques) et synthèse exécutive (2 pages, sans formule)</li>
+              <li>Présentation orale de 15 minutes avec slides épurées, suivie d'une session de questions</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Outils utilisés</h4>
+            <ul>
+              <li>R — <code>factoextra</code> pour les visualisations ACP (biplot, contributions)</li>
+              <li>R — <code>ggplot2</code> pour les graphiques complémentaires personnalisés</li>
+              <li>PowerPoint pour le support de présentation (design épuré, max 6 éléments par slide)</li>
+              <li>R Markdown pour le rapport reproductible (code + résultats + commentaires intégrés)</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Difficultés rencontrées</h4>
+            <ul>
+              <li>Le biplot brut généré par défaut est illisible dès que le nombre de variables dépasse 10 — il a fallu le nettoyer et l'annoter manuellement</li>
+              <li>Nommer les axes principaux de façon pertinente sans surinterprétation : trouver le bon niveau d'abstraction</li>
+              <li>Calibrer le niveau de détail de la présentation orale pour ne pas perdre le public non-technique tout en restant exact</li>
+            </ul>
+          </div>
+          <div class="project-detail-result">
+            <strong>Livrables produits :</strong> Un rapport complet en R Markdown (version technique + synthèse exécutive),
+            un support de présentation en 12 slides, et un biplot annoté réutilisable.
+            La version synthèse a été spécifiquement conçue pour être lue en moins de 5 minutes
+            par quelqu'un qui n'a pas participé à l'analyse. C'est ce format "deux versions"
+            que je considère aujourd'hui comme une bonne pratique systématique.
+          </div>
+        </div>
+      </div>
+
+      <!-- SAÉ Séries temporelles — Restitution -->
+      <div class="project-detail fade-in">
+        <div class="project-detail-header">
+          <div class="project-detail-icon">⚓</div>
+          <div class="project-detail-meta">
+            <div class="project-context">SAÉ — Visualisation de prévisions temporelles</div>
+            <h3>Port d'Anvers — Rendre des prévisions ARIMA lisibles et actionnables</h3>
+          </div>
+        </div>
+        <div class="project-detail-body">
+          <div class="project-detail-col">
+            <h4>Contexte &amp; problématique</h4>
+            <p>
+              Le modèle ARIMA est produit — comment le présenter ? Un graphique de prévision brut
+              avec des intervalles de confiance à 80 % et 95 % est informatif pour un statisticien,
+              mais peut paraître opaque pour un responsable logistique.
+              L'enjeu : montrer les prévisions, leur incertitude, et la tendance sous-jacente
+              de façon honnête et lisible simultanément.
+            </p>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce que j'ai fait concrètement</h4>
+            <ul>
+              <li>Graphique de décomposition STL commenté (tendance / saisonnalité / résidus) avec annotations des événements exogènes (COVID)</li>
+              <li>Graphique de prévision à 12 mois avec intervalles de confiance colorés et légende explicitant leur signification probabiliste</li>
+              <li>Comparaison visuelle des deux modèles (ARIMA vs ETS) sur la période de validation</li>
+              <li>Slide récapitulative avec trois messages clés sur les prévisions : tendance, fourchette haute/basse, point d'attention</li>
+              <li>Section "Limites de la prévision" explicite dans le rapport : ce que le modèle ne peut pas anticiper</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Outils utilisés</h4>
+            <ul>
+              <li>R — <code>fpp2</code> : <code>autoplot()</code>, <code>forecast()</code> avec personnalisation ggplot2</li>
+              <li>Annotations manuelles sur les graphiques (ggplot2 <code>annotate()</code>)</li>
+              <li>PowerPoint pour la restitution orale : slides minimalistes, un chiffre clé par slide</li>
+              <li>Tableau Excel de synthèse des métriques de performance pour les non-techniciens</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce qui était difficile</h4>
+            <ul>
+              <li>Les intervalles de confiance s'élargissent rapidement sur 12 mois — montrer cette incertitude sans discréditer les prévisions demande du soin dans la présentation</li>
+              <li>Expliquer à l'oral ce qu'est un intervalle de confiance à 80 % sans formule, de façon intuitive</li>
+              <li>Décider ce qui devait apparaître sur les slides vs ce qui devait rester dans le rapport annexe</li>
+            </ul>
+          </div>
+          <div class="project-detail-result">
+            <strong>Livrables produits :</strong> Un rapport analytique complet avec graphiques annotés,
+            un support de 8 slides pour la restitution orale, et une fiche synthèse d'une page
+            "Ce que disent les données" rédigée en langage naturel, sans jargon statistique.
+            Cette fiche a été conçue pour être lue et comprise par un décideur en moins de 2 minutes.
+          </div>
+        </div>
+      </div>
+
+      <!-- SAÉ Dashboard / Power BI -->
+      <div class="project-detail fade-in">
+        <div class="project-detail-header">
+          <div class="project-detail-icon">📋</div>
+          <div class="project-detail-meta">
+            <div class="project-context">SAÉ — Tableau de bord décisionnel</div>
+            <h3>Dashboard Power BI — Pilotage par indicateurs sur données RH</h3>
+          </div>
+        </div>
+        <div class="project-detail-body">
+          <div class="project-detail-col">
+            <h4>Contexte &amp; problématique</h4>
+            <p>
+              À partir d'un jeu de données RH (effectifs, contrats, absences, formations, turnover),
+              l'objectif était de concevoir un tableau de bord opérationnel permettant à un responsable
+              RH de piloter les indicateurs clés de son périmètre en autonomie, sans passer
+              par un analyste à chaque question. La contrainte principale : le dashboard devait
+              être utilisable par quelqu'un qui n'a jamais ouvert Power BI.
+            </p>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce que j'ai fait concrètement</h4>
+            <ul>
+              <li>Définition des KPI en amont : taux de turnover, ancienneté moyenne, taux d'absentéisme, répartition par tranche d'âge et statut contractuel</li>
+              <li>Modélisation du schéma de données dans Power BI (relations entre tables, table de dates)</li>
+              <li>Écriture de mesures DAX pour les indicateurs calculés (taux, variations, cumuls)</li>
+              <li>Conception de la mise en page : page de synthèse + pages de détail par thématique</li>
+              <li>Intégration de filtres croisés et de segments permettant l'exploration par service et par période</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Outils utilisés</h4>
+            <ul>
+              <li>Power BI Desktop : modélisation des données, DAX, mise en page</li>
+              <li>Mesures DAX : <code>CALCULATE()</code>, <code>DIVIDE()</code>, <code>DATEADD()</code></li>
+              <li>Palette de couleurs limitée à 3 couleurs fonctionnelles (état normal, alerte, critique)</li>
+              <li>Power BI Service pour la publication et le partage</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce que ça m'a appris</h4>
+            <ul>
+              <li>Concevoir un dashboard commence par définir les questions, pas par placer des graphiques — une erreur fréquente</li>
+              <li>La performance technique (DAX efficace) et l'UX (dashboard utilisable) sont deux compétences distinctes</li>
+              <li>Un tableau de bord surchargé d'indicateurs n'aide pas à décider — il paralyse. Limiter à 5-7 KPI par page est une règle pratique</li>
+            </ul>
+          </div>
+          <div class="project-detail-result">
+            <strong>Livrables produits :</strong> Un fichier Power BI avec 3 pages thématiques (synthèse, effectifs, absentéisme),
+            publié sur Power BI Service. La page de synthèse concentre 6 KPI principaux,
+            lisibles en un coup d'œil. Les pages de détail permettent l'exploration par filtre.
+            Ce dashboard a été testé avec un utilisateur non-technique : il a pu répondre
+            à 4 questions métier en moins de 3 minutes sans aide.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       4. OUTILS ET TECHNOLOGIES
+       ============================================= -->
+  <section class="section section-alt" id="outils">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Outils &amp; Technologies</span>
+        <h2 class="section-title">Ce que j'utilise</h2>
         <div class="divider"></div>
       </div>
 
       <div class="tools-grid fade-in" style="justify-content:center">
         <div class="tool-pill"><span class="tool-pill-icon">📊</span>Power BI</div>
-        <div class="tool-pill"><span class="tool-pill-icon">📈</span>Tableau Public</div>
-        <div class="tool-pill"><span class="tool-pill-icon">🐍</span>matplotlib / seaborn</div>
         <div class="tool-pill"><span class="tool-pill-icon">📐</span>ggplot2 (R)</div>
-        <div class="tool-pill"><span class="tool-pill-icon">🎨</span>Plotly / Dash</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🐍</span>matplotlib / seaborn</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📄</span>R Markdown</div>
         <div class="tool-pill"><span class="tool-pill-icon">📑</span>PowerPoint</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📋</span>Excel (graphiques)</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🎨</span>Plotly / Dash</div>
         <div class="tool-pill"><span class="tool-pill-icon">✏️</span>Canva</div>
-        <div class="tool-pill"><span class="tool-pill-icon">📄</span>Excel (graphiques avancés)</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJETS -->
-  <section class="section section-alt" id="projets">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-label">Situations d'apprentissage</span>
-        <h2 class="section-title">Projets & SAÉ</h2>
-        <div class="divider"></div>
-        <p class="section-subtitle" style="margin-top:1rem">
-          Ces projets illustrent ma capacité à transformer des résultats d'analyse
-          en supports de communication efficaces.
-        </p>
       </div>
 
-      <div class="cards-grid">
-        <div class="card card-accent fade-in delay-1">
+      <div class="cards-grid fade-in" style="margin-top:2.5rem">
+        <div class="card">
           <div class="card-icon">📊</div>
-          <h3>SAÉ 3.03 — Dashboard Power BI RH</h3>
+          <h3>Power BI</h3>
           <p>
-            Conception d'un tableau de bord interactif sur les données RH d'une entreprise fictive :
-            pyramide des âges, taux de turnover, répartition par service, indicateurs de performance.
-            Publié sur Power BI Service.
+            Outil principal pour les tableaux de bord. Modélisation des données (schéma en étoile),
+            mesures DAX pour les indicateurs calculés, mise en page orientée UX.
+            La maîtrise de DAX — notamment <code>CALCULATE()</code>, les fonctions temporelles
+            et les ratios — est ce qui permet de construire des KPI métier pertinents.
           </p>
-          <div class="tags-list" style="margin-top:1rem">
-            <span class="tag">Power BI</span>
-            <span class="tag">DAX</span>
-            <span class="tag">KPI</span>
-          </div>
         </div>
-
-        <div class="card card-accent fade-in delay-2">
-          <div class="card-icon">🌍</div>
-          <h3>SAÉ 2.05 — Rapport sur les inégalités mondiales</h3>
+        <div class="card">
+          <div class="card-icon">📐</div>
+          <h3>ggplot2 (R)</h3>
           <p>
-            Création d'un rapport analytique complet sur les données de l'ONU (IDH, revenus,
-            éducation). Cartographies avec ggplot2, visualisations temporelles, narration
-            des insights, support de 20 diapositives adapté à un public non-technique.
+            Bibliothèque de référence pour les visualisations analytiques en R.
+            La grammaire des graphiques de ggplot2 impose de décomposer chaque visuel
+            en couches explicites (données, esthétiques, géométries) — une discipline
+            utile pour comprendre ce qu'on produit et pourquoi.
           </p>
-          <div class="tags-list" style="margin-top:1rem">
-            <span class="tag">ggplot2</span>
-            <span class="tag">R Markdown</span>
-            <span class="tag">Storytelling</span>
-          </div>
         </div>
-
-        <div class="card card-accent fade-in delay-3">
-          <div class="card-icon">🛍️</div>
-          <h3>Projet Plotly Dash — Analyse ventes</h3>
+        <div class="card">
+          <div class="card-icon">📄</div>
+          <h3>R Markdown</h3>
           <p>
-            Développement d'une application de visualisation interactive en Python/Dash
-            pour visualiser les ventes d'un e-commerce : filtres dynamiques, graphiques
-            interconnectés, indicateurs clés en temps réel.
+            Format de rapport reproductible : le code, les résultats et le texte d'interprétation
+            sont dans un seul document. Idéal pour des rapports analytiques où la méthode
+            doit être traçable et le résultat immédiatement lisible. Exportable en HTML, PDF ou Word.
           </p>
-          <div class="tags-list" style="margin-top:1rem">
-            <span class="tag">Plotly Dash</span>
-            <span class="tag">Python</span>
-            <span class="tag">Interactivité</span>
-          </div>
         </div>
-
-        <div class="card card-accent fade-in delay-4">
-          <div class="card-icon">🎤</div>
-          <h3>Présentation orale — Jury de fin d'année</h3>
+        <div class="card">
+          <div class="card-icon">🐍</div>
+          <h3>matplotlib / seaborn</h3>
           <p>
-            Restitution de travaux analytiques devant un jury de professionnels.
-            Construction d'une présentation claire avec résumé exécutif, visuels
-            percutants, messages clés et réponse aux questions critiques du jury.
+            Pour les visualisations dans les workflows Python. seaborn facilite les graphiques
+            statistiques (boxplots, heatmaps, pairplots) avec une API de haut niveau ;
+            matplotlib permet le contrôle fin sur chaque élément visuel quand
+            la personnalisation est nécessaire.
           </p>
-          <div class="tags-list" style="margin-top:1rem">
-            <span class="tag">Communication</span>
-            <span class="tag">Synthèse</span>
-            <span class="tag">Vulgarisation</span>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TIMELINE -->
+  <!-- =============================================
+       5. APPORTS ET PROGRESSION
+       ============================================= -->
   <section class="section" id="progression">
     <div class="container">
       <div class="two-col">
         <div class="fade-in">
           <span class="section-label">Progression</span>
-          <h2 class="section-title" style="text-align:left">Mon parcours dans ce bloc</h2>
+          <h2 class="section-title" style="text-align:left">Du graphique au message</h2>
           <div class="divider divider-left mb-3"></div>
 
           <div class="timeline">
             <div class="timeline-item">
               <div class="timeline-date">Semestre 1 — 2022</div>
-              <h4>Graphiques de base</h4>
-              <p>Histogrammes, camemberts, nuages de points en Excel et premiers pas avec matplotlib.</p>
+              <h4>Premiers graphiques</h4>
+              <p>
+                Histogrammes et courbes de base en Excel et matplotlib.
+                J'optmisais les couleurs et les titres par goût personnel —
+                sans raisonnement sur le lecteur ou le message à transmettre.
+              </p>
             </div>
             <div class="timeline-item">
               <div class="timeline-date">Semestre 2 — 2023</div>
-              <h4>Visualisation avancée</h4>
-              <p>Heatmaps, boxplots, graphiques multivariés, introduction aux principes de dataviz (moins c'est mieux).</p>
+              <h4>Principes de dataviz</h4>
+              <p>
+                Découverte de ggplot2 et des principes de visualisation (Tufte, Few).
+                Première prise de conscience que le "moins" est souvent "mieux"
+                — éliminer le chartjunk, choisir les couleurs pour leur signification.
+              </p>
             </div>
             <div class="timeline-item">
               <div class="timeline-date">Semestre 3 — 2023</div>
-              <h4>Tableaux de bord & interactivité</h4>
-              <p>Premier dashboard Power BI, découverte de Plotly Dash et des interactions utilisateur dans les visuels.</p>
+              <h4>Rapports et storytelling</h4>
+              <p>
+                Premiers rapports R Markdown complets. Apprentissage de la structure narrative :
+                contexte → analyse → résultats → recommandations.
+                Première restitution devant un jury de professionnels.
+              </p>
             </div>
             <div class="timeline-item">
-              <div class="timeline-date">Semestre 4–6 — 2024</div>
-              <h4>Storytelling & communication pro</h4>
-              <p>Présentations devant des professionnels, reportings automatisés, structuration du message pour décideurs.</p>
+              <div class="timeline-date">Semestre 4 — 2024</div>
+              <h4>Tableaux de bord et KPI</h4>
+              <p>
+                Power BI, DAX, conception orientée utilisateur.
+                Passage d'une logique "produire des graphiques" à une logique
+                "concevoir un outil qui répond à des questions métier précises".
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 5–6 — 2024–2025</div>
+              <h4>Communication pro et adaptation au public</h4>
+              <p>
+                Livrables "double format" systématiques (technique + synthèse exécutive).
+                Maîtrise progressive de l'adaptation du discours selon l'audience :
+                jury technique, responsable opérationnel, décideur non-technique.
+              </p>
             </div>
           </div>
         </div>
 
         <div class="slide-right">
           <div class="card" style="margin-bottom:1.5rem">
-            <h3>🏢 Lien avec le monde professionnel</h3>
-            <p>
-              Les métiers du reporting, de la Business Intelligence et de la data visualisation
-              sont parmi les plus demandés dans les directions de l'analyse et du contrôle de gestion.
-              Maîtriser Power BI ou Tableau est souvent un critère de sélection direct dans les offres d'emploi.
-            </p>
-            <p>
-              Mais au-delà des outils, c'est la capacité à <strong class="highlight">raconter une histoire</strong>
-              avec des données qui est véritablement différenciante.
-            </p>
+            <h3>✅ Ce que je maîtrise</h3>
+            <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.92rem">
+              <li style="margin-bottom:0.4rem">Choix du graphique adapté à la question et au public</li>
+              <li style="margin-bottom:0.4rem">Rapports R Markdown structurés et reproductibles</li>
+              <li style="margin-bottom:0.4rem">Tableaux de bord Power BI avec indicateurs DAX</li>
+              <li style="margin-bottom:0.4rem">Présentation orale avec vulgarisation des résultats</li>
+              <li>Format "deux versions" (technique + synthèse exécutive)</li>
+            </ul>
           </div>
-
+          <div class="card" style="margin-bottom:1.5rem">
+            <h3>📈 Ce que j'approfondis</h3>
+            <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.92rem">
+              <li style="margin-bottom:0.4rem">Design de présentation pour audiences à forts enjeux (comités de direction)</li>
+              <li style="margin-bottom:0.4rem">Visualisations interactives avancées (Plotly, D3.js)</li>
+              <li>Principes d'accessibilité visuelle (contrastes, daltonisme, lecture en noir et blanc)</li>
+            </ul>
+          </div>
           <div class="card">
-            <h3>📚 Apprentissages clés</h3>
-            <p>
-              Ce bloc m'a appris qu'une dataviz efficace est d'abord un acte de
-              <strong class="highlight">communication</strong>, pas de technique.
-              La question "pour qui je construis ce visuel ?" doit précéder toute autre décision.
+            <h3>🏢 Lien professionnel</h3>
+            <p style="font-size:0.92rem; color:var(--text-secondary)">
+              Le BI Analyst et le Data Analyst passent une part significative de leur temps
+              à valoriser : créer des dashboards, préparer des reportings, présenter des analyses.
+              La maîtrise de Power BI est souvent un critère de sélection direct.
+              Mais c'est la capacité à rendre la donnée actionnable qui est réellement différenciante.
             </p>
           </div>
         </div>
@@ -345,38 +867,138 @@
     </div>
   </section>
 
-  <!-- BILAN -->
+  <!-- =============================================
+       6. REGARD CRITIQUE
+       ============================================= -->
   <section class="section section-alt" id="bilan">
-    <div class="container" style="max-width:800px">
+    <div class="container" style="max-width:860px">
       <div class="section-header fade-in">
         <span class="section-label">Regard critique</span>
-        <h2 class="section-title">Autoévaluation</h2>
+        <h2 class="section-title">Ce que j'en retire</h2>
         <div class="divider"></div>
       </div>
 
       <div class="bilan-box fade-in">
         <p>
-          Le bloc Valoriser est celui qui m'a le plus surpris. Je n'imaginais pas que la communication
-          des données représentait en elle-même un domaine aussi riche et exigeant. Choisir le bon
-          type de graphique, la bonne palette de couleurs, la bonne densité d'information sont
-          des décisions qui ont un vrai impact sur la compréhension du public.
+          Ce bloc m'a surpris par sa complexité. J'attendais des questions techniques —
+          comment faire tel graphique, comment configurer tel outil. En pratique,
+          les vraies difficultés étaient d'un autre ordre : comment représenter de l'incertitude
+          honnêtement sans décourager le lecteur ? Comment simplifier sans trahir ?
+          Comment choisir entre l'exhaustivité et la lisibilité ?
         </p>
         <p>
-          Ma maîtrise de Power BI me permet de livrer des dashboards opérationnels.
-          En revanche, je souhaite progresser sur les principes de perception visuelle
-          (psychologie cognitive appliquée à la dataviz) et sur le design de présentation
-          pour des contextes à forts enjeux (comités de direction, investisseurs).
+          Sur la restitution ACP, mon premier biplot couvrait 18 variables sans annotation.
+          Il était techniquement correct et totalement illisible. J'ai dû recommencer en
+          sélectionnant les 8 variables les plus contributives et en annotant chaque groupe
+          manuellement. La leçon : un bon visuel analytique n'est jamais un graphique brut.
         </p>
         <p>
-          Ce bloc m'a également appris à prendre confiance à l'oral,
-          ce qui est une compétence transversale précieuse pour toute la vie professionnelle.
+          Sur le dashboard Power BI, j'avais initialement prévu 14 indicateurs sur la page d'accueil.
+          Après test avec un utilisateur, j'en ai supprimé 8 — ceux qui n'aidaient pas à décider
+          mais rassuraient juste sur l'exhaustivité. C'est une distinction importante.
+        </p>
+      </div>
+
+      <div class="two-col-eval fade-in">
+        <div class="eval-box positif">
+          <h4>✔ Points forts</h4>
+          <ul>
+            <li>Capacité à produire deux niveaux de restitution (technique / exécutif) sur la même analyse</li>
+            <li>Approche "conception pour le lecteur" : je commence par identifier l'audience et sa question</li>
+            <li>Visualisations annotées et contextualisées, pas de graphiques bruts livrés tels quels</li>
+            <li>Aisance à l'oral face à un public non-technique, avec vulgarisation sans approximation</li>
+            <li>Réflexe de signaler les limites des résultats dans les livrables</li>
+          </ul>
+        </div>
+        <div class="eval-box negatif">
+          <h4>↗ Axes de progression</h4>
+          <ul>
+            <li>Visualisations interactives avancées (Plotly Dash, D3.js) : encore superficielles</li>
+            <li>Design pour audiences dirigeantes (comités de direction, investisseurs) : niveau de concision encore à affiner</li>
+            <li>Accessibilité des visualisations : je ne vérifie pas systématiquement le rendu en daltonisme ou en noir et blanc</li>
+            <li>Automatisation du reporting (Power BI Service, rafraîchissement de données) : à approfondir</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bilan-box fade-in" style="margin-top:1.5rem">
+        <p>
+          <strong style="color:var(--gold)">Ce que j'améliorerais aujourd'hui :</strong>
+          sur le dashboard Power BI, j'aurais structuré une phase de recueil des besoins utilisateur
+          avant de commencer à concevoir — une session d'une heure pour identifier les 5 questions
+          que l'utilisateur se pose vraiment. Sur les rapports R Markdown, j'aurais systématiquement
+          intégré un encadré "Ce que ces résultats impliquent concrètement" avant chaque section
+          de méthode, pour que le lecteur non-technique sache dès le début pourquoi il lit ce paragraphe.
+        </p>
+        <p style="margin-bottom:0">
+          Plus généralement, j'ai appris que valoriser est un processus itératif.
+          Le premier livrable n'est jamais le bon — il faut le faire lire par quelqu'un
+          qui n'a pas participé à l'analyse, observer ce qu'il ne comprend pas,
+          et corriger. Cette boucle de feedback est ce qui distingue un livrable
+          techniquement correct d'un livrable réellement utile.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- NAVIGATION -->
-  <section class="section">
+  <!-- =============================================
+       7. LIEN AVEC LE MONDE PROFESSIONNEL
+       ============================================= -->
+  <section class="section" id="pro">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Perspective professionnelle</span>
+        <h2 class="section-title">Ce bloc dans le monde data</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="cards-grid fade-in">
+        <div class="card card-accent">
+          <div class="card-icon">📊</div>
+          <h3>BI Analyst</h3>
+          <p>
+            Le BI Analyst (Business Intelligence) a pour mission principale de rendre les données
+            accessibles aux métiers : tableaux de bord, KPI, reporting automatisé.
+            Power BI, DAX, et la compréhension des besoins utilisateur sont les compétences
+            centrales de ce rôle. C'est le métier le plus directement aligné avec ce bloc.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">📈</div>
+          <h3>Data Analyst</h3>
+          <p>
+            Le Data Analyst combine analyse et valorisation : il produit les résultats
+            et les présente. Sa valeur ajoutée ne s'arrête pas au modèle — elle s'étend
+            jusqu'à la recommandation concrète communiquée à la bonne personne,
+            dans le bon format, au bon niveau de détail.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">🏢</div>
+          <h3>Rendre la donnée actionnable</h3>
+          <p>
+            Dans une organisation, les données n'ont de valeur que si elles informent
+            des décisions. Un dashboard que personne ne consulte, un rapport que personne
+            ne lit — ce sont des ressources perdues. La vraie compétence de valorisation,
+            c'est de produire des livrables qui déclenchent des actions.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">🤝</div>
+          <h3>Interface technique / métier</h3>
+          <p>
+            La valorisation est le point de contact entre l'équipe data et les équipes métier.
+            Savoir parler les deux langues — comprendre les contraintes techniques et
+            les enjeux business — est une compétence rare et très recherchée, surtout
+            dans les équipes data qui travaillent en transversal.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION ENTRE BLOCS -->
+  <section class="section section-alt">
     <div class="container">
       <div class="bloc-nav fade-in">
         <a href="analyser.html" class="bloc-nav-item prev">

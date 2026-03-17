@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Développer — Portfolio BUT Science des Données</title>
-  <meta name="description" content="Bloc Développer : programmation, automatisation, développement d'outils et d'applications." />
+  <meta name="description" content="Bloc Développer : programmation Python, automatisation, outils data et développement de solutions concrètes." />
   <link rel="stylesheet" href="style.css" />
   <style>
     #page-progress {
@@ -45,20 +45,165 @@
 
     /* Bloc de code stylisé */
     .code-block {
-      background: rgba(0,0,0,0.4);
-      border: 1px solid rgba(123,104,238,0.2);
-      border-radius: var(--r-md);
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(123,104,238,0.25);
+      border-radius: var(--radius);
       padding: 1.5rem;
       font-family: 'Consolas', 'Courier New', monospace;
-      font-size: 0.85rem;
-      line-height: 1.7;
+      font-size: 0.82rem;
+      line-height: 1.75;
       overflow-x: auto;
       color: #B8C4D4;
     }
-    .code-keyword { color: #C792EA; }
+    .code-keyword  { color: #C792EA; }
     .code-function { color: #82AAFF; }
-    .code-string { color: #C3E88D; }
-    .code-comment { color: #546E7A; font-style: italic; }
+    .code-string   { color: #C3E88D; }
+    .code-comment  { color: #546E7A; font-style: italic; }
+    .code-class    { color: #FFCB6B; }
+
+    /* Compétences en sous-parties */
+    .competence-block {
+      border-left: 3px solid var(--violet);
+      padding: 1.5rem 1.5rem 1.5rem 2rem;
+      margin-bottom: 2rem;
+      background: var(--surface);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .competence-block h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .competence-block p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin: 0 0 0.75rem;
+    }
+    .competence-block p:last-child { margin-bottom: 0; }
+
+    /* Projets détaillés */
+    .project-detail {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .project-detail-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-detail-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .project-detail-meta h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+    .project-detail-meta .project-context {
+      font-size: 0.85rem;
+      color: var(--violet);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .project-detail-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .project-detail-body { grid-template-columns: 1fr; }
+    }
+    .project-detail-col h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--violet);
+      margin-bottom: 0.6rem;
+    }
+    .project-detail-col p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    .project-detail-col ul {
+      padding-left: 1.2rem;
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+    .project-detail-col ul li { margin-bottom: 0.3rem; }
+    .project-detail-result {
+      grid-column: 1 / -1;
+      background: color-mix(in srgb, var(--violet) 8%, transparent);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      border-left: 3px solid var(--violet);
+    }
+    .project-detail-result strong { color: var(--violet); }
+
+    /* Code snippet inline dans les projets */
+    .project-detail-body code {
+      background: rgba(123,104,238,0.12);
+      color: var(--violet-light);
+      padding: 0.1em 0.4em;
+      border-radius: 3px;
+      font-family: 'Consolas', monospace;
+      font-size: 0.88em;
+    }
+
+    /* Points forts / à améliorer */
+    .two-col-eval {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 640px) { .two-col-eval { grid-template-columns: 1fr; } }
+    .eval-box {
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+    .eval-box.positif {
+      background: color-mix(in srgb, var(--violet) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--violet) 25%, transparent);
+    }
+    .eval-box.negatif {
+      background: color-mix(in srgb, var(--text-muted) 8%, transparent);
+      border: 1px solid var(--border);
+    }
+    .eval-box h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .eval-box.positif h4 { color: var(--violet); }
+    .eval-box.negatif h4 { color: var(--text-muted); }
+    .eval-box ul {
+      padding-left: 1.2rem;
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+    .eval-box ul li { margin-bottom: 0.4rem; }
   </style>
 </head>
 <body class="page-developper">
@@ -89,280 +234,602 @@
       <span class="bloc-tag">⚙️ Bloc 4</span>
       <h1>Développer des solutions</h1>
       <p>
-        Concevoir, programmer et déployer des outils qui automatisent, facilitent
-        et industrialisent le traitement de la donnée.
+        Concevoir, programmer, automatiser : créer des outils qui industrialisent
+        le traitement de la donnée et répondent à de vrais besoins.
       </p>
     </div>
   </section>
 
-  <!-- DÉFINITION -->
+  <!-- =============================================
+       1. INTRODUCTION DU BLOC
+       ============================================= -->
   <section class="section" id="definition">
     <div class="container">
       <div class="two-col">
         <div class="slide-left">
-          <span class="section-label">Définition</span>
+          <span class="section-label">Définition du bloc</span>
           <h2 class="section-title" style="text-align:left">Qu'est-ce que « Développer » ?</h2>
           <div class="divider divider-left mb-2"></div>
           <p>
-            Le bloc <strong class="highlight">Développer</strong> rassemble les compétences liées
-            à la conception et au développement d'outils, scripts, applications ou systèmes
-            permettant de répondre à un besoin data concret.
+            Le bloc <strong class="highlight">Développer</strong> regroupe les compétences qui permettent
+            de passer d'une analyse ponctuelle à une solution pérenne : écrire du code structuré,
+            automatiser des traitements répétitifs, intégrer des données depuis des sources externes,
+            et concevoir des outils que d'autres peuvent utiliser et faire évoluer.
           </p>
           <p>
-            Ce bloc recouvre la programmation Python, le développement d'interfaces,
-            l'automatisation de tâches répétitives, la conception algorithmique et le
-            déploiement d'applications. Il transforme le data scientist en véritable
-            <strong class="highlight">constructeur de solutions</strong>.
+            C'est le bloc qui fait le lien entre la science des données et l'ingénierie logicielle.
+            Un analyste qui sait développer ne dépend pas d'une équipe technique pour chaque besoin :
+            il construit lui-même ses pipelines, ses scripts de collecte, ses interfaces de restitution.
+            C'est ce qui rend un profil data vraiment autonome.
           </p>
           <p>
-            Dans un contexte professionnel, la maîtrise du développement permet
-            d'industrialiser les analyses et de les mettre à disposition des utilisateurs
-            métier de façon autonome.
+            Dans le référentiel du BUT Science des Données, ce bloc insiste sur la capacité à répondre
+            à un besoin concret par une solution technique fiable, maintenable et documentée —
+            pas juste un script qui fonctionne une fois.
           </p>
+          <div class="tags-list mt-2">
+            <span class="tag">Python</span>
+            <span class="tag">POO</span>
+            <span class="tag">Automatisation</span>
+            <span class="tag">API REST</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Git</span>
+          </div>
         </div>
         <div class="slide-right">
-          <!-- Exemple de code stylisé -->
           <div class="code-block">
-<span class="code-comment"># Pipeline de traitement automatisé</span>
-<span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
-<span class="code-keyword">from</span> sklearn.pipeline <span class="code-keyword">import</span> Pipeline
+<span class="code-comment"># SAÉ MonVoyage — collecteur modulaire</span>
+<span class="code-keyword">class</span> <span class="code-class">VoyageCollector</span>:
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(self, api_key: str):
+        self.api_key = api_key
+        self.session = requests.<span class="code-function">Session</span>()
 
-<span class="code-keyword">def</span> <span class="code-function">build_pipeline</span>(data_path: str):
-    df = pd.<span class="code-function">read_csv</span>(data_path)
-    pipeline = Pipeline([
-        (<span class="code-string">'cleaner'</span>, DataCleaner()),
-        (<span class="code-string">'encoder'</span>, FeatureEncoder()),
-        (<span class="code-string">'model'</span>,   RandomForest()),
-    ])
-    <span class="code-keyword">return</span> pipeline.<span class="code-function">fit</span>(df)
+    <span class="code-keyword">def</span> <span class="code-function">fetch_destinations</span>(self, page=<span class="code-string">1</span>):
+        <span class="code-comment"># Appel paginé avec retry sur timeout</span>
+        <span class="code-keyword">try</span>:
+            r = self.session.<span class="code-function">get</span>(
+                API_URL, params={<span class="code-string">"page"</span>: page},
+                headers={<span class="code-string">"Authorization"</span>: self.api_key},
+                timeout=<span class="code-string">10</span>
+            )
+            r.<span class="code-function">raise_for_status</span>()
+            <span class="code-keyword">return</span> r.<span class="code-function">json</span>()
+        <span class="code-keyword">except</span> requests.RequestException <span class="code-keyword">as</span> e:
+            <span class="code-function">log_error</span>(e)
+            <span class="code-keyword">return</span> []
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- COMPÉTENCES -->
+  <!-- =============================================
+       2. COMPÉTENCES DÉVELOPPÉES
+       ============================================= -->
   <section class="section section-alt" id="competences">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-label">Compétences</span>
         <h2 class="section-title">Ce que j'ai développé</h2>
         <div class="divider"></div>
+        <p class="section-subtitle" style="margin-top:1rem">
+          Cinq axes de compétences techniques, de la logique algorithmique de base
+          à la conception de pipelines de traitement complets.
+        </p>
       </div>
 
-      <div class="skills-list fade-in" style="max-width:680px; margin:0 auto">
+      <div style="max-width:820px; margin:0 auto">
+
+        <div class="competence-block fade-in">
+          <h3>🐍 Programmation Python</h3>
+          <p>
+            Python est le langage central de ma formation data. J'ai progressé des scripts linéaires
+            aux programmes structurés : fonctions avec typage, gestion des exceptions, modules
+            réutilisables, et orienté objet (classes, héritage, encapsulation) pour les projets
+            qui le justifient. La question n'est pas "est-ce que ça marche" mais
+            "est-ce que quelqu'un d'autre peut relire, comprendre et modifier ce code".
+          </p>
+          <p>
+            Sur la SAÉ MonVoyage, j'ai structuré l'application en classes distinctes
+            (collecteur API, parseur HTML, exporteur CSV/JSON) — une architecture qui a rendu
+            le débogage et les tests unitaires nettement plus simples que sur mes premières
+            SAÉ où tout était dans un seul script de 300 lignes.
+          </p>
+          <div class="tags-list">
+            <span class="tag">Python</span>
+            <span class="tag">POO</span>
+            <span class="tag">Typage</span>
+            <span class="tag">Exceptions</span>
+            <span class="tag">Modules</span>
+            <span class="tag">Algorithmique</span>
+          </div>
+        </div>
+
+        <div class="competence-block fade-in">
+          <h3>🔧 Développement d'outils data</h3>
+          <p>
+            Développer un outil, ce n'est pas la même chose qu'écrire un script d'analyse.
+            Un outil est conçu pour être utilisé par quelqu'un d'autre, potentiellement dans
+            des conditions différentes de celles prévues. Ça implique une gestion robuste des erreurs,
+            des messages clairs, une documentation, et une séparation nette entre la logique métier
+            et l'interface.
+          </p>
+          <p>
+            Sur la SAÉ MonVoyage, l'outil devait fonctionner même si l'API était indisponible
+            sur certaines pages, si une destination n'avait pas tous ses champs renseignés,
+            ou si le format de la réponse changeait légèrement. Anticiper ces cas
+            avant qu'ils surviennent est une compétence de développeur, pas d'analyste.
+          </p>
+          <div class="tags-list">
+            <span class="tag">Gestion d'erreurs</span>
+            <span class="tag">Logging</span>
+            <span class="tag">Documentation</span>
+            <span class="tag">Génération CSV / JSON</span>
+            <span class="tag">Folium</span>
+          </div>
+        </div>
+
+        <div class="competence-block fade-in">
+          <h3>🌐 Intégration de données (API &amp; scraping)</h3>
+          <p>
+            La collecte automatisée de données demande de gérer bien plus que la requête HTTP :
+            authentification par token, pagination, rate limiting, retry sur timeout, parsing
+            sélectif du HTML, normalisation des données extraites. Chaque source est différente,
+            et la robustesse du code dépend de la façon dont on anticipe ses particularités.
+          </p>
+          <p>
+            Sur MonVoyage, j'ai combiné deux sources avec des structures radicalement différentes.
+            Le travail de normalisation a représenté autant d'effort que la collecte elle-même —
+            et la logique de correspondance entre les deux sources a demandé une réflexion
+            algorithmique précise (nettoyage de chaînes, comparaison floue de noms).
+          </p>
+          <div class="tags-list">
+            <span class="tag">requests</span>
+            <span class="tag">BeautifulSoup</span>
+            <span class="tag">Pagination</span>
+            <span class="tag">Rate limiting</span>
+            <span class="tag">JSON / XML</span>
+            <span class="tag">Normalisation</span>
+          </div>
+        </div>
+
+        <div class="competence-block fade-in">
+          <h3>🏗️ Conception et architecture du code</h3>
+          <p>
+            Bien concevoir un projet avant de coder évite de réécrire deux fois.
+            J'ai appris à structurer un projet Python en dossiers logiques (collecte, traitement,
+            export, tests), à définir des interfaces claires entre les composants,
+            et à rendre chaque module testable indépendamment.
+          </p>
+          <p>
+            Cette discipline de conception est ce qui permet à un projet de grandir sans devenir
+            ingérable. Sur le Datawarehouse, la séparation entre les scripts de création de schéma,
+            les scripts d'alimentation et les scripts de vérification a permis de modifier
+            un composant sans casser les autres — ce qui n'était pas le cas dans mes premières SAÉ.
+          </p>
+          <div class="tags-list">
+            <span class="tag">Architecture projet</span>
+            <span class="tag">Modularité</span>
+            <span class="tag">Séparation des responsabilités</span>
+            <span class="tag">Testabilité</span>
+          </div>
+        </div>
+
+        <div class="competence-block fade-in">
+          <h3>🗄️ Logique système et interaction avec les bases de données</h3>
+          <p>
+            L'interaction avec une base de données depuis du code impose de maîtriser deux niveaux :
+            le SQL lui-même (requêtes, transactions, gestion des contraintes) et l'intégration
+            dans le code Python (connexion, curseur, commit, gestion des erreurs de contrainte).
+            Sur le Datawarehouse sous Oracle, j'ai écrit des scripts d'alimentation qui devaient
+            garantir l'intégrité référentielle à chaque insertion — ce qui implique un ordre
+            d'exécution précis et des rollbacks en cas d'erreur.
+          </p>
+          <div class="tags-list">
+            <span class="tag">SQL / Oracle</span>
+            <span class="tag">cx_Oracle</span>
+            <span class="tag">Transactions</span>
+            <span class="tag">Intégrité référentielle</span>
+            <span class="tag">Pipelines de données</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Barres de compétences -->
+      <div class="skills-list fade-in" style="max-width:680px; margin:2rem auto 0">
         <div class="skill-item">
           <div class="skill-header">
-            <span class="skill-name">Programmation Python (scripts, modules, OOP)</span>
+            <span class="skill-name">Programmation Python (scripts, POO, modules)</span>
             <span class="skill-value">85%</span>
           </div>
           <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
         </div>
         <div class="skill-item">
           <div class="skill-header">
-            <span class="skill-name">Développement d'applications web (HTML / CSS / JS)</span>
-            <span class="skill-value">80%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">Automatisation et scripts bash / Python</span>
-            <span class="skill-value">75%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">API REST — consommation et développement</span>
-            <span class="skill-value">70%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">Gestion de version (Git / GitHub)</span>
+            <span class="skill-name">Collecte via API REST et web scraping</span>
             <span class="skill-value">82%</span>
           </div>
           <div class="skill-bar"><div class="skill-fill" data-width="82%"></div></div>
         </div>
         <div class="skill-item">
           <div class="skill-header">
-            <span class="skill-name">Développement d'applications Flask / Streamlit</span>
-            <span class="skill-value">68%</span>
+            <span class="skill-name">Conception et architecture de projet Python</span>
+            <span class="skill-value">74%</span>
           </div>
-          <div class="skill-bar"><div class="skill-fill" data-width="68%"></div></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="74%"></div></div>
         </div>
-      </div>
-
-      <div class="tags-list fade-in mt-3" style="justify-content:center">
-        <span class="tag">Python</span>
-        <span class="tag">POO</span>
-        <span class="tag">HTML / CSS</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">Flask</span>
-        <span class="tag">Streamlit</span>
-        <span class="tag">Git</span>
-        <span class="tag">REST API</span>
-        <span class="tag">JSON</span>
-        <span class="tag">Automatisation</span>
-        <span class="tag">Algorithmique</span>
-        <span class="tag">Tests unitaires</span>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Interaction base de données depuis Python (SQL)</span>
+            <span class="skill-value">78%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="78%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Gestion de version (Git / GitHub)</span>
+            <span class="skill-value">80%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Tests et robustesse du code</span>
+            <span class="skill-value">62%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="62%"></div></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- OUTILS -->
-  <section class="section" id="outils">
+  <!-- =============================================
+       3. MISE EN PRATIQUE — PROJETS DÉTAILLÉS
+       ============================================= -->
+  <section class="section" id="projets">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-label">Outils & Technologies</span>
-        <h2 class="section-title">Outils mobilisés</h2>
+        <span class="section-label">Mise en pratique</span>
+        <h2 class="section-title">Projets & SAÉ</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle" style="margin-top:1rem">
+          Trois projets concrets qui illustrent la capacité à concevoir et développer
+          des solutions techniques répondant à de vrais besoins data.
+        </p>
+      </div>
+
+      <!-- SAÉ MonVoyage -->
+      <div class="project-detail fade-in">
+        <div class="project-detail-header">
+          <div class="project-detail-icon">🌍</div>
+          <div class="project-detail-meta">
+            <div class="project-context">SAÉ — Application Python de collecte</div>
+            <h3>MonVoyage — Application de collecte multi-sources avec génération de carte interactive</h3>
+          </div>
+        </div>
+        <div class="project-detail-body">
+          <div class="project-detail-col">
+            <h4>Contexte &amp; problématique</h4>
+            <p>
+              L'objectif était de développer une application Python complète et autonome capable
+              de collecter des données sur des destinations de voyage depuis deux sources distinctes
+              (une API REST et un site web par scraping), de les fusionner, de les nettoyer,
+              et de produire deux livrables : un fichier CSV structuré et une carte interactive
+              géolocalisée. L'application devait fonctionner de bout en bout sans intervention manuelle.
+            </p>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce que j'ai développé concrètement</h4>
+            <ul>
+              <li>Classe <code>VoyageCollector</code> : appels API paginés avec authentification token, retry automatique sur timeout, logging des erreurs</li>
+              <li>Classe <code>VoyageScraper</code> : parsing HTML avec BeautifulSoup, sélecteurs CSS robustes, gestion des structures de page non uniformes</li>
+              <li>Module <code>merger.py</code> : réconciliation des deux sources par normalisation des noms (lowercase, suppression accents, distance de Levenshtein pour les correspondances approchées)</li>
+              <li>Module <code>exporter.py</code> : génération CSV avec <code>csv.DictWriter</code> et export JSON</li>
+              <li>Module <code>mapper.py</code> : carte Folium avec marqueurs colorés par catégorie, popups avec résumé des données, export HTML autonome</li>
+              <li>Point d'entrée <code>main.py</code> : orchestration, arguments CLI, configuration</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Choix techniques</h4>
+            <ul>
+              <li>Architecture en classes plutôt qu'en fonctions isolées : facilite le test unitaire de chaque composant indépendamment</li>
+              <li><code>requests.Session()</code> pour réutiliser la connexion HTTP et les headers sur les appels paginés</li>
+              <li>Logging avec le module <code>logging</code> standard (niveaux DEBUG/INFO/ERROR) plutôt que des <code>print()</code> — permet de désactiver les logs en production</li>
+              <li>Fichier <code>config.py</code> séparé pour les constantes (URL, timeout, noms de colonnes) — évite les valeurs magiques dispersées dans le code</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Difficultés rencontrées</h4>
+            <ul>
+              <li>Le site scrappé modifiait sa structure HTML selon le type de destination : les sélecteurs CSS fallaient pour certaines pages — résolu avec des sélecteurs alternatifs et une vérification de la présence de l'élément avant extraction</li>
+              <li>La réconciliation des noms entre les deux sources était la partie la plus complexe : "Côte d'Azur" vs "cote-d-azur" vs "French Riviera" — la normalisation seule ne suffisait pas, il a fallu implémenter une correspondance floue</li>
+              <li>La pagination de l'API retournait parfois des pages vides avant d'avoir atteint la dernière — condition d'arrêt à affiner pour éviter les requêtes inutiles</li>
+            </ul>
+          </div>
+          <div class="project-detail-result">
+            <strong>Résultat :</strong> Une application Python modulaire (~450 lignes réparties en 5 modules)
+            capable de collecter, fusionner et exporter des données sur 800+ destinations en moins de 3 minutes.
+            Le fichier CSV produit est directement exploitable pour l'analyse.
+            La carte Folium permet une exploration visuelle immédiate des destinations par catégorie.
+            L'application gère les erreurs de réseau et les données manquantes sans interruption.
+          </div>
+        </div>
+      </div>
+
+      <!-- SAÉ Datawarehouse -->
+      <div class="project-detail fade-in">
+        <div class="project-detail-header">
+          <div class="project-detail-icon">🏗️</div>
+          <div class="project-detail-meta">
+            <div class="project-context">SAÉ — Scripts SQL et alimentation de datawarehouse</div>
+            <h3>Datawarehouse Chinook — Scripts d'alimentation ETL sous Oracle</h3>
+          </div>
+        </div>
+        <div class="project-detail-body">
+          <div class="project-detail-col">
+            <h4>Contexte &amp; problématique</h4>
+            <p>
+              Après la conception du schéma en étoile (abordé dans le bloc Traiter), il fallait
+              développer l'ensemble des scripts permettant d'alimenter le datawarehouse depuis
+              la base source Chinook. Ce n'est pas une simple copie de données :
+              c'est une transformation structurée qui doit respecter l'ordre des insertions,
+              garantir l'intégrité référentielle, et être rejouable proprement
+              (truncate + reload sans erreur).
+            </p>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce que j'ai développé concrètement</h4>
+            <ul>
+              <li>Script <code>01_create_schema.sql</code> : création des tables de dimensions et de la table de faits, contraintes de clés étrangères, index sur les colonnes de jointure</li>
+              <li>Scripts <code>02_load_dim_*.sql</code> : alimentation de chaque dimension (Client, Artiste, Album, Temps) avec génération des clés de substitution (ROWNUM ou séquences Oracle)</li>
+              <li>Script <code>03_load_facts.sql</code> : alimentation de la table de faits par jointures sur les dimensions — l'ordre d'exécution est critique</li>
+              <li>Script <code>04_check_integrity.sql</code> : requêtes de vérification post-alimentation (comptages, valeurs nulles, orphelins) pour détecter les anomalies</li>
+              <li>Script <code>00_reset.sql</code> : truncate dans l'ordre inverse des dépendances pour pouvoir rejouer une alimentation complète proprement</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Choix techniques</h4>
+            <ul>
+              <li>Séquences Oracle (<code>CREATE SEQUENCE</code>) pour les clés de substitution — plus fiable que ROWNUM sur des insertions séquentielles</li>
+              <li>Découpage en fichiers numérotés par ordre d'exécution — convention claire qui évite les erreurs d'ordre lors d'une exécution manuelle ou automatisée</li>
+              <li>Requêtes de vérification intégrées au pipeline : on ne considère pas le chargement terminé tant que les checks ne passent pas</li>
+              <li>Commentaires SQL sur chaque INSERT complexe expliquant la logique de transformation</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Difficultés rencontrées</h4>
+            <ul>
+              <li>La table de faits référence toutes les dimensions — une clé de substitution manquante dans une dimension bloquait l'insertion. Il a fallu comprendre l'ordre exact et gérer les cas où un enregistrement source n'avait pas de correspondance dans la dimension cible</li>
+              <li>La dimension Temps nécessitait de décomposer chaque date en attributs (année, mois, trimestre, semaine) : développement d'une requête de génération de calendrier SQL</li>
+              <li>Oracle SQL*Plus imposait une syntaxe différente de MySQL pour certaines opérations — notamment la gestion des séquences et des fonctions de date</li>
+            </ul>
+          </div>
+          <div class="project-detail-result">
+            <strong>Résultat :</strong> Un ensemble de 5 scripts SQL exécutables dans l'ordre,
+            qui créent le schéma, chargent les dimensions, alimentent les faits et vérifient la cohérence.
+            Le datawarehouse est chargé en moins de 2 minutes avec 100% des enregistrements source
+            correctement intégrés. Le script de reset permet de rejouer l'alimentation complète
+            proprement à tout moment — une propriété essentielle pour un pipeline ETL fiable.
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio web -->
+      <div class="project-detail fade-in">
+        <div class="project-detail-header">
+          <div class="project-detail-icon">🌐</div>
+          <div class="project-detail-meta">
+            <div class="project-context">Projet personnel — Développement web</div>
+            <h3>Ce portfolio — Site multipage HTML/CSS/JavaScript vanilla</h3>
+          </div>
+        </div>
+        <div class="project-detail-body">
+          <div class="project-detail-col">
+            <h4>Contexte &amp; problématique</h4>
+            <p>
+              Concevoir et développer ce portfolio de compétences de zéro, sans framework,
+              sans template. L'objectif était de produire un site professionnel, responsive,
+              performant et maintenable, tout en démontrant la capacité à appliquer
+              des compétences de développement web dans un contexte réel.
+              Contrainte principale : zéro dépendance externe, aucun framework CSS ou JS.
+            </p>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce que j'ai développé concrètement</h4>
+            <ul>
+              <li>Architecture multipage avec une feuille de style CSS partagée (~1200 lignes) et des variables CSS pour la cohérence visuelle entre les 5 pages</li>
+              <li>Système de thème par page (couleur d'accent différente par bloc de compétences) via des classes CSS héritées sur <code>&lt;body&gt;</code></li>
+              <li>JavaScript vanilla : navbar responsive avec burger mobile, IntersectionObserver pour les animations au scroll, effet de frappe, barres de progression animées, compteurs</li>
+              <li>Indicateur de progression de page, bouton retour en haut, smooth scroll sur ancres</li>
+              <li>Responsive design mobile-first avec media queries et grilles CSS adaptatives</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Choix techniques</h4>
+            <ul>
+              <li>Pas de framework : charge plus légère, meilleure maîtrise du résultat, compréhension de ce qui se passe réellement dans le navigateur</li>
+              <li>CSS custom properties (variables) pour les couleurs, espacements et transitions : modification globale en un seul endroit</li>
+              <li><code>IntersectionObserver</code> pour les animations au scroll plutôt que des événements <code>scroll</code> — plus performant (pas de calculs à chaque frame)</li>
+              <li>Animations CSS avec <code>animation-fill-mode: forwards</code> pour les éléments hero — pas de JavaScript pour la visibilité initiale</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce que ça m'a appris</h4>
+            <ul>
+              <li>Le débogage CSS est aussi exigeant que le débogage Python — les règles de priorité et la cascade demandent une rigueur similaire à la logique algorithmique</li>
+              <li>La performance web ne s'improvise pas : les animations GPU-accélérées (<code>transform</code>, <code>opacity</code>) vs les animations qui déclenchent un reflow (hauteur, marges) ont un impact visible</li>
+              <li>Concevoir pour mobile en premier force à hiérarchiser l'information — ce qui améliore aussi le design desktop</li>
+            </ul>
+          </div>
+          <div class="project-detail-result">
+            <strong>Résultat :</strong> Ce site — 5 pages HTML, 1 fichier CSS partagé, 1 fichier JavaScript.
+            Entièrement développé à la main, sans générateur ni template. Architecture cohérente,
+            thème par page, animations fluides, responsive sur mobile. Ce projet est à la fois
+            un livrable de portfolio et une démonstration concrète de compétences de développement.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       4. OUTILS ET TECHNOLOGIES
+       ============================================= -->
+  <section class="section section-alt" id="outils">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Outils &amp; Technologies</span>
+        <h2 class="section-title">Ce que j'utilise</h2>
         <div class="divider"></div>
       </div>
 
       <div class="tools-grid fade-in" style="justify-content:center">
         <div class="tool-pill"><span class="tool-pill-icon">🐍</span>Python</div>
-        <div class="tool-pill"><span class="tool-pill-icon">🌶️</span>Flask</div>
-        <div class="tool-pill"><span class="tool-pill-icon">🚀</span>Streamlit</div>
-        <div class="tool-pill"><span class="tool-pill-icon">🌐</span>HTML / CSS / JS</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🌐</span>requests</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🔍</span>BeautifulSoup</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🗺️</span>Folium</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🛢️</span>SQL / Oracle</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📁</span>CSV / JSON</div>
         <div class="tool-pill"><span class="tool-pill-icon">🐙</span>Git / GitHub</div>
         <div class="tool-pill"><span class="tool-pill-icon">💻</span>VS Code</div>
-        <div class="tool-pill"><span class="tool-pill-icon">📦</span>pip / conda</div>
-        <div class="tool-pill"><span class="tool-pill-icon">🐳</span>Docker (notions)</div>
-        <div class="tool-pill"><span class="tool-pill-icon">🔗</span>REST API (requests)</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🌐</span>HTML / CSS / JS</div>
         <div class="tool-pill"><span class="tool-pill-icon">📓</span>Jupyter</div>
       </div>
-    </div>
-  </section>
 
-  <!-- PROJETS -->
-  <section class="section section-alt" id="projets">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-label">Situations d'apprentissage</span>
-        <h2 class="section-title">Projets & SAÉ</h2>
-        <div class="divider"></div>
-        <p class="section-subtitle" style="margin-top:1rem">
-          Des projets concrets qui illustrent la conception et le déploiement d'outils data.
-        </p>
-      </div>
-
-      <div class="cards-grid">
-        <div class="card card-accent fade-in delay-1">
-          <div class="card-icon">🤖</div>
-          <h3>SAÉ 4.01 — Application Flask de prédiction</h3>
+      <div class="cards-grid fade-in" style="margin-top:2.5rem">
+        <div class="card">
+          <div class="card-icon">🐍</div>
+          <h3>Python — requests &amp; BeautifulSoup</h3>
           <p>
-            Développement d'une application web Flask exposant un modèle de machine learning
-            (régression logistique) via une interface utilisateur simple.
-            Formulaire HTML, traitement côté serveur, affichage du résultat et de la probabilité.
+            Le duo central de la collecte automatisée. <code>requests</code> pour les appels HTTP
+            (avec gestion des timeouts, des codes d'erreur et des sessions) ;
+            <code>BeautifulSoup</code> pour le parsing HTML. Ces deux bibliothèques sont
+            complémentaires et couvrent la majorité des besoins de collecte de données web.
           </p>
-          <div class="tags-list" style="margin-top:1rem">
-            <span class="tag">Flask</span>
-            <span class="tag">Python</span>
-            <span class="tag">ML</span>
-          </div>
         </div>
-
-        <div class="card card-accent fade-in delay-2">
-          <div class="card-icon">📊</div>
-          <h3>SAÉ 3.04 — Dashboard Streamlit interactif</h3>
+        <div class="card">
+          <div class="card-icon">🗺️</div>
+          <h3>Folium</h3>
           <p>
-            Création d'un tableau de bord 100% Python avec Streamlit pour explorer
-            un dataset de ventes. Filtres dynamiques, graphiques Plotly, export CSV,
-            déployé sur Streamlit Community Cloud.
+            Bibliothèque Python pour générer des cartes interactives Leaflet.js sans écrire
+            de JavaScript. Utilisée sur MonVoyage pour visualiser les destinations géolocalisées
+            avec marqueurs, popups et coloration par catégorie. Le résultat est un fichier HTML
+            autonome, directement partageable.
           </p>
-          <div class="tags-list" style="margin-top:1rem">
-            <span class="tag">Streamlit</span>
-            <span class="tag">Plotly</span>
-            <span class="tag">Déploiement</span>
-          </div>
         </div>
-
-        <div class="card card-accent fade-in delay-3">
-          <div class="card-icon">🔄</div>
-          <h3>Script ETL automatisé</h3>
+        <div class="card">
+          <div class="card-icon">🛢️</div>
+          <h3>SQL / Oracle</h3>
           <p>
-            Développement d'un script Python complet d'extraction, transformation et chargement
-            de données depuis des sources hétérogènes (API + CSV). Gestion des erreurs,
-            logs, tests unitaires, exécution planifiée (cron).
+            DDL (création de schéma, contraintes, index, séquences) et DML (insertions de masse,
+            requêtes de transformation) pour l'alimentation du datawarehouse.
+            Interaction depuis Python via <code>cx_Oracle</code> pour les scripts
+            d'alimentation automatisés.
           </p>
-          <div class="tags-list" style="margin-top:1rem">
-            <span class="tag">Python</span>
-            <span class="tag">ETL</span>
-            <span class="tag">Automatisation</span>
-          </div>
         </div>
-
-        <div class="card card-accent fade-in delay-4">
-          <div class="card-icon">🌐</div>
-          <h3>Portfolio web — Ce site</h3>
+        <div class="card">
+          <div class="card-icon">🐙</div>
+          <h3>Git / GitHub</h3>
           <p>
-            Conception et développement de ce portfolio multipage en HTML, CSS et JavaScript vanilla.
-            Design responsive, animations au scroll, architecture propre et modulaire,
-            sans framework externe.
+            Versionnage systématique du code : commits atomiques et descriptifs, branches
+            par fonctionnalité sur les projets en équipe, messages de commit qui expliquent
+            le "pourquoi" et pas juste le "quoi". Git n'est pas seulement un outil de sauvegarde —
+            c'est un outil de communication sur l'intention du code.
           </p>
-          <div class="tags-list" style="margin-top:1rem">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TIMELINE -->
+  <!-- =============================================
+       5. APPORTS ET PROGRESSION
+       ============================================= -->
   <section class="section" id="progression">
     <div class="container">
       <div class="two-col">
         <div class="fade-in">
           <span class="section-label">Progression</span>
-          <h2 class="section-title" style="text-align:left">Mon parcours dans ce bloc</h2>
+          <h2 class="section-title" style="text-align:left">Du script au projet structuré</h2>
           <div class="divider divider-left mb-3"></div>
 
           <div class="timeline">
             <div class="timeline-item">
               <div class="timeline-date">Semestre 1 — 2022</div>
-              <h4>Introduction à la programmation</h4>
-              <p>Bases de Python : variables, boucles, fonctions, listes. Premiers scripts de traitement de fichiers.</p>
+              <h4>Premiers scripts Python</h4>
+              <p>
+                Variables, boucles, fonctions, manipulation de fichiers CSV.
+                Tout dans un seul fichier, pas de gestion d'erreurs, pas de structure.
+                Ça marchait — mais une seule fois, dans un seul contexte.
+              </p>
             </div>
             <div class="timeline-item">
               <div class="timeline-date">Semestre 2 — 2023</div>
-              <h4>Python intermédiaire & web</h4>
-              <p>Modules, classes (POO), gestion des exceptions. Introduction à HTML/CSS. Premiers scripts d'automatisation.</p>
+              <h4>Modules et programmation orientée objet</h4>
+              <p>
+                Premiers scripts découpés en fonctions réutilisables, puis en classes.
+                Découverte de la gestion des exceptions et des modules standard Python.
+                Introduction à Git pour le versionnage.
+              </p>
             </div>
             <div class="timeline-item">
               <div class="timeline-date">Semestre 3 — 2023</div>
-              <h4>Applications & APIs</h4>
-              <p>Développement avec Flask, consommation d'APIs REST, introduction à Git/GitHub, premiers dashboards Streamlit.</p>
+              <h4>Collecte, API et scraping</h4>
+              <p>
+                SAÉ MonVoyage : première application Python multi-modules,
+                appels API paginés, scraping robuste, fusion de sources hétérogènes,
+                génération de carte Folium. Passage à une architecture projet réelle.
+              </p>
             </div>
             <div class="timeline-item">
-              <div class="timeline-date">Semestre 4–6 — 2024</div>
-              <h4>Projets complets & déploiement</h4>
-              <p>Applications déployées, pipelines ML intégrés, tests unitaires, Docker introductif, travail collaboratif sur GitHub.</p>
+              <div class="timeline-date">Semestre 4 — 2024</div>
+              <h4>Scripts SQL et pipelines ETL</h4>
+              <p>
+                Datawarehouse Oracle : scripts d'alimentation structurés, gestion de l'intégrité
+                référentielle, scripts de vérification. Compréhension de la logique ETL
+                comme un pipeline reproductible, pas un traitement ad hoc.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 5–6 — 2024–2025</div>
+              <h4>Qualité du code et développement web</h4>
+              <p>
+                Développement de ce portfolio (HTML/CSS/JS vanilla), premiers tests unitaires,
+                amélioration des pratiques Git. Passage d'une logique "ça fonctionne"
+                à une logique "c'est maintenable et lisible par quelqu'un d'autre".
+              </p>
             </div>
           </div>
         </div>
 
         <div class="slide-right">
           <div class="card" style="margin-bottom:1.5rem">
-            <h3>🏢 Lien avec le monde professionnel</h3>
-            <p>
-              Dans les entreprises, les data analysts et scientists qui savent
-              développer leurs propres outils ont un avantage compétitif majeur.
-              Automatiser les traitements répétitifs, exposer un modèle via une API,
-              construire un dashboard autonome : ce sont des livrables concrets qui
-              génèrent de la valeur immédiatement.
-            </p>
+            <h3>✅ Ce que je maîtrise</h3>
+            <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.92rem">
+              <li style="margin-bottom:0.4rem">Python structuré : modules, classes, exceptions, logging</li>
+              <li style="margin-bottom:0.4rem">Collecte automatisée via API REST et web scraping</li>
+              <li style="margin-bottom:0.4rem">Scripts SQL d'alimentation de base de données</li>
+              <li style="margin-bottom:0.4rem">Architecture projet Python multi-fichiers</li>
+              <li>Versionnage Git avec commits descriptifs</li>
+            </ul>
           </div>
-
+          <div class="card" style="margin-bottom:1.5rem">
+            <h3>📈 Ce que j'approfondis</h3>
+            <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.92rem">
+              <li style="margin-bottom:0.4rem">Tests unitaires systématiques (<code>pytest</code>)</li>
+              <li style="margin-bottom:0.4rem">Orchestration de pipelines (Airflow, préfect)</li>
+              <li style="margin-bottom:0.4rem">Conteneurisation Docker pour les déploiements</li>
+              <li>Développement d'API REST avec FastAPI</li>
+            </ul>
+          </div>
           <div class="card">
-            <h3>📚 Apprentissages clés</h3>
-            <p>
-              Ce bloc m'a appris à penser en termes de <strong class="highlight">réutilisabilité
-              et de maintenabilité</strong> du code. Un script que personne d'autre ne peut faire tourner
-              ou faire évoluer n'a qu'une valeur limitée en entreprise.
+            <h3>🏢 Lien professionnel</h3>
+            <p style="font-size:0.92rem; color:var(--text-secondary)">
+              Un Data Analyst ou Data Engineer qui sait développer construit ses propres outils,
+              automatise ses tâches répétitives et produit des livrables réutilisables.
+              C'est ce qui différencie un profil qui débloque les problèmes d'un profil
+              qui attend que quelqu'un les débloque pour lui.
             </p>
           </div>
         </div>
@@ -370,38 +837,141 @@
     </div>
   </section>
 
-  <!-- BILAN -->
+  <!-- =============================================
+       6. REGARD CRITIQUE
+       ============================================= -->
   <section class="section section-alt" id="bilan">
-    <div class="container" style="max-width:800px">
+    <div class="container" style="max-width:860px">
       <div class="section-header fade-in">
         <span class="section-label">Regard critique</span>
-        <h2 class="section-title">Autoévaluation</h2>
+        <h2 class="section-title">Ce que j'en retire</h2>
         <div class="divider"></div>
       </div>
 
       <div class="bilan-box fade-in">
         <p>
-          Ce bloc est celui où j'ai ressenti la plus forte progression tout au long de ma formation.
-          Partir de scripts rudimentaires pour arriver à des applications déployées et des pipelines
-          complets est une évolution dont je suis fier.
+          Ce bloc est celui où je mesure le mieux l'écart entre "coder" et "bien coder".
+          Sur mes premières SAÉ, j'écrivais du code qui fonctionnait dans les conditions
+          où je l'avais testé — et qui tombait dès que quelque chose changeait.
+          La gestion des erreurs était inexistante, la structure était aléatoire,
+          et la documentation nulle. Ça "marchait" mais ce n'était pas du développement.
         </p>
         <p>
-          Ma maîtrise de Python est solide pour les besoins data courants.
-          Je suis à l'aise avec le développement d'interfaces simples (Flask, Streamlit)
-          et la manipulation d'APIs. En revanche, je souhaite progresser sur les bonnes pratiques
-          de génie logiciel : tests automatisés, intégration continue (CI/CD), architecture
-          microservices et conteneurisation avec Docker.
+          Sur MonVoyage, j'ai pris du temps pour concevoir l'architecture avant de coder :
+          quelles classes, quelles responsabilités, quelles interfaces entre elles.
+          Résultat : quand le format de réponse de l'API a changé en cours de SAÉ,
+          j'ai modifié un seul module sans toucher au reste. C'est ce que la modularité
+          apporte concrètement — et je ne l'avais pas compris avant de l'expérimenter.
         </p>
         <p>
-          Ce portfolio lui-même est une preuve concrète de ce que je suis capable de produire :
-          un site structuré, responsive, soigné, développé de zéro en HTML/CSS/JavaScript vanilla.
+          Sur le Datawarehouse, j'ai réalisé que le code SQL peut aussi être bien ou mal structuré.
+          Les requêtes d'alimentation sans commentaires sont aussi illisibles que le code Python
+          sans docstrings. La discipline de documentation s'applique aux deux langages.
+        </p>
+      </div>
+
+      <div class="two-col-eval fade-in">
+        <div class="eval-box positif">
+          <h4>✔ Points forts</h4>
+          <ul>
+            <li>Architecture modulaire : chaque composant a une responsabilité unique et claire</li>
+            <li>Gestion robuste des erreurs : l'application continue de fonctionner face aux cas imprévus</li>
+            <li>Versionnage Git avec commits atomiques et descriptifs</li>
+            <li>Configuration externalisée (pas de valeurs magiques dans le code)</li>
+            <li>Logging structuré plutôt que des <code>print()</code> de debug</li>
+          </ul>
+        </div>
+        <div class="eval-box negatif">
+          <h4>↗ Axes de progression</h4>
+          <ul>
+            <li>Tests unitaires : je ne teste pas encore systématiquement avant de considérer une fonction terminée</li>
+            <li>Performance : mes scripts de collecte ne sont pas optimisés pour la parallélisation (requêtes séquentielles alors que du async serait possible)</li>
+            <li>Documentation : les docstrings sont inégales selon les modules — à uniformiser</li>
+            <li>Déploiement : je n'ai pas encore de pratique des environnements de production (Docker, CI/CD)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bilan-box fade-in" style="margin-top:1.5rem">
+        <p>
+          <strong style="color:var(--violet)">Ce que j'améliorerais aujourd'hui :</strong>
+          sur MonVoyage, j'aurais utilisé <code>asyncio</code> et <code>aiohttp</code>
+          pour paralléliser les requêtes API et réduire le temps de collecte d'un facteur 5
+          à 10 sur les pages longues. J'aurais aussi ajouté des tests unitaires sur le module
+          de réconciliation des sources, qui est la partie la plus critique et la plus fragile
+          de l'application.
+        </p>
+        <p style="margin-bottom:0">
+          Sur le Datawarehouse, j'aurais écrit le script d'alimentation en Python avec
+          <code>cx_Oracle</code> plutôt qu'en SQL pur — ce qui aurait permis une gestion
+          d'erreur ligne par ligne avec rollback sélectif, un logging détaillé des insertions,
+          et une rejouabilité plus fine. Le SQL pur est lisible mais moins contrôlable
+          quand on veut du fault-tolerance.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- NAVIGATION -->
-  <section class="section">
+  <!-- =============================================
+       7. LIEN AVEC LE MONDE PROFESSIONNEL
+       ============================================= -->
+  <section class="section" id="pro">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Perspective professionnelle</span>
+        <h2 class="section-title">Ce bloc dans le monde data</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="cards-grid fade-in">
+        <div class="card card-accent">
+          <div class="card-icon">🔧</div>
+          <h3>Data Engineer</h3>
+          <p>
+            Le Data Engineer construit et maintient les pipelines de données :
+            collecte, transformation, chargement, orchestration.
+            Les compétences de ce bloc — Python structuré, SQL, APIs, architecture —
+            sont exactement ce que ce rôle mobilise au quotidien.
+            C'est le métier le plus directement aligné avec le bloc Développer.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">📊</div>
+          <h3>Data Analyst technique</h3>
+          <p>
+            Un Data Analyst qui sait développer automatise ses collectes de données,
+            construit ses propres pipelines de préparation, et produit des outils
+            réutilisables par son équipe. Il est autonome sur l'ensemble de la chaîne
+            et n'est pas bloqué en attente de données propres livrées par quelqu'un d'autre.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">⚡</div>
+          <h3>Automatisation</h3>
+          <p>
+            Dans les entreprises, tout ce qui est répétitif doit être automatisé.
+            Les rapports hebdomadaires, les extractions de données, les vérifications
+            de qualité — autant de tâches manuelles coûteuses en temps.
+            Savoir développer ces automatisations est une valeur ajoutée directe
+            et mesurable pour une équipe data.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">🏗️</div>
+          <h3>Fiabilité et maintenabilité</h3>
+          <p>
+            En entreprise, le code vit dans le temps. Il est maintenu, modifié,
+            repris par d'autres. Un code illisible ou non testé devient une dette technique.
+            Savoir écrire du code propre, documenté et testable n'est pas un luxe —
+            c'est une exigence professionnelle dans toute équipe qui dure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION ENTRE BLOCS -->
+  <section class="section section-alt">
     <div class="container">
       <div class="bloc-nav fade-in">
         <a href="valoriser.html" class="bloc-nav-item prev">
