@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analyser — Portfolio BUT Science des Données</title>
+  <meta name="description" content="Bloc Analyser : statistiques, modélisation, exploration et interprétation des données." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #page-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      z-index: 2000; transition: width 0.1s linear;
+    }
+    body { opacity: 0; transition: opacity 0.4s ease; }
+    body.page-loaded { opacity: 1; }
+
+    /* Surcharge couleurs pour ce bloc */
+    .page-analyser .section-label,
+    .page-analyser .timeline-date,
+    .page-analyser .skill-value,
+    .page-analyser .highlight,
+    .page-analyser .bloc-card-link { color: var(--teal) !important; }
+
+    .page-analyser .divider { background: var(--teal); }
+    .page-analyser .skill-fill { background: linear-gradient(90deg, var(--teal), var(--teal-light)); }
+    .page-analyser .timeline::before,
+    .page-analyser .timeline-item::before { background: var(--teal); }
+    .page-analyser .timeline-item::before { box-shadow: 0 0 0 3px var(--teal-glow); }
+    .page-analyser .bilan-box::before { color: var(--teal); }
+    .page-analyser .tag {
+      background: var(--teal-glow);
+      color: var(--teal);
+      border-color: rgba(34,140,120,0.2);
+    }
+    .page-analyser .tool-pill:hover { border-color: var(--teal); }
+    .page-analyser .tool-pill-icon { background: var(--teal-glow); }
+    .page-analyser .card-accent { border-left-color: var(--teal); }
+    .page-analyser .card:hover { border-color: rgba(34,140,120,0.25); }
+    .page-analyser .back-to-top { background: var(--teal); }
+    .page-analyser .back-to-top:hover { background: var(--teal-light); }
+    .page-analyser .bloc-nav-item:hover { border-color: var(--teal); }
+  </style>
+</head>
+<body class="page-analyser">
+
+  <div id="page-progress"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">SD<span>Portfolio</span></a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="traiter.html">Traiter</a></li>
+        <li><a href="analyser.html">Analyser</a></li>
+        <li><a href="valoriser.html">Valoriser</a></li>
+        <li><a href="developper.html">Développer</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- BANDEAU -->
+  <section class="bloc-banner">
+    <div class="bloc-banner-glow"></div>
+    <div class="container">
+      <span class="bloc-tag">📊 Bloc 2</span>
+      <h1>Analyser les données</h1>
+      <p>
+        Explorer, modéliser et interpréter : transformer des chiffres bruts
+        en compréhension de phénomènes complexes.
+      </p>
+    </div>
+  </section>
+
+  <!-- DÉFINITION -->
+  <section class="section" id="definition">
+    <div class="container">
+      <div class="two-col">
+        <div class="slide-left">
+          <span class="section-label">Définition</span>
+          <h2 class="section-title" style="text-align:left">Qu'est-ce qu'« Analyser » ?</h2>
+          <div class="divider divider-left mb-2"></div>
+          <p>
+            Le bloc <strong class="highlight">Analyser</strong> englobe l'ensemble des compétences
+            mobilisées pour produire des résultats à partir des données. Il ne s'agit pas simplement
+            de calculer des moyennes : c'est une démarche scientifique rigoureuse qui part d'une
+            problématique, formule des hypothèses, les soumet à l'épreuve des données et en
+            tire des conclusions interprétables.
+          </p>
+          <p>
+            Ce bloc couvre les statistiques descriptives et inférentielles, l'exploration
+            multivariée, la modélisation prédictive et la classification. Il constitue le cœur
+            scientifique du métier de data analyst.
+          </p>
+        </div>
+        <div class="slide-right">
+          <div class="bilan-box">
+            <p>
+              « Analyser, c'est accepter de ne pas trouver ce qu'on cherchait.
+              C'est laisser les données parler sans forcer leur sens — et savoir
+              distinguer corrélation et causalité. »
+            </p>
+            <p style="color: var(--teal); font-weight:600; font-size:0.9rem">
+              — Réflexion personnelle, SAÉ 2.03
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section class="section section-alt" id="competences">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Compétences</span>
+        <h2 class="section-title">Ce que j'ai développé</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="skills-list fade-in" style="max-width:680px; margin:0 auto">
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Statistiques descriptives et indicateurs de tendance</span>
+            <span class="skill-value">90%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Tests statistiques (t-test, chi², ANOVA)</span>
+            <span class="skill-value">72%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="72%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Analyse en Composantes Principales (ACP)</span>
+            <span class="skill-value">75%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Régression linéaire et logistique</span>
+            <span class="skill-value">78%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="78%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Classification et clustering (k-means, CAH)</span>
+            <span class="skill-value">68%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="68%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Exploration et visualisation exploratoire (EDA)</span>
+            <span class="skill-value">85%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+        </div>
+      </div>
+
+      <div class="tags-list fade-in mt-3" style="justify-content:center">
+        <span class="tag">Statistiques descriptives</span>
+        <span class="tag">Tests d'hypothèses</span>
+        <span class="tag">ACP</span>
+        <span class="tag">Régression</span>
+        <span class="tag">k-means</span>
+        <span class="tag">CAH</span>
+        <span class="tag">Intervalles de confiance</span>
+        <span class="tag">Corrélations</span>
+        <span class="tag">EDA</span>
+        <span class="tag">Boxplot / Heatmap</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTILS -->
+  <section class="section" id="outils">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Outils & Technologies</span>
+        <h2 class="section-title">Outils mobilisés</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="tools-grid fade-in" style="justify-content:center">
+        <div class="tool-pill"><span class="tool-pill-icon">🐍</span>Python (scikit-learn)</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📐</span>R (tidyverse, ggplot2)</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🔬</span>SAS</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📓</span>Jupyter Notebook</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📊</span>statsmodels</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🎯</span>scipy</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🌐</span>R Studio</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📉</span>seaborn</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section class="section section-alt" id="projets">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Situations d'apprentissage</span>
+        <h2 class="section-title">Projets & SAÉ</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle" style="margin-top:1rem">
+          Des projets concrets qui illustrent la rigueur analytique au service de la compréhension.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card card-accent fade-in delay-1">
+          <div class="card-icon">🏠</div>
+          <h3>SAÉ 2.03 — Prix immobiliers</h3>
+          <p>
+            Analyse exploratoire d'un jeu de données de transactions immobilières (5 000+ lignes).
+            Étude des corrélations, ACP pour réduire la dimensionnalité, régression linéaire
+            pour prédire les prix. Interprétation des résidus et validation du modèle.
+          </p>
+          <div class="tags-list" style="margin-top:1rem">
+            <span class="tag">Régression</span>
+            <span class="tag">ACP</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+
+        <div class="card card-accent fade-in delay-2">
+          <div class="card-icon">🧬</div>
+          <h3>SAÉ 3.02 — Données médicales</h3>
+          <p>
+            Classification supervisée de patients selon un risque de pathologie.
+            Application de modèles de régression logistique et k-NN, comparaison des performances,
+            matrice de confusion, courbe ROC. Rapport rédigé à destination d'un médecin.
+          </p>
+          <div class="tags-list" style="margin-top:1rem">
+            <span class="tag">Classification</span>
+            <span class="tag">Régression logistique</span>
+            <span class="tag">scikit-learn</span>
+          </div>
+        </div>
+
+        <div class="card card-accent fade-in delay-3">
+          <div class="card-icon">🛒</div>
+          <h3>SAÉ 2.04 — Segmentation clients</h3>
+          <p>
+            Clustering non supervisé sur une base clients (e-commerce) par k-means et CAH.
+            Détermination du nombre optimal de clusters (méthode du coude, silhouette),
+            profilage des segments et recommandations marketing.
+          </p>
+          <div class="tags-list" style="margin-top:1rem">
+            <span class="tag">k-means</span>
+            <span class="tag">CAH</span>
+            <span class="tag">R</span>
+          </div>
+        </div>
+
+        <div class="card card-accent fade-in delay-4">
+          <div class="card-icon">📉</div>
+          <h3>TP SAS — Analyse de variance</h3>
+          <p>
+            Utilisation de SAS pour des analyses de variance (ANOVA) sur des données
+            agricoles. Tests post-hoc (Tukey), vérification des hypothèses (normalité,
+            homoscédasticité), interprétation des résultats et rédaction d'un rapport.
+          </p>
+          <div class="tags-list" style="margin-top:1rem">
+            <span class="tag">SAS</span>
+            <span class="tag">ANOVA</span>
+            <span class="tag">Tests stat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section" id="progression">
+    <div class="container">
+      <div class="two-col">
+        <div class="fade-in">
+          <span class="section-label">Progression</span>
+          <h2 class="section-title" style="text-align:left">Mon parcours dans ce bloc</h2>
+          <div class="divider divider-left mb-3"></div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 1 — 2022</div>
+              <h4>Fondamentaux statistiques</h4>
+              <p>Moyenne, médiane, écart-type, histogrammes, probabilités de base. Premier contact avec R.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 2 — 2023</div>
+              <h4>Statistiques inférentielles</h4>
+              <p>Tests d'hypothèses, intervalles de confiance, loi normale, t-test, chi². Introduction à Python pour l'analyse.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 3 — 2023</div>
+              <h4>Analyse multivariée</h4>
+              <p>ACP, AFC, régression multiple, classification. Première utilisation de scikit-learn et SAS.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 4–6 — 2024</div>
+              <h4>Modélisation avancée & validation</h4>
+              <p>Cross-validation, tuning d'hyperparamètres, séries temporelles, modèles d'ensemble (Random Forest, Gradient Boosting).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-right">
+          <div class="card" style="margin-bottom:1.5rem">
+            <h3>🏢 Lien avec le monde professionnel</h3>
+            <p>
+              Le métier de Data Analyst repose entièrement sur les compétences de ce bloc.
+              Savoir choisir le bon modèle, l'interpréter correctement et communiquer ses limites
+              est ce qui distingue un analyste fiable d'un générateur de graphiques.
+            </p>
+            <p>
+              L'esprit critique vis-à-vis des résultats — comprendre quand un modèle sur-apprend,
+              savoir évaluer sa robustesse — est une qualité très valorisée en entreprise.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>📚 Apprentissages clés</h3>
+            <p>
+              Ce bloc m'a appris à <strong class="highlight">ne pas croire naïvement les résultats</strong>.
+              Valider un modèle, tester ses hypothèses, quantifier son incertitude : ce sont des réflexes
+              que j'applique désormais systématiquement.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BILAN -->
+  <section class="section section-alt" id="bilan">
+    <div class="container" style="max-width:800px">
+      <div class="section-header fade-in">
+        <span class="section-label">Regard critique</span>
+        <h2 class="section-title">Autoévaluation</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="bilan-box fade-in">
+        <p>
+          Ce bloc est celui où j'ai le plus évolué intellectuellement. Apprendre à penser
+          en termes de distributions, de probabilités et d'hypothèses a changé ma façon
+          d'aborder les problèmes dans tous les domaines.
+        </p>
+        <p>
+          Je maîtrise bien les méthodes classiques de l'analyse descriptive et de la modélisation
+          supervisée. En revanche, les méthodes d'apprentissage profond (réseaux de neurones)
+          restent un horizon que je commence seulement à explorer, et que je souhaite
+          approfondir après ma formation.
+        </p>
+        <p>
+          J'ai également compris l'importance de la communication des résultats :
+          un excellent modèle mal expliqué ne sert à rien. Ce lien avec le bloc Valoriser
+          est fondamental dans mon approche.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION -->
+  <section class="section">
+    <div class="container">
+      <div class="bloc-nav fade-in">
+        <a href="traiter.html" class="bloc-nav-item prev">
+          <span style="font-size:1.4rem">←</span>
+          <div>
+            <span class="bloc-nav-label">Bloc précédent</span>
+            <span class="bloc-nav-title">Traiter</span>
+          </div>
+        </a>
+        <a href="valoriser.html" class="bloc-nav-item">
+          <div style="flex:1">
+            <span class="bloc-nav-label">Bloc suivant</span>
+            <span class="bloc-nav-title">Valoriser →</span>
+          </div>
+          <span style="font-size:1.4rem">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">SD<span>Portfolio</span></a>
+          <p>Portfolio de compétences réalisé dans le cadre du BUT Science des Données.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="traiter.html">Traiter</a></li>
+            <li><a href="analyser.html">Analyser</a></li>
+            <li><a href="valoriser.html">Valoriser</a></li>
+            <li><a href="developper.html">Développer</a></li>
+          </ul>
+        </div>
+        <div class="footer-info">
+          <h4>Formation</h4>
+          <p>BUT Science des Données<br>IUT — Université de Lille<br>Promotion 2022–2025</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 — Portfolio étudiant BUT Science des Données</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>

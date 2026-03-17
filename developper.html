@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Développer — Portfolio BUT Science des Données</title>
+  <meta name="description" content="Bloc Développer : programmation, automatisation, développement d'outils et d'applications." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #page-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0;
+      background: linear-gradient(90deg, var(--violet), var(--violet-light));
+      z-index: 2000; transition: width 0.1s linear;
+    }
+    body { opacity: 0; transition: opacity 0.4s ease; }
+    body.page-loaded { opacity: 1; }
+
+    .page-developper .section-label,
+    .page-developper .timeline-date,
+    .page-developper .skill-value,
+    .page-developper .highlight { color: var(--violet) !important; }
+
+    .page-developper .divider { background: var(--violet); }
+    .page-developper .skill-fill { background: linear-gradient(90deg, var(--violet), var(--violet-light)); }
+    .page-developper .timeline::before,
+    .page-developper .timeline-item::before { background: var(--violet); }
+    .page-developper .timeline-item::before { box-shadow: 0 0 0 3px var(--violet-glow); }
+    .page-developper .bilan-box::before { color: var(--violet); }
+    .page-developper .tag {
+      background: var(--violet-glow);
+      color: var(--violet);
+      border-color: rgba(123,104,238,0.2);
+    }
+    .page-developper .tool-pill:hover { border-color: var(--violet); }
+    .page-developper .tool-pill-icon { background: var(--violet-glow); }
+    .page-developper .card-accent { border-left-color: var(--violet); }
+    .page-developper .card:hover { border-color: rgba(123,104,238,0.25); }
+    .page-developper .back-to-top { background: var(--violet); }
+    .page-developper .back-to-top:hover { background: var(--violet-light); }
+    .page-developper .bloc-nav-item:hover { border-color: var(--violet); }
+    .page-developper .bloc-tag { color: var(--violet); background: var(--violet-glow); }
+    .page-developper .bloc-banner::after { background: linear-gradient(90deg, transparent, var(--violet), transparent); }
+    .page-developper .bloc-banner-glow { background: radial-gradient(circle, var(--violet-glow) 0%, transparent 70%); }
+
+    /* Bloc de code stylisé */
+    .code-block {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(123,104,238,0.2);
+      border-radius: var(--r-md);
+      padding: 1.5rem;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      overflow-x: auto;
+      color: #B8C4D4;
+    }
+    .code-keyword { color: #C792EA; }
+    .code-function { color: #82AAFF; }
+    .code-string { color: #C3E88D; }
+    .code-comment { color: #546E7A; font-style: italic; }
+  </style>
+</head>
+<body class="page-developper">
+
+  <div id="page-progress"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">SD<span>Portfolio</span></a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="traiter.html">Traiter</a></li>
+        <li><a href="analyser.html">Analyser</a></li>
+        <li><a href="valoriser.html">Valoriser</a></li>
+        <li><a href="developper.html">Développer</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- BANDEAU -->
+  <section class="bloc-banner">
+    <div class="bloc-banner-glow"></div>
+    <div class="container">
+      <span class="bloc-tag">⚙️ Bloc 4</span>
+      <h1>Développer des solutions</h1>
+      <p>
+        Concevoir, programmer et déployer des outils qui automatisent, facilitent
+        et industrialisent le traitement de la donnée.
+      </p>
+    </div>
+  </section>
+
+  <!-- DÉFINITION -->
+  <section class="section" id="definition">
+    <div class="container">
+      <div class="two-col">
+        <div class="slide-left">
+          <span class="section-label">Définition</span>
+          <h2 class="section-title" style="text-align:left">Qu'est-ce que « Développer » ?</h2>
+          <div class="divider divider-left mb-2"></div>
+          <p>
+            Le bloc <strong class="highlight">Développer</strong> rassemble les compétences liées
+            à la conception et au développement d'outils, scripts, applications ou systèmes
+            permettant de répondre à un besoin data concret.
+          </p>
+          <p>
+            Ce bloc recouvre la programmation Python, le développement d'interfaces,
+            l'automatisation de tâches répétitives, la conception algorithmique et le
+            déploiement d'applications. Il transforme le data scientist en véritable
+            <strong class="highlight">constructeur de solutions</strong>.
+          </p>
+          <p>
+            Dans un contexte professionnel, la maîtrise du développement permet
+            d'industrialiser les analyses et de les mettre à disposition des utilisateurs
+            métier de façon autonome.
+          </p>
+        </div>
+        <div class="slide-right">
+          <!-- Exemple de code stylisé -->
+          <div class="code-block">
+<span class="code-comment"># Pipeline de traitement automatisé</span>
+<span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
+<span class="code-keyword">from</span> sklearn.pipeline <span class="code-keyword">import</span> Pipeline
+
+<span class="code-keyword">def</span> <span class="code-function">build_pipeline</span>(data_path: str):
+    df = pd.<span class="code-function">read_csv</span>(data_path)
+    pipeline = Pipeline([
+        (<span class="code-string">'cleaner'</span>, DataCleaner()),
+        (<span class="code-string">'encoder'</span>, FeatureEncoder()),
+        (<span class="code-string">'model'</span>,   RandomForest()),
+    ])
+    <span class="code-keyword">return</span> pipeline.<span class="code-function">fit</span>(df)
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section class="section section-alt" id="competences">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Compétences</span>
+        <h2 class="section-title">Ce que j'ai développé</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="skills-list fade-in" style="max-width:680px; margin:0 auto">
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Programmation Python (scripts, modules, OOP)</span>
+            <span class="skill-value">85%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Développement d'applications web (HTML / CSS / JS)</span>
+            <span class="skill-value">80%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Automatisation et scripts bash / Python</span>
+            <span class="skill-value">75%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">API REST — consommation et développement</span>
+            <span class="skill-value">70%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Gestion de version (Git / GitHub)</span>
+            <span class="skill-value">82%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="82%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Développement d'applications Flask / Streamlit</span>
+            <span class="skill-value">68%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="68%"></div></div>
+        </div>
+      </div>
+
+      <div class="tags-list fade-in mt-3" style="justify-content:center">
+        <span class="tag">Python</span>
+        <span class="tag">POO</span>
+        <span class="tag">HTML / CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Flask</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Git</span>
+        <span class="tag">REST API</span>
+        <span class="tag">JSON</span>
+        <span class="tag">Automatisation</span>
+        <span class="tag">Algorithmique</span>
+        <span class="tag">Tests unitaires</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTILS -->
+  <section class="section" id="outils">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Outils & Technologies</span>
+        <h2 class="section-title">Outils mobilisés</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="tools-grid fade-in" style="justify-content:center">
+        <div class="tool-pill"><span class="tool-pill-icon">🐍</span>Python</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🌶️</span>Flask</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🚀</span>Streamlit</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🌐</span>HTML / CSS / JS</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🐙</span>Git / GitHub</div>
+        <div class="tool-pill"><span class="tool-pill-icon">💻</span>VS Code</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📦</span>pip / conda</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🐳</span>Docker (notions)</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🔗</span>REST API (requests)</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📓</span>Jupyter</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section class="section section-alt" id="projets">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Situations d'apprentissage</span>
+        <h2 class="section-title">Projets & SAÉ</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle" style="margin-top:1rem">
+          Des projets concrets qui illustrent la conception et le déploiement d'outils data.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card card-accent fade-in delay-1">
+          <div class="card-icon">🤖</div>
+          <h3>SAÉ 4.01 — Application Flask de prédiction</h3>
+          <p>
+            Développement d'une application web Flask exposant un modèle de machine learning
+            (régression logistique) via une interface utilisateur simple.
+            Formulaire HTML, traitement côté serveur, affichage du résultat et de la probabilité.
+          </p>
+          <div class="tags-list" style="margin-top:1rem">
+            <span class="tag">Flask</span>
+            <span class="tag">Python</span>
+            <span class="tag">ML</span>
+          </div>
+        </div>
+
+        <div class="card card-accent fade-in delay-2">
+          <div class="card-icon">📊</div>
+          <h3>SAÉ 3.04 — Dashboard Streamlit interactif</h3>
+          <p>
+            Création d'un tableau de bord 100% Python avec Streamlit pour explorer
+            un dataset de ventes. Filtres dynamiques, graphiques Plotly, export CSV,
+            déployé sur Streamlit Community Cloud.
+          </p>
+          <div class="tags-list" style="margin-top:1rem">
+            <span class="tag">Streamlit</span>
+            <span class="tag">Plotly</span>
+            <span class="tag">Déploiement</span>
+          </div>
+        </div>
+
+        <div class="card card-accent fade-in delay-3">
+          <div class="card-icon">🔄</div>
+          <h3>Script ETL automatisé</h3>
+          <p>
+            Développement d'un script Python complet d'extraction, transformation et chargement
+            de données depuis des sources hétérogènes (API + CSV). Gestion des erreurs,
+            logs, tests unitaires, exécution planifiée (cron).
+          </p>
+          <div class="tags-list" style="margin-top:1rem">
+            <span class="tag">Python</span>
+            <span class="tag">ETL</span>
+            <span class="tag">Automatisation</span>
+          </div>
+        </div>
+
+        <div class="card card-accent fade-in delay-4">
+          <div class="card-icon">🌐</div>
+          <h3>Portfolio web — Ce site</h3>
+          <p>
+            Conception et développement de ce portfolio multipage en HTML, CSS et JavaScript vanilla.
+            Design responsive, animations au scroll, architecture propre et modulaire,
+            sans framework externe.
+          </p>
+          <div class="tags-list" style="margin-top:1rem">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section" id="progression">
+    <div class="container">
+      <div class="two-col">
+        <div class="fade-in">
+          <span class="section-label">Progression</span>
+          <h2 class="section-title" style="text-align:left">Mon parcours dans ce bloc</h2>
+          <div class="divider divider-left mb-3"></div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 1 — 2022</div>
+              <h4>Introduction à la programmation</h4>
+              <p>Bases de Python : variables, boucles, fonctions, listes. Premiers scripts de traitement de fichiers.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 2 — 2023</div>
+              <h4>Python intermédiaire & web</h4>
+              <p>Modules, classes (POO), gestion des exceptions. Introduction à HTML/CSS. Premiers scripts d'automatisation.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 3 — 2023</div>
+              <h4>Applications & APIs</h4>
+              <p>Développement avec Flask, consommation d'APIs REST, introduction à Git/GitHub, premiers dashboards Streamlit.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 4–6 — 2024</div>
+              <h4>Projets complets & déploiement</h4>
+              <p>Applications déployées, pipelines ML intégrés, tests unitaires, Docker introductif, travail collaboratif sur GitHub.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-right">
+          <div class="card" style="margin-bottom:1.5rem">
+            <h3>🏢 Lien avec le monde professionnel</h3>
+            <p>
+              Dans les entreprises, les data analysts et scientists qui savent
+              développer leurs propres outils ont un avantage compétitif majeur.
+              Automatiser les traitements répétitifs, exposer un modèle via une API,
+              construire un dashboard autonome : ce sont des livrables concrets qui
+              génèrent de la valeur immédiatement.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>📚 Apprentissages clés</h3>
+            <p>
+              Ce bloc m'a appris à penser en termes de <strong class="highlight">réutilisabilité
+              et de maintenabilité</strong> du code. Un script que personne d'autre ne peut faire tourner
+              ou faire évoluer n'a qu'une valeur limitée en entreprise.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BILAN -->
+  <section class="section section-alt" id="bilan">
+    <div class="container" style="max-width:800px">
+      <div class="section-header fade-in">
+        <span class="section-label">Regard critique</span>
+        <h2 class="section-title">Autoévaluation</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="bilan-box fade-in">
+        <p>
+          Ce bloc est celui où j'ai ressenti la plus forte progression tout au long de ma formation.
+          Partir de scripts rudimentaires pour arriver à des applications déployées et des pipelines
+          complets est une évolution dont je suis fier.
+        </p>
+        <p>
+          Ma maîtrise de Python est solide pour les besoins data courants.
+          Je suis à l'aise avec le développement d'interfaces simples (Flask, Streamlit)
+          et la manipulation d'APIs. En revanche, je souhaite progresser sur les bonnes pratiques
+          de génie logiciel : tests automatisés, intégration continue (CI/CD), architecture
+          microservices et conteneurisation avec Docker.
+        </p>
+        <p>
+          Ce portfolio lui-même est une preuve concrète de ce que je suis capable de produire :
+          un site structuré, responsive, soigné, développé de zéro en HTML/CSS/JavaScript vanilla.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION -->
+  <section class="section">
+    <div class="container">
+      <div class="bloc-nav fade-in">
+        <a href="valoriser.html" class="bloc-nav-item prev">
+          <span style="font-size:1.4rem">←</span>
+          <div>
+            <span class="bloc-nav-label">Bloc précédent</span>
+            <span class="bloc-nav-title">Valoriser</span>
+          </div>
+        </a>
+        <a href="index.html" class="bloc-nav-item">
+          <div style="flex:1">
+            <span class="bloc-nav-label">Retour à</span>
+            <span class="bloc-nav-title">Accueil →</span>
+          </div>
+          <span style="font-size:1.4rem">🏠</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">SD<span>Portfolio</span></a>
+          <p>Portfolio de compétences réalisé dans le cadre du BUT Science des Données.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="traiter.html">Traiter</a></li>
+            <li><a href="analyser.html">Analyser</a></li>
+            <li><a href="valoriser.html">Valoriser</a></li>
+            <li><a href="developper.html">Développer</a></li>
+          </ul>
+        </div>
+        <div class="footer-info">
+          <h4>Formation</h4>
+          <p>BUT Science des Données<br>IUT — Université de Lille<br>Promotion 2022–2025</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 — Portfolio étudiant BUT Science des Données</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>

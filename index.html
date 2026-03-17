@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — BUT Science des Données</title>
+  <meta name="description" content="Portfolio de compétences d'un étudiant en BUT Science des Données. Traiter, Analyser, Valoriser, Développer." />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Barre de progression de page -->
+  <style>
+    #page-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0;
+      background: linear-gradient(90deg, var(--copper), var(--gold));
+      z-index: 2000;
+      transition: width 0.1s linear;
+    }
+    body { opacity: 0; transition: opacity 0.4s ease; }
+    body.page-loaded { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- Barre de progression -->
+  <div id="page-progress"></div>
+
+  <!-- =============================================
+       NAVBAR
+       ============================================= -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">SD<span>Portfolio</span></a>
+
+      <button class="burger" id="burger" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="traiter.html">Traiter</a></li>
+        <li><a href="analyser.html">Analyser</a></li>
+        <li><a href="valoriser.html">Valoriser</a></li>
+        <li><a href="developper.html">Développer</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- =============================================
+       HERO
+       ============================================= -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Portfolio de compétences</span>
+
+        <h1 class="hero-title">
+          Bonjour, je suis
+          <span class="hero-name">Prénom NOM</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Étudiant en <strong style="color: var(--text-primary)">BUT Science des Données</strong>
+          à l'IUT — Université de Lille. Ce portfolio présente ma progression,
+          mes projets et les compétences que j'ai développées tout au long de ma formation.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#blocs" class="btn btn-primary btn-lg">Découvrir les blocs</a>
+          <a href="#presentation" class="btn btn-ghost btn-lg">À propos du portfolio</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicateur de scroll -->
+    <div class="hero-scroll-hint">
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       PRÉSENTATION DU PORTFOLIO
+       ============================================= -->
+  <section class="section section-alt" id="presentation">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Texte -->
+        <div class="slide-left">
+          <span class="section-label">À propos</span>
+          <h2 class="section-title" style="text-align:left">
+            Un portfolio ancré dans la pratique
+          </h2>
+          <div class="divider divider-left mb-2"></div>
+
+          <p>
+            Ce site est un <strong class="highlight">portfolio de compétences</strong> construit dans le cadre
+            de ma formation en BUT Science des Données. Il ne s'agit pas d'un simple CV :
+            chaque page retrace concrètement mes apprentissages, mes travaux et ma progression
+            à travers les quatre blocs de compétences du BUT.
+          </p>
+          <p>
+            L'objectif est double : d'un côté, démontrer les compétences acquises à
+            travers des situations concrètes ; de l'autre, établir un lien entre
+            la formation universitaire et les exigences du monde professionnel de la data.
+          </p>
+          <p>
+            Ce portfolio évolue tout au long de la formation et reflète une
+            montée en compétences progressive, du traitement des données brutes
+            jusqu'à leur valorisation auprès de décideurs.
+          </p>
+
+          <div class="tags-list mt-2">
+            <span class="tag">BUT Science des Données</span>
+            <span class="tag">Promotion 2022–2025</span>
+            <span class="tag">IUT — Université de Lille</span>
+            <span class="tag-neutral">Portfolio de compétences</span>
+          </div>
+        </div>
+
+        <!-- Visuels / stats -->
+        <div class="slide-right">
+          <div class="about-card-stack">
+            <div class="stat-card fade-in delay-1">
+              <span class="stat-number" data-target="4" data-suffix="">4</span>
+              <span class="stat-label">Blocs de compétences</span>
+            </div>
+            <div class="stat-card fade-in delay-2">
+              <span class="stat-number" data-target="12" data-suffix="+">12+</span>
+              <span class="stat-label">SAÉ réalisées</span>
+            </div>
+            <div class="stat-card fade-in delay-3">
+              <span class="stat-number" data-target="3" data-suffix=" ans">3 ans</span>
+              <span class="stat-label">de formation</span>
+            </div>
+            <div class="stat-card fade-in delay-4">
+              <span class="stat-number" data-target="10" data-suffix="+">10+</span>
+              <span class="stat-label">Outils maîtrisés</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       4 BLOCS DE COMPÉTENCES
+       ============================================= -->
+  <section class="section" id="blocs">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Blocs de compétences</span>
+        <h2 class="section-title">Quatre piliers de la data science</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle" style="margin-top:1rem">
+          Le référentiel du BUT Science des Données s'articule autour de quatre blocs complémentaires,
+          du traitement des données brutes à leur transformation en décisions concrètes.
+        </p>
+      </div>
+
+      <div class="blocs-grid">
+
+        <!-- Traiter -->
+        <div class="bloc-card traiter fade-in delay-1">
+          <div class="bloc-card-icon">🗄️</div>
+          <h3 class="bloc-card-title">Traiter</h3>
+          <p class="bloc-card-desc">
+            Collecter, nettoyer, structurer et stocker les données avec rigueur
+            pour garantir leur qualité et leur exploitabilité.
+          </p>
+          <a href="traiter.html" class="bloc-card-link">
+            Découvrir le bloc <span>→</span>
+          </a>
+        </div>
+
+        <!-- Analyser -->
+        <div class="bloc-card analyser fade-in delay-2">
+          <div class="bloc-card-icon">📊</div>
+          <h3 class="bloc-card-title">Analyser</h3>
+          <p class="bloc-card-desc">
+            Explorer, modéliser et interpréter les données pour produire des résultats
+            permettant de comprendre des phénomènes complexes.
+          </p>
+          <a href="analyser.html" class="bloc-card-link">
+            Découvrir le bloc <span>→</span>
+          </a>
+        </div>
+
+        <!-- Valoriser -->
+        <div class="bloc-card valoriser fade-in delay-3">
+          <div class="bloc-card-icon">📈</div>
+          <h3 class="bloc-card-title">Valoriser</h3>
+          <p class="bloc-card-desc">
+            Restituer, visualiser et communiquer les résultats de manière claire
+            et adaptée pour appuyer la prise de décision.
+          </p>
+          <a href="valoriser.html" class="bloc-card-link">
+            Découvrir le bloc <span>→</span>
+          </a>
+        </div>
+
+        <!-- Développer -->
+        <div class="bloc-card developper fade-in delay-4">
+          <div class="bloc-card-icon">⚙️</div>
+          <h3 class="bloc-card-title">Développer</h3>
+          <p class="bloc-card-desc">
+            Concevoir des outils, automatiser des traitements et développer des
+            solutions technologiques pour répondre à des besoins métiers.
+          </p>
+          <a href="developper.html" class="bloc-card-link">
+            Découvrir le bloc <span>→</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       COMPÉTENCES TRANSVERSALES
+       ============================================= -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Compétences transversales</span>
+        <h2 class="section-title">Au-delà des blocs</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="cards-grid fade-in">
+
+        <div class="card card-accent">
+          <div class="card-icon">🤝</div>
+          <h3>Travail en équipe</h3>
+          <p>Collaboration en mode projet sur les SAÉ, coordination des tâches, partage de code via Git et communication régulière en équipe.</p>
+        </div>
+
+        <div class="card card-accent">
+          <div class="card-icon">🎯</div>
+          <h3>Rigueur & méthode</h3>
+          <p>Approche structurée de chaque problème : cadrage du besoin, itérations méthodiques et documentation des démarches.</p>
+        </div>
+
+        <div class="card card-accent">
+          <div class="card-icon">💡</div>
+          <h3>Curiosité analytique</h3>
+          <p>Goût du questionnement, de la recherche de causes sous-jacentes et de la construction d'hypothèses vérifiables par les données.</p>
+        </div>
+
+        <div class="card card-accent">
+          <div class="card-icon">🗣️</div>
+          <h3>Communication</h3>
+          <p>Capacité à présenter des résultats techniques à des publics variés, avec le bon niveau de détail et une restitution adaptée.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       CONCLUSION & PROJET PROFESSIONNEL
+       ============================================= -->
+  <section class="section">
+    <div class="container">
+      <div class="conclusion-box fade-in">
+        <span class="section-label">Projet professionnel</span>
+        <h3>Une formation, une trajectoire</h3>
+        <p>
+          Ces trois années de BUT Science des Données m'ont permis de construire une vision complète du cycle de vie de la donnée :
+          de sa collecte à sa mise en valeur, en passant par l'analyse et le développement d'outils.
+          Chaque projet, chaque SAÉ a contribué à forger des réflexes professionnels et une culture de la donnée solide.
+        </p>
+        <p>
+          Mon projet professionnel s'oriente vers des métiers liés à l'analyse de données,
+          au reporting décisionnel ou au développement d'applications data, dans des secteurs
+          où la maîtrise de la donnée est un réel levier stratégique.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; margin-top:1.5rem">
+          <a href="traiter.html"    class="btn btn-ghost btn-sm">🗄️ Traiter</a>
+          <a href="analyser.html"   class="btn btn-ghost btn-sm">📊 Analyser</a>
+          <a href="valoriser.html"  class="btn btn-ghost btn-sm">📈 Valoriser</a>
+          <a href="developper.html" class="btn btn-ghost btn-sm">⚙️ Développer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">SD<span>Portfolio</span></a>
+          <p>Portfolio de compétences réalisé dans le cadre du BUT Science des Données.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="traiter.html">Traiter</a></li>
+            <li><a href="analyser.html">Analyser</a></li>
+            <li><a href="valoriser.html">Valoriser</a></li>
+            <li><a href="developper.html">Développer</a></li>
+          </ul>
+        </div>
+        <div class="footer-info">
+          <h4>Formation</h4>
+          <p>BUT Science des Données<br>IUT — Université de Lille<br>Promotion 2022–2025</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 — Portfolio étudiant BUT Science des Données</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bouton retour en haut -->
+  <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

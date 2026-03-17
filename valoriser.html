@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valoriser — Portfolio BUT Science des Données</title>
+  <meta name="description" content="Bloc Valoriser : visualisation, dataviz, tableaux de bord et communication des résultats." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #page-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      z-index: 2000; transition: width 0.1s linear;
+    }
+    body { opacity: 0; transition: opacity 0.4s ease; }
+    body.page-loaded { opacity: 1; }
+
+    .page-valoriser .section-label,
+    .page-valoriser .timeline-date,
+    .page-valoriser .skill-value,
+    .page-valoriser .highlight { color: var(--gold) !important; }
+
+    .page-valoriser .divider { background: var(--gold); }
+    .page-valoriser .skill-fill { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+    .page-valoriser .timeline::before,
+    .page-valoriser .timeline-item::before { background: var(--gold); }
+    .page-valoriser .timeline-item::before { box-shadow: 0 0 0 3px var(--gold-glow); }
+    .page-valoriser .bilan-box::before { color: var(--gold); }
+    .page-valoriser .tag {
+      background: var(--gold-glow);
+      color: var(--gold);
+      border-color: rgba(200,151,58,0.2);
+    }
+    .page-valoriser .tool-pill:hover { border-color: var(--gold); }
+    .page-valoriser .tool-pill-icon { background: var(--gold-glow); }
+    .page-valoriser .card-accent { border-left-color: var(--gold); }
+    .page-valoriser .card:hover { border-color: rgba(200,151,58,0.25); }
+    .page-valoriser .back-to-top { background: var(--gold); }
+    .page-valoriser .back-to-top:hover { background: var(--gold-light); }
+    .page-valoriser .bloc-nav-item:hover { border-color: var(--gold); }
+    .page-valoriser .bloc-tag { color: var(--gold); background: var(--gold-glow); }
+    .page-valoriser .bloc-banner::after { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .page-valoriser .bloc-banner-glow { background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%); }
+  </style>
+</head>
+<body class="page-valoriser">
+
+  <div id="page-progress"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">SD<span>Portfolio</span></a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="traiter.html">Traiter</a></li>
+        <li><a href="analyser.html">Analyser</a></li>
+        <li><a href="valoriser.html">Valoriser</a></li>
+        <li><a href="developper.html">Développer</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- BANDEAU -->
+  <section class="bloc-banner">
+    <div class="bloc-banner-glow"></div>
+    <div class="container">
+      <span class="bloc-tag">📈 Bloc 3</span>
+      <h1>Valoriser les données</h1>
+      <p>
+        Visualiser, raconter et convaincre : transformer les résultats en décisions
+        grâce à une communication claire et percutante.
+      </p>
+    </div>
+  </section>
+
+  <!-- DÉFINITION -->
+  <section class="section" id="definition">
+    <div class="container">
+      <div class="two-col">
+        <div class="slide-left">
+          <span class="section-label">Définition</span>
+          <h2 class="section-title" style="text-align:left">Qu'est-ce que « Valoriser » ?</h2>
+          <div class="divider divider-left mb-2"></div>
+          <p>
+            Le bloc <strong class="highlight">Valoriser</strong> regroupe toutes les compétences
+            qui permettent de restituer efficacement les résultats d'une analyse. La meilleure analyse
+            du monde ne sert à rien si elle n'est pas comprise par son destinataire.
+          </p>
+          <p>
+            Ce bloc m'a appris à adopter une posture de <strong class="highlight">communicant de la donnée</strong> :
+            adapter mon discours et mes visuels au public cible, choisir les graphiques pertinents,
+            construire des tableaux de bord lisibles et créer des supports qui facilitent la prise de décision.
+          </p>
+          <p>
+            Il s'agit du bloc qui fait le pont entre la technique et le métier, entre les données
+            et les décideurs.
+          </p>
+        </div>
+        <div class="slide-right">
+          <div class="bilan-box">
+            <p>
+              « Un graphique bien conçu peut changer une décision stratégique.
+              Un graphique mal conçu peut induire en erreur. Valoriser, c'est
+              porter une responsabilité envers son public. »
+            </p>
+            <p style="color: var(--gold); font-weight:600; font-size:0.9rem">
+              — Réflexion personnelle, SAÉ 3.03
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section class="section section-alt" id="competences">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Compétences</span>
+        <h2 class="section-title">Ce que j'ai développé</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="skills-list fade-in" style="max-width:680px; margin:0 auto">
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Conception de tableaux de bord interactifs</span>
+            <span class="skill-value">80%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Choix et réalisation de visualisations adaptées</span>
+            <span class="skill-value">85%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Storytelling des données (data storytelling)</span>
+            <span class="skill-value">75%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Adaptation du discours au public (technique vs non-technique)</span>
+            <span class="skill-value">82%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="82%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Création de rapports et présentations professionnelles</span>
+            <span class="skill-value">88%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Principes de perception visuelle (Gestalt, couleurs)</span>
+            <span class="skill-value">70%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
+        </div>
+      </div>
+
+      <div class="tags-list fade-in mt-3" style="justify-content:center">
+        <span class="tag">Data visualisation</span>
+        <span class="tag">Tableaux de bord</span>
+        <span class="tag">KPI</span>
+        <span class="tag">Storytelling</span>
+        <span class="tag">Infographie</span>
+        <span class="tag">Design graphique</span>
+        <span class="tag">Reporting</span>
+        <span class="tag">Présentation orale</span>
+        <span class="tag">Lisibilité</span>
+        <span class="tag">Accessibilité</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTILS -->
+  <section class="section" id="outils">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Outils & Technologies</span>
+        <h2 class="section-title">Outils mobilisés</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="tools-grid fade-in" style="justify-content:center">
+        <div class="tool-pill"><span class="tool-pill-icon">📊</span>Power BI</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📈</span>Tableau Public</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🐍</span>matplotlib / seaborn</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📐</span>ggplot2 (R)</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🎨</span>Plotly / Dash</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📑</span>PowerPoint</div>
+        <div class="tool-pill"><span class="tool-pill-icon">✏️</span>Canva</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📄</span>Excel (graphiques avancés)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section class="section section-alt" id="projets">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Situations d'apprentissage</span>
+        <h2 class="section-title">Projets & SAÉ</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle" style="margin-top:1rem">
+          Ces projets illustrent ma capacité à transformer des résultats d'analyse
+          en supports de communication efficaces.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card card-accent fade-in delay-1">
+          <div class="card-icon">📊</div>
+          <h3>SAÉ 3.03 — Dashboard Power BI RH</h3>
+          <p>
+            Conception d'un tableau de bord interactif sur les données RH d'une entreprise fictive :
+            pyramide des âges, taux de turnover, répartition par service, indicateurs de performance.
+            Publié sur Power BI Service.
+          </p>
+          <div class="tags-list" style="margin-top:1rem">
+            <span class="tag">Power BI</span>
+            <span class="tag">DAX</span>
+            <span class="tag">KPI</span>
+          </div>
+        </div>
+
+        <div class="card card-accent fade-in delay-2">
+          <div class="card-icon">🌍</div>
+          <h3>SAÉ 2.05 — Rapport sur les inégalités mondiales</h3>
+          <p>
+            Création d'un rapport analytique complet sur les données de l'ONU (IDH, revenus,
+            éducation). Cartographies avec ggplot2, visualisations temporelles, narration
+            des insights, support de 20 diapositives adapté à un public non-technique.
+          </p>
+          <div class="tags-list" style="margin-top:1rem">
+            <span class="tag">ggplot2</span>
+            <span class="tag">R Markdown</span>
+            <span class="tag">Storytelling</span>
+          </div>
+        </div>
+
+        <div class="card card-accent fade-in delay-3">
+          <div class="card-icon">🛍️</div>
+          <h3>Projet Plotly Dash — Analyse ventes</h3>
+          <p>
+            Développement d'une application de visualisation interactive en Python/Dash
+            pour visualiser les ventes d'un e-commerce : filtres dynamiques, graphiques
+            interconnectés, indicateurs clés en temps réel.
+          </p>
+          <div class="tags-list" style="margin-top:1rem">
+            <span class="tag">Plotly Dash</span>
+            <span class="tag">Python</span>
+            <span class="tag">Interactivité</span>
+          </div>
+        </div>
+
+        <div class="card card-accent fade-in delay-4">
+          <div class="card-icon">🎤</div>
+          <h3>Présentation orale — Jury de fin d'année</h3>
+          <p>
+            Restitution de travaux analytiques devant un jury de professionnels.
+            Construction d'une présentation claire avec résumé exécutif, visuels
+            percutants, messages clés et réponse aux questions critiques du jury.
+          </p>
+          <div class="tags-list" style="margin-top:1rem">
+            <span class="tag">Communication</span>
+            <span class="tag">Synthèse</span>
+            <span class="tag">Vulgarisation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section" id="progression">
+    <div class="container">
+      <div class="two-col">
+        <div class="fade-in">
+          <span class="section-label">Progression</span>
+          <h2 class="section-title" style="text-align:left">Mon parcours dans ce bloc</h2>
+          <div class="divider divider-left mb-3"></div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 1 — 2022</div>
+              <h4>Graphiques de base</h4>
+              <p>Histogrammes, camemberts, nuages de points en Excel et premiers pas avec matplotlib.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 2 — 2023</div>
+              <h4>Visualisation avancée</h4>
+              <p>Heatmaps, boxplots, graphiques multivariés, introduction aux principes de dataviz (moins c'est mieux).</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 3 — 2023</div>
+              <h4>Tableaux de bord & interactivité</h4>
+              <p>Premier dashboard Power BI, découverte de Plotly Dash et des interactions utilisateur dans les visuels.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 4–6 — 2024</div>
+              <h4>Storytelling & communication pro</h4>
+              <p>Présentations devant des professionnels, reportings automatisés, structuration du message pour décideurs.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-right">
+          <div class="card" style="margin-bottom:1.5rem">
+            <h3>🏢 Lien avec le monde professionnel</h3>
+            <p>
+              Les métiers du reporting, de la Business Intelligence et de la data visualisation
+              sont parmi les plus demandés dans les directions de l'analyse et du contrôle de gestion.
+              Maîtriser Power BI ou Tableau est souvent un critère de sélection direct dans les offres d'emploi.
+            </p>
+            <p>
+              Mais au-delà des outils, c'est la capacité à <strong class="highlight">raconter une histoire</strong>
+              avec des données qui est véritablement différenciante.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>📚 Apprentissages clés</h3>
+            <p>
+              Ce bloc m'a appris qu'une dataviz efficace est d'abord un acte de
+              <strong class="highlight">communication</strong>, pas de technique.
+              La question "pour qui je construis ce visuel ?" doit précéder toute autre décision.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BILAN -->
+  <section class="section section-alt" id="bilan">
+    <div class="container" style="max-width:800px">
+      <div class="section-header fade-in">
+        <span class="section-label">Regard critique</span>
+        <h2 class="section-title">Autoévaluation</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="bilan-box fade-in">
+        <p>
+          Le bloc Valoriser est celui qui m'a le plus surpris. Je n'imaginais pas que la communication
+          des données représentait en elle-même un domaine aussi riche et exigeant. Choisir le bon
+          type de graphique, la bonne palette de couleurs, la bonne densité d'information sont
+          des décisions qui ont un vrai impact sur la compréhension du public.
+        </p>
+        <p>
+          Ma maîtrise de Power BI me permet de livrer des dashboards opérationnels.
+          En revanche, je souhaite progresser sur les principes de perception visuelle
+          (psychologie cognitive appliquée à la dataviz) et sur le design de présentation
+          pour des contextes à forts enjeux (comités de direction, investisseurs).
+        </p>
+        <p>
+          Ce bloc m'a également appris à prendre confiance à l'oral,
+          ce qui est une compétence transversale précieuse pour toute la vie professionnelle.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION -->
+  <section class="section">
+    <div class="container">
+      <div class="bloc-nav fade-in">
+        <a href="analyser.html" class="bloc-nav-item prev">
+          <span style="font-size:1.4rem">←</span>
+          <div>
+            <span class="bloc-nav-label">Bloc précédent</span>
+            <span class="bloc-nav-title">Analyser</span>
+          </div>
+        </a>
+        <a href="developper.html" class="bloc-nav-item">
+          <div style="flex:1">
+            <span class="bloc-nav-label">Bloc suivant</span>
+            <span class="bloc-nav-title">Développer →</span>
+          </div>
+          <span style="font-size:1.4rem">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">SD<span>Portfolio</span></a>
+          <p>Portfolio de compétences réalisé dans le cadre du BUT Science des Données.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="traiter.html">Traiter</a></li>
+            <li><a href="analyser.html">Analyser</a></li>
+            <li><a href="valoriser.html">Valoriser</a></li>
+            <li><a href="developper.html">Développer</a></li>
+          </ul>
+        </div>
+        <div class="footer-info">
+          <h4>Formation</h4>
+          <p>BUT Science des Données<br>IUT — Université de Lille<br>Promotion 2022–2025</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 — Portfolio étudiant BUT Science des Données</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>
