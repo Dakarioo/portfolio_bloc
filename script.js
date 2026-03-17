@@ -6,6 +6,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ----------------------------------------------------------
+     0. ANIMATION D'ENTRÉE DE PAGE — en premier pour éviter
+        toute page blanche si une erreur survient plus bas
+     ---------------------------------------------------------- */
+  document.body.classList.add('page-loaded');
+
+  /* ----------------------------------------------------------
      1. NAVBAR — scroll, burger, lien actif
      ---------------------------------------------------------- */
   const navbar    = document.getElementById('navbar');
@@ -15,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Ombre navbar au scroll
   const handleNavScroll = () => {
+    if (!navbar) return;
     if (window.scrollY > 20) {
       navbar.classList.add('scrolled');
     } else {
@@ -275,9 +282,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  /* ----------------------------------------------------------
-     11. ANIMATION D'ENTRÉE DE PAGE
-     ---------------------------------------------------------- */
-  document.body.classList.add('page-loaded');
 
 });
