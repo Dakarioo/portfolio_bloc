@@ -226,11 +226,11 @@
             <p>
               « La qualité d'une analyse ne peut jamais dépasser la qualité des données sur lesquelles
               elle repose. Traiter, c'est poser les fondations de tout ce qui vient ensuite.
-              J'ai compris ça dès la première SAÉ : le travail en amont est rarement visible,
+              J'ai compris ça dès la première SAE : le travail en amont est rarement visible,
               mais il est toujours décisif. »
             </p>
             <p style="color: var(--copper); font-weight:600; font-size:0.9rem; margin-bottom:0">
-              — Réflexion personnelle, issue de la SAÉ MonVoyage
+              — Réflexion personnelle, issue de la SAE MonVoyage
             </p>
           </div>
           <div class="card mt-2">
@@ -257,7 +257,7 @@
         <div class="divider"></div>
         <p class="section-subtitle" style="margin-top:1rem">
           Cinq axes de compétences construits progressivement tout au long du BUT,
-          à travers des SAÉ de complexité croissante.
+          à travers des SAE de complexité croissante.
         </p>
       </div>
 
@@ -273,7 +273,7 @@
           <p>
             La principale difficulté n'est pas technique mais pratique : gérer des sources
             hétérogènes qui n'ont pas le même format, le même niveau de fiabilité, ni les mêmes
-            contraintes d'accès. Sur la SAÉ MonVoyage, j'ai dû combiner deux sources
+            contraintes d'accès. Sur la SAE MonVoyage, j'ai dû combiner deux sources
             (API + scraping) et réconcilier des données qui ne partageaient pas les mêmes
             identifiants — ce qui m'a confronté très concrètement à la notion de clé de jointure
             implicite.
@@ -315,7 +315,7 @@
           <p>
             J'ai maîtrisé le cycle complet de modélisation d'une base de données :
             du MCD (Modèle Conceptuel de Données) au MPD (Modèle Physique), en passant
-            par la normalisation jusqu'en 3NF. Sur la SAÉ Datawarehouse, j'ai travaillé
+            par la normalisation jusqu'en 3NF. Sur la SAE Datawarehouse, j'ai travaillé
             à partir d'une base existante (Chinook) pour en comprendre le schéma
             par reverse engineering, puis concevoir un entrepôt de données en schéma en étoile
             sous Oracle.
@@ -360,7 +360,7 @@
           <h3>🔒 Gouvernance et qualité des données (RGPD)</h3>
           <p>
             Le traitement de la donnée ne se limite pas aux aspects techniques.
-            La SAÉ RGPD m'a confronté aux obligations légales liées à la collecte
+            La SAE RGPD m'a confronté aux obligations légales liées à la collecte
             et au stockage de données personnelles : définition du périmètre des données sensibles,
             mise en œuvre de l'anonymisation et de la pseudonymisation, gestion des droits d'accès,
             et rédaction d'une documentation de conformité.
@@ -436,7 +436,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-label">Mise en pratique</span>
-        <h2 class="section-title">Projets & SAÉ</h2>
+        <h2 class="section-title">Projets & SAE</h2>
         <div class="divider"></div>
         <p class="section-subtitle" style="margin-top:1rem">
           Trois situations concrètes qui illustrent les compétences du bloc Traiter,
@@ -444,12 +444,12 @@
         </p>
       </div>
 
-      <!-- SAÉ MonVoyage -->
+      <!-- SAE MonVoyage -->
       <div class="project-detail fade-in">
         <div class="project-detail-header">
           <div class="project-detail-icon">🌍</div>
           <div class="project-detail-meta">
-            <div class="project-context">SAÉ — Collecte et structuration</div>
+            <div class="project-context">SAE — Collecte et structuration</div>
             <h3>MonVoyage — Collecte multi-sources via API et scraping</h3>
           </div>
         </div>
@@ -499,12 +499,12 @@
         </div>
       </div>
 
-      <!-- SAÉ Datawarehouse -->
+      <!-- SAE Datawarehouse -->
       <div class="project-detail fade-in">
         <div class="project-detail-header">
           <div class="project-detail-icon">🏗️</div>
           <div class="project-detail-meta">
-            <div class="project-context">SAÉ — Modélisation et entrepôt de données</div>
+            <div class="project-context">SAE — Modélisation et entrepôt de données</div>
             <h3>Datawarehouse — De Chinook à un schéma décisionnel sous Oracle</h3>
           </div>
         </div>
@@ -556,12 +556,12 @@
         </div>
       </div>
 
-      <!-- SAÉ RGPD -->
+      <!-- SAE RGPD -->
       <div class="project-detail fade-in">
         <div class="project-detail-header">
           <div class="project-detail-icon">🔒</div>
           <div class="project-detail-meta">
-            <div class="project-context">SAÉ — Gouvernance et conformité</div>
+            <div class="project-context">SAE — Gouvernance et conformité</div>
             <h3>RGPD — Conformité et sécurisation d'un traitement de données personnelles</h3>
           </div>
         </div>
@@ -653,8 +653,12 @@
           CSV / JSON / XML
         </div>
         <div class="tool-pill">
-          <span class="tool-pill-icon">🗂️</span>
-          DBeaver / SQL*Plus
+          <span class="tool-pill-icon">🔢</span>
+          NumPy
+        </div>
+        <div class="tool-pill">
+          <span class="tool-pill-icon">📓</span>
+          Jupyter Notebook
         </div>
         <div class="tool-pill">
           <span class="tool-pill-icon">📦</span>
@@ -679,7 +683,7 @@
           <p>
             Du DDL (CREATE TABLE, contraintes, index) aux requêtes analytiques complexes
             (jointures multi-tables, sous-requêtes, agrégations). Oracle spécifiquement
-            pour la SAÉ Datawarehouse : schéma en étoile, alimentation ETL, vues analytiques.
+            pour la SAE Datawarehouse : schéma en étoile, alimentation ETL, vues analytiques.
           </p>
         </div>
         <div class="card">
@@ -696,8 +700,26 @@
           <h3>Git</h3>
           <p>
             Versionnage du code de collecte et de traitement : commits descriptifs
-            à chaque étape du pipeline, branches par SAÉ. Permet de tracer l'évolution
+            à chaque étape du pipeline, branches par SAE. Permet de tracer l'évolution
             des scripts et de revenir à un état antérieur en cas de régression.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔢</div>
+          <h3>NumPy</h3>
+          <p>
+            Manipulation de tableaux multidimensionnels, opérations vectorisées sur des
+            colonnes numériques, calculs statistiques de base (moyenne, écart-type, percentiles).
+            Utilisé en complément de pandas pour les transformations intensives sur les données.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📓</div>
+          <h3>Jupyter Notebook</h3>
+          <p>
+            Environnement interactif pour explorer, nettoyer et documenter les données au fil
+            de l'analyse. Chaque cellule constitue une étape traçable du pipeline : import,
+            nettoyage, vérification, export. Idéal pour prototyper avant de passer à un script.
           </p>
         </div>
       </div>
@@ -712,12 +734,12 @@
       <div class="two-col">
         <div class="fade-in">
           <span class="section-label">Progression</span>
-          <h2 class="section-title" style="text-align:left">Du début du BUT à aujourd'hui</h2>
+          <h2 class="section-title" style="text-align:left">Du début du BUT à maintenant</h2>
           <div class="divider divider-left mb-3"></div>
 
           <div class="timeline">
             <div class="timeline-item">
-              <div class="timeline-date">Semestre 1 — 2022</div>
+              <div class="timeline-date">Semestre 1 — 2024</div>
               <h4>Premières bases de données</h4>
               <p>
                 Découverte de la modélisation E/A, création de tables SQL, premières requêtes
@@ -725,7 +747,7 @@
               </p>
             </div>
             <div class="timeline-item">
-              <div class="timeline-date">Semestre 2 — 2023</div>
+              <div class="timeline-date">Semestre 2 — 2025</div>
               <h4>SQL avancé et nettoyage Python</h4>
               <p>
                 Jointures complexes, sous-requêtes corrélées, vues, premières notions de normalisation.
@@ -733,27 +755,19 @@
               </p>
             </div>
             <div class="timeline-item">
-              <div class="timeline-date">Semestre 3 — 2023</div>
+              <div class="timeline-date">Semestre 3 — 2025</div>
               <h4>Collecte et sources hétérogènes</h4>
               <p>
-                APIs REST, scraping, gestion des formats JSON et XML. SAÉ MonVoyage :
+                APIs REST, scraping, gestion des formats JSON et XML. SAE MonVoyage :
                 première confrontation à des sources multiples à réconcilier.
               </p>
             </div>
             <div class="timeline-item">
-              <div class="timeline-date">Semestre 4 — 2024</div>
+              <div class="timeline-date">Semestre 4 — 2026 (en cours)</div>
               <h4>Datawarehouse et modélisation décisionnelle</h4>
               <p>
                 Schéma en étoile, Oracle, reverse engineering de base existante, alimentation ETL.
-                Passage de la logique transactionnelle à la logique analytique.
-              </p>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">Semestre 5–6 — 2024–2025</div>
-              <h4>Gouvernance, qualité et conformité</h4>
-              <p>
-                RGPD, anonymisation, pseudonymisation, registre de traitement.
-                Intégration de la conformité comme réflexe de conception, pas comme contrainte ajoutée.
+                Passage de la logique transactionnelle à la logique analytique — semestre actuel.
               </p>
             </div>
           </div>
@@ -811,7 +825,7 @@
           souvent la majorité du temps de travail — et c'est là que les erreurs coûtent le plus cher.
         </p>
         <p>
-          Sur la SAÉ MonVoyage, j'ai dû recommencer entièrement ma logique de correspondance entre
+          Sur la SAE MonVoyage, j'ai dû recommencer entièrement ma logique de correspondance entre
           les deux sources parce que j'avais supposé que les noms de destinations seraient identiques
           d'un côté à l'autre. Ce n'était pas le cas. J'ai appris à ne pas faire confiance
           aux données avant de les avoir vérifiées.
@@ -849,7 +863,7 @@
       <div class="bilan-box fade-in" style="margin-top:1.5rem">
         <p>
           <strong style="color:var(--copper)">Ce que j'améliorerais aujourd'hui :</strong>
-          sur la SAÉ MonVoyage, j'aurais structuré le script de collecte en modules distincts
+          sur la SAE MonVoyage, j'aurais structuré le script de collecte en modules distincts
           (un pour l'API, un pour le scraping, un pour la réconciliation) dès le départ,
           plutôt que d'avoir un script monolithique difficile à déboguer.
           Sur le Datawarehouse, j'aurais rédigé les règles de transformation en amont,
@@ -962,7 +976,7 @@
         </div>
         <div class="footer-info">
           <h4>Formation</h4>
-          <p>BUT Science des Données<br>IUT — Université de Lille<br>Promotion 2022–2025</p>
+          <p>BUT Science des Données<br>IUT de Lille site Roubaix<br>Promotion 2024–2027</p>
         </div>
       </div>
     </div>
