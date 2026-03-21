@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "titre": "Analyse de données de vente",
+    "description": "Exploration et analyse d'un jeu de données de ventes retail. Nettoyage des données, visualisations et identification des tendances clés pour appuyer les décisions commerciales.",
+    "technologies": ["Python", "Pandas", "Matplotlib", "Seaborn"],
+    "categories": ["Data", "SAE"],
+    "github": "https://github.com/",
+    "details": "#"
+  },
+  {
+    "id": 2,
+    "titre": "Dashboard Power BI — Suivi RH",
+    "description": "Conception d'un tableau de bord interactif pour le suivi des indicateurs RH : turnover, absentéisme, répartition des effectifs. Connexion directe à une base de données SQL.",
+    "technologies": ["Power BI", "DAX", "SQL", "Excel"],
+    "categories": ["Data", "SAE"],
+    "github": "https://github.com/",
+    "details": "#"
+  },
+  {
+    "id": 3,
+    "titre": "Modèle prédictif ML — Churn client",
+    "description": "Développement d'un modèle de machine learning pour prédire le churn client. Comparaison de plusieurs algorithmes (Random Forest, XGBoost), optimisation des hyperparamètres.",
+    "technologies": ["Python", "scikit-learn", "XGBoost", "Pandas"],
+    "categories": ["Data"],
+    "github": "https://github.com/",
+    "details": "#"
+  },
+  {
+    "id": 4,
+    "titre": "Base de données automobile",
+    "description": "Conception et implémentation d'une base de données relationnelle pour un parc automobile. Modélisation MCD/MLD, requêtes SQL avancées, procédures stockées et optimisation des index.",
+    "technologies": ["SQL", "MySQL", "Merise", "Draw.io"],
+    "categories": ["Automobile", "SAE"],
+    "github": "https://github.com/",
+    "details": "#"
+  },
+  {
+    "id": 5,
+    "titre": "Site Portfolio Personnel",
+    "description": "Développement from scratch de ce portfolio de compétences. Design sobre et moderne, animations CSS, chargement dynamique des données en JavaScript, entièrement responsive.",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "categories": ["Web", "Personnel"],
+    "github": "https://github.com/",
+    "details": "index.html"
+  },
+  {
+    "id": 6,
+    "titre": "Analyse statistique SAS — Données médicales",
+    "description": "Analyse exploratoire et inférentielle d'un dataset médical avec SAS. Tests statistiques, régression logistique, rapport automatisé via SAS ODS.",
+    "technologies": ["SAS", "SAS ODS", "Statistiques"],
+    "categories": ["Data", "SAE"],
+    "github": "https://github.com/",
+    "details": "#"
+  },
+  {
+    "id": 7,
+    "titre": "ETL Pipeline — Données météo",
+    "description": "Conception d'un pipeline ETL complet : extraction de données météorologiques via API, transformation et nettoyage en Python, chargement dans une base PostgreSQL.",
+    "technologies": ["Python", "PostgreSQL", "API REST", "Airflow"],
+    "categories": ["Data", "SAE"],
+    "github": "https://github.com/",
+    "details": "#"
+  },
+  {
+    "id": 8,
+    "titre": "Application web de gestion de stock",
+    "description": "Application CRUD complète pour la gestion d'un stock produits. Interface web responsive, back-end Python Flask, base de données SQLite, authentification utilisateur.",
+    "technologies": ["Python", "Flask", "SQLite", "HTML/CSS"],
+    "categories": ["Web", "SAE"],
+    "github": "https://github.com/",
+    "details": "#"
+  },
+  {
+    "id": 9,
+    "titre": "Analyse des prix automobile",
+    "description": "Étude de marché sur les prix des véhicules d'occasion. Web scraping, analyse de corrélation, visualisations interactives avec Plotly et rapport final.",
+    "technologies": ["Python", "BeautifulSoup", "Plotly", "Pandas"],
+    "categories": ["Automobile", "Data", "Personnel"],
+    "github": "https://github.com/",
+    "details": "#"
+  },
+  {
+    "id": 10,
+    "titre": "Rapport R Markdown — Analyse économique",
+    "description": "Production d'un rapport reproductible en R Markdown sur des données économiques. Visualisations ggplot2, modèles de régression, export PDF automatisé.",
+    "technologies": ["R", "ggplot2", "R Markdown", "dplyr"],
+    "categories": ["Data", "SAE"],
+    "github": "https://github.com/",
+    "details": "#"
+  }
+]

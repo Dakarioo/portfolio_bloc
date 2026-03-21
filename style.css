@@ -1169,3 +1169,213 @@ p { color: var(--text-secondary); margin-bottom: 0.75rem; }
 
   .conclusion-box { padding: 2rem 1.5rem; }
 }
+
+/* ============================================================
+   NAVBAR — Bouton Projets mis en avant
+   ============================================================ */
+.nav-link-projets {
+  color: var(--copper) !important;
+  border: 1px solid var(--border-accent);
+  border-radius: var(--r-sm);
+  padding: 0.4rem 0.9rem !important;
+  transition: background var(--t), border-color var(--t), color var(--t) !important;
+}
+.nav-link-projets:hover,
+.nav-link-projets.active {
+  background: var(--copper-glow) !important;
+  border-color: var(--copper) !important;
+  color: var(--copper-light) !important;
+}
+.nav-link-projets.active::after { display: none; }
+
+/* ============================================================
+   HERO COMPACT (pages intérieures)
+   ============================================================ */
+.hero-sm {
+  min-height: 36vh;
+  padding-top: calc(var(--nav-height) + 3rem);
+  padding-bottom: 3rem;
+}
+
+/* ============================================================
+   PAGE PROJETS — META + FILTRES
+   ============================================================ */
+.projets-meta {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+.projets-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.filtres-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.filtre-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--t), border-color var(--t), color var(--t), transform var(--t);
+  letter-spacing: 0.01em;
+}
+.filtre-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: rgba(234, 228, 216, 0.2);
+  transform: translateY(-1px);
+}
+.filtre-btn.active {
+  background: var(--copper-glow);
+  border-color: var(--copper);
+  color: var(--copper-light);
+  font-weight: 600;
+}
+
+/* ============================================================
+   PAGE PROJETS — GRILLE DE CARTES
+   ============================================================ */
+.projets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.75rem;
+  transition: opacity 0.2s ease;
+}
+.projets-grid.grid-transition {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   CARTE PROJET
+   ============================================================ */
+.projet-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+  cursor: default;
+}
+.projet-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(192, 120, 64, 0.3);
+}
+
+.projet-card-inner {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.75rem;
+}
+
+.projet-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  min-height: 1.5rem;
+}
+
+/* Badges catégories */
+.cat-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+}
+.cat-data       { background: rgba(34,140,120,0.15); color: var(--teal-light); }
+.cat-web        { background: rgba(123,104,238,0.15); color: var(--violet-light); }
+.cat-sae        { background: rgba(200,151,58,0.15); color: var(--gold-light); }
+.cat-automobile { background: rgba(192,120,64,0.15); color: var(--copper-light); }
+.cat-personnel  { background: rgba(234,228,216,0.08); color: var(--text-secondary); }
+
+/* Titre et description */
+.projet-card-titre {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.projet-card-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  flex: 1;
+  margin: 0;
+}
+
+/* Badges technologies */
+.projet-card-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+.tech-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--r-sm);
+  letter-spacing: 0.02em;
+}
+
+/* Boutons d'action */
+.projet-card-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   MESSAGE AUCUN RÉSULTAT
+   ============================================================ */
+.projets-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 4rem 1rem;
+  color: var(--text-muted);
+}
+.projets-empty-icon { font-size: 2.5rem; }
+.projets-empty p { color: var(--text-muted); font-size: 1rem; margin: 0; }
+
+/* ============================================================
+   RESPONSIVE — PAGE PROJETS
+   ============================================================ */
+@media (max-width: 640px) {
+  .projets-grid {
+    grid-template-columns: 1fr;
+  }
+  .filtres-bar {
+    gap: 0.4rem;
+  }
+  .filtre-btn {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.8rem;
+  }
+  .hero-sm {
+    min-height: 30vh;
+    padding-top: calc(var(--nav-height) + 2rem);
+    padding-bottom: 2rem;
+  }
+}
