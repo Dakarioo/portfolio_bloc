@@ -296,6 +296,11 @@ p  { color: var(--text-secondary); margin-bottom: 0.6rem; }
   border-top: 1px solid var(--border);
 }
 
+/* Espacement entre les pills de technologies et le bouton CTA */
+.project-hero-card .btn {
+  margin-top: 1.5rem;
+}
+
 /* ============================================================
    CONTENU PRINCIPAL
    ============================================================ */
