@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SAE_VCOD – MonVoyage (Séjour à Lille) | Antonin Cavory--Dupuis</title>
+  <meta name="description" content="SAE_VCOD – MonVoyage : application Python de planification de séjour (Lille) avec collecte via API, web scraping, export CSV et carte interactive Folium. Techs : requests, BeautifulSoup, folium, csv, json." />
+
+  <!-- CSS pages projets -->
+  <link rel="stylesheet" href="../assets/projects.css" />
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a class="logo" href="../index.html">Antonin Cavory--Dupuis</a>
+
+      <nav aria-label="Navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html#projets">Projets</a></li>
+          <li><a href="../index.html#apropos">À propos</a></li>
+          <li><a href="../index.html#competences">Compétences</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Fil d’Ariane">
+    <a href="../index.html">Accueil</a><span class="sep">›</span>
+    <a href="../index.html#projets">Projets</a><span class="sep">›</span>
+    <span>SAE_VCOD – MonVoyage</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="project-hero">
+    <div class="container">
+      <div class="project-hero-card">
+        <span class="project-tag">SAE_VCOD</span>
+
+        <h1 class="project-title">MonVoyage - Application Python de planification (Séjour à Lille)</h1>
+
+        <p class="project-subtitle">
+          Conception d’une application Python qui automatise la collecte d’informations (hôtels, activités, restauration, météo,
+          transports) et génère une sortie exploitable : <strong>exports CSV</strong> + <strong>carte interactive</strong> (Folium),
+          avec une logique de traitement fiable (gestion d’erreurs, normalisation, structuration des résultats).
+        </p>
+
+        <div class="project-meta" aria-label="Technologies utilisées">
+          <span class="pill">Python</span>
+          <span class="pill">requests</span>
+          <span class="pill">BeautifulSoup</span>
+          <span class="pill">folium</span>
+          <span class="pill">csv</span>
+          <span class="pill">json</span>
+          <span class="pill">API</span>
+          <span class="pill">Web scraping</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <main class="project-content">
+    <div class="container">
+
+      <!-- FICHE SAE -->
+      <section class="section-card">
+        <h2>Fiche SAE</h2>
+        <ul>
+          <li><strong>Titre :</strong> SAE_VCOD — MonVoyage : Séjour à Lille</li>
+          <li><strong>Conditions :</strong> projet encadré (binôme selon consignes)</li>
+          <li><strong>Rendu :</strong> application Python + documentation (README) + exports (CSV) + démonstration</li>
+          <li><strong>BCC associés :</strong> ANALYSER • TRAITER • VALORISER • MODÉLISER / DÉVELOPPER</li>
+          <li><strong>Pré-requis :</strong> Python (fonctions/POO), HTTP & JSON, bases HTML, structuration de données</li>
+        </ul>
+      </section>
+
+      <!-- CONTEXTE -->
+      <section class="section-card">
+        <h2>Contexte / Problématique</h2>
+        <p>
+          Planifier un séjour nécessite de centraliser des informations fiables provenant de sources variées (hôtels, restaurants,
+          lieux d’intérêt, météo, transport). Le problème principal est de <strong>rendre ces données exploitables</strong> :
+          automatiser la collecte, gérer les formats hétérogènes, filtrer les résultats pertinents et produire une restitution claire.
+        </p>
+      </section>
+
+      <!-- OBJECTIFS -->
+      <section class="section-card">
+        <h2>Objectifs</h2>
+        <ul>
+          <li>Automatiser la collecte d’informations via <strong>API</strong> et <strong>scraping</strong>.</li>
+          <li>Uniformiser et structurer des données hétérogènes (champs, types, formats).</li>
+          <li>Exporter les résultats en <strong>CSV</strong> (réutilisables pour analyse/dashboards).</li>
+          <li>Générer une <strong>carte interactive</strong> des points d’intérêt (Folium).</li>
+          <li>Assurer la robustesse : gestion d’erreurs réseau, absence de résultats, champs manquants.</li>
+        </ul>
+      </section>
+
+      <!-- SOURCES / APIs -->
+      <section class="section-card">
+        <h2>Sources de données & APIs utilisées</h2>
+        <ul>
+          <li><strong>Hôtels (OSM / Opendatasoft)</strong> : https://public.opendatasoft.com/explore/assets/osm-france-tourism-accommodation/</li>
+          <li><strong>Activités / lieux (OSM / Opendatasoft)</strong> : https://public.opendatasoft.com/explore/assets/osm-france-historic/</li>
+          <li><strong>Restauration (OSM / Opendatasoft)</strong> : https://public.opendatasoft.com/explore/assets/osm-france-food-service/</li>
+          <li><strong>Transport / distance / itinéraires</strong> : https://openrouteservice.org/</li>
+          <li><strong>SNCF (données / infos)</strong> : https://ressources.data.sncf.com/explore/dataset/api-sncf/information/</li>
+          <li><strong>Météo</strong> : https://openweathermap.org/api</li>
+          <li><strong>Description de la ville (scraping)</strong> : https://fr.wikipedia.org/wiki/Lille</li>
+        </ul>
+        <p style="margin-top: 12px;">
+          Les sources sont combinées dans un même flux pour produire une sortie structurée centrée sur <strong>Lille</strong>.
+        </p>
+      </section>
+
+      <!-- PIPELINE -->
+      <section class="section-card">
+        <h2>Pipeline de traitement</h2>
+        <ul>
+          <li><strong>Collecte</strong> : requêtes HTTP (requests) + parsing HTML (BeautifulSoup).</li>
+          <li><strong>Normalisation</strong> : nettoyage des champs, formats cohérents (ex. coordonnées, noms, catégories).</li>
+          <li><strong>Structuration</strong> : objets/structures JSON internes + organisation par catégories (hôtels/restos/lieux).</li>
+          <li><strong>Exports</strong> : fichiers <strong>CSV</strong> par ville et par catégorie (ex. hotels_lille.csv).</li>
+          <li><strong>Restitution</strong> : carte Folium avec marqueurs (et regroupements si besoin).</li>
+          <li><strong>Robustesse</strong> : gestion des erreurs (timeouts, réponses incomplètes, 0 résultat).</li>
+        </ul>
+      </section>
+
+      <!-- BCC -->
+      <section class="section-card">
+        <h2>BCC mobilisés (compétences)</h2>
+        <div class="proofs-grid">
+          <div class="proof-placeholder" aria-label="BCC ANALYSER">
+            <strong>BCC ANALYSER</strong><br />
+            Définition de critères de pertinence (ville, catégories), contrôle de cohérence des résultats, identification des limites (couverture/qualité).
+          </div>
+          <div class="proof-placeholder" aria-label="BCC TRAITER">
+            <strong>BCC TRAITER</strong><br />
+            Nettoyage et normalisation des données, gestion des valeurs manquantes, structuration JSON → CSV, fiabilisation des formats.
+          </div>
+          <div class="proof-placeholder" aria-label="BCC VALORISER">
+            <strong>BCC VALORISER</strong><br />
+            Restitution claire : exports CSV réutilisables + carte Folium, synthèse et lisibilité pour un utilisateur non technique.
+          </div>
+          <div class="proof-placeholder" aria-label="BCC MODÉLISER / DÉVELOPPER">
+            <strong>BCC MODÉLISER / DÉVELOPPER</strong><br />
+            Conception d’une application structurée (POO), séparation des responsabilités, gestion des erreurs et reproductibilité.
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPETENCES METIER -->
+      <section class="section-card">
+        <h2>Compétences métier mises en œuvre</h2>
+        <ul class="stack-list">
+          <li>Collecte automatisée via <strong>API</strong> (requests) et traitement de réponses <strong>JSON</strong></li>
+          <li>Web scraping (BeautifulSoup) : extraction et structuration d’informations de pages web</li>
+          <li>Organisation et structuration des données : schéma de sortie cohérent (catégories / champs), répartition du travail</li>
+          <li>Exports <strong>CSV</strong> (réutilisables pour analyse et dashboards)</li>
+          <li>Cartographie (Folium) : restitution visuelle des points d’intérêt</li>
+          <li>Fiabilisation : gestion d’erreurs, cas limites, résultats vides</li>
+        </ul>
+      </section>
+
+      <!-- COMPETENCES TRANSVERSALES -->
+      <section class="section-card">
+        <h2>Compétences transversales</h2>
+        <ul>
+          <li><strong>Rigueur</strong> : conventions de nommage, formats homogènes, contrôle des sorties.</li>
+          <li><strong>Organisation</strong> : séparation des modules (collecte / traitement / export / carte).</li>
+          <li><strong>Communication</strong> : documentation, explication du pipeline et des choix techniques.</li>
+        </ul>
+      </section>
+
+      <!-- BILAN -->
+      <section class="section-card">
+        <h2>Bilan personnel</h2>
+
+        <h3>Acquis / points forts</h3>
+        <ul>
+          <li>Construction d’un flux complet : collecte → traitement → export → restitution.</li>
+          <li>Meilleure maîtrise des cas réels (réponses incomplètes, erreurs réseau, changements de structure).</li>
+          <li>Sorties réutilisables (CSV) et présentation claire (carte).</li>
+        </ul>
+
+        <h3>Difficultés / points à retravailler</h3>
+        <ul>
+          <li>Stabilité du scraping (si la page change) : prévoir des sélecteurs robustes.</li>
+          <li>Standardiser certaines informations selon les sources (noms, catégories, champs manquants).</li>
+          <li>Améliorer l’automatisation.</li>
+        </ul>
+      </section>
+
+      <!-- PREUVES -->
+      <section class="section-card">
+        <h2>Preuves (à ajouter)</h2>
+        <div class="proofs-grid">
+          <div class="proof-placeholder">Capture : carte Folium (Lille)</div>
+          <div class="proof-placeholder">Exemple d’export CSV (hôtels/restos/lieux)</div>
+          <div class="proof-placeholder">Extrait de code : appels API + parsing</div>
+          <div class="proof-placeholder">Schéma du pipeline (collecte → traitement → sorties)</div>
+        </div>
+        <p style="margin-top: 12px;">
+          Conseil : 2–3 captures max (lisibles), et un mini schéma simple du flux.
+        </p>
+      </section>
+
+      <!-- LIENS -->
+      <section class="section-card">
+        <h2>Liens</h2>
+        <ul>
+          <li><strong>Repository GitHub :</strong> <a href="#" target="_blank" rel="noopener noreferrer">Cliquer ici</a></li>
+          <li><strong>Documentation / Rapport :</strong> <a href="#" target="_blank" rel="noopener noreferrer">Cliquer ici</a></li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="project-footer">
+    <div class="container">
+      <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analyser — Portfolio BUT Science des Données</title>
+  <meta name="description" content="Bloc Analyser : séries temporelles, ACP, modélisation statistique et interprétation des données." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    #page-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      z-index: 2000; transition: width 0.1s linear;
+    }
+    body { opacity: 0; transition: opacity 0.4s ease; }
+    body.page-loaded { opacity: 1; }
+
+    /* Surcharge couleurs pour ce bloc */
+    .page-analyser .section-label,
+    .page-analyser .timeline-date,
+    .page-analyser .skill-value,
+    .page-analyser .highlight,
+    .page-analyser .bloc-card-link { color: var(--teal) !important; }
+
+    .page-analyser .divider { background: var(--teal); }
+    .page-analyser .skill-fill { background: linear-gradient(90deg, var(--teal), var(--teal-light)); }
+    .page-analyser .timeline::before,
+    .page-analyser .timeline-item::before { background: var(--teal); }
+    .page-analyser .timeline-item::before { box-shadow: 0 0 0 3px var(--teal-glow); }
+    .page-analyser .bilan-box::before { color: var(--teal); }
+    .page-analyser .tag {
+      background: var(--teal-glow);
+      color: var(--teal);
+      border-color: rgba(34,140,120,0.2);
+    }
+    .page-analyser .tool-pill:hover { border-color: var(--teal); }
+    .page-analyser .tool-pill-icon { background: var(--teal-glow); }
+    .page-analyser .card-accent { border-left-color: var(--teal); }
+    .page-analyser .card:hover { border-color: rgba(34,140,120,0.25); }
+    .page-analyser .back-to-top { background: var(--teal); }
+    .page-analyser .back-to-top:hover { background: var(--teal-light); }
+    .page-analyser .bloc-nav-item:hover { border-color: var(--teal); }
+
+    /* Compétences en sous-parties */
+    .competence-block {
+      border-left: 3px solid var(--teal);
+      padding: 1.5rem 1.5rem 1.5rem 2rem;
+      margin-bottom: 2rem;
+      background: var(--surface);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .competence-block h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .competence-block p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin: 0 0 0.75rem;
+    }
+    .competence-block p:last-child { margin-bottom: 0; }
+
+    /* Projets détaillés */
+    .project-detail {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .project-detail-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-detail-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .project-detail-meta h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+    .project-detail-meta .project-context {
+      font-size: 0.85rem;
+      color: var(--teal);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .project-detail-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .project-detail-body { grid-template-columns: 1fr; }
+    }
+    .project-detail-col h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--teal);
+      margin-bottom: 0.6rem;
+    }
+    .project-detail-col p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    .project-detail-col ul {
+      padding-left: 1.2rem;
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+    .project-detail-col ul li { margin-bottom: 0.3rem; }
+    .project-detail-result {
+      grid-column: 1 / -1;
+      background: color-mix(in srgb, var(--teal) 8%, transparent);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      border-left: 3px solid var(--teal);
+    }
+    .project-detail-result strong { color: var(--teal); }
+
+    /* Points forts / à améliorer */
+    .two-col-eval {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 640px) { .two-col-eval { grid-template-columns: 1fr; } }
+    .eval-box {
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+    .eval-box.positif {
+      background: color-mix(in srgb, var(--teal) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--teal) 25%, transparent);
+    }
+    .eval-box.negatif {
+      background: color-mix(in srgb, var(--text-muted) 8%, transparent);
+      border: 1px solid var(--border);
+    }
+    .eval-box h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .eval-box.positif h4 { color: var(--teal); }
+    .eval-box.negatif h4 { color: var(--text-muted); }
+    .eval-box ul {
+      padding-left: 1.2rem;
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+    .eval-box ul li { margin-bottom: 0.4rem; }
+  </style>
+</head>
+<body class="page-analyser">
+
+  <div id="page-progress"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">SD<span>Portfolio</span></a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="traiter.html">Traiter</a></li>
+        <li><a href="analyser.html">Analyser</a></li>
+        <li><a href="valoriser.html">Valoriser</a></li>
+        <li><a href="developper.html">Développer</a></li>
+        <li><a href="projets.html" class="nav-link-projets">Projets</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- BANDEAU -->
+  <section class="bloc-banner">
+    <div class="bloc-banner-glow"></div>
+    <div class="container">
+      <span class="bloc-tag">📊 Bloc 2</span>
+      <h1>Analyser les données</h1>
+      <p>
+        Explorer, modéliser, interpréter : transformer des chiffres
+        en compréhension de phénomènes réels et en leviers de décision.
+      </p>
+    </div>
+  </section>
+
+  <!-- =============================================
+       1. INTRODUCTION DU BLOC
+       ============================================= -->
+  <section class="section" id="definition">
+    <div class="container">
+      <div class="two-col">
+        <div class="slide-left">
+          <span class="section-label">Définition du bloc</span>
+          <h2 class="section-title" style="text-align:left">Qu'est-ce qu'« Analyser » ?</h2>
+          <div class="divider divider-left mb-2"></div>
+          <p>
+            Analyser, ce n'est pas calculer des moyennes. C'est une démarche scientifique :
+            partir d'une problématique, formuler des hypothèses, les confronter aux données
+            avec les bonnes méthodes, puis interpréter les résultats en leur donnant un sens métier.
+          </p>
+          <p>
+            Le bloc <strong class="highlight">Analyser</strong> couvre tout ce qui transforme
+            une donnée brute en information utile à la décision : statistiques descriptives,
+            tests d'hypothèses, modélisation prédictive, analyse multivariée, séries temporelles.
+            C'est le cœur scientifique du métier de data analyst.
+          </p>
+          <p>
+            Dans le référentiel du BUT Science des Données, ce bloc insiste sur la rigueur
+            méthodologique autant que sur la capacité à interpréter. Produire un modèle
+            n'a de valeur que si on est capable d'en lire les résultats, d'en identifier
+            les limites et d'en tirer des conclusions actionnables.
+          </p>
+          <div class="tags-list mt-2">
+            <span class="tag">Statistiques descriptives</span>
+            <span class="tag">Tests d'hypothèses</span>
+            <span class="tag">ACP</span>
+            <span class="tag">Séries temporelles</span>
+            <span class="tag">Modélisation</span>
+            <span class="tag">Interprétation</span>
+          </div>
+        </div>
+        <div class="slide-right">
+          <div class="bilan-box">
+            <p>
+              « Analyser, c'est accepter de ne pas trouver ce qu'on cherchait.
+              C'est laisser les données parler sans forcer leur sens.
+              J'ai appris ça sur la SAÉ séries temporelles : le modèle que je voulais
+              appliquer n'était pas le bon — les données m'ont montré pourquoi. »
+            </p>
+            <p style="color: var(--teal); font-weight:600; font-size:0.9rem; margin-bottom:0">
+              — Réflexion personnelle, SAÉ Port d'Anvers
+            </p>
+          </div>
+          <div class="card mt-2">
+            <h3 style="font-size:0.95rem">🎯 Le lien avec la décision</h3>
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin:0">
+              Une analyse n'a de valeur que si elle oriente une décision.
+              Ce bloc m'a appris à ne pas m'arrêter au résultat numérique —
+              à toujours me demander : <em>qu'est-ce que cela implique concrètement ?
+              Que doit-on faire différemment grâce à cette information ?</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       2. COMPÉTENCES DÉVELOPPÉES
+       ============================================= -->
+  <section class="section section-alt" id="competences">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Compétences</span>
+        <h2 class="section-title">Ce que j'ai développé</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle" style="margin-top:1rem">
+          Cinq axes de compétences analytiques, du plus descriptif au plus interprétatif,
+          construits progressivement à travers les SAÉ du BUT.
+        </p>
+      </div>
+
+      <div style="max-width:820px; margin:0 auto">
+
+        <div class="competence-block fade-in">
+          <h3>🔍 Analyse exploratoire des données (EDA)</h3>
+          <p>
+            L'analyse exploratoire est la première étape indispensable avant toute modélisation.
+            Elle consiste à comprendre la structure des données : distributions, valeurs atypiques,
+            corrélations entre variables, asymétries. Ce n'est pas une formalité — c'est là
+            qu'on détecte les problèmes qui invalideront un modèle appliqué trop vite.
+          </p>
+          <p>
+            J'ai appris à systématiser cette phase : histogrammes, boxplots, matrices de corrélation,
+            visualisation des distributions par groupe. L'objectif est de formuler des hypothèses
+            pertinentes avant de choisir une méthode d'analyse.
+          </p>
+          <div class="tags-list">
+            <span class="tag">Statistiques descriptives</span>
+            <span class="tag">Boxplot / Heatmap</span>
+            <span class="tag">Détection d'anomalies</span>
+            <span class="tag">Corrélations</span>
+          </div>
+        </div>
+
+        <div class="competence-block fade-in">
+          <h3>📐 Analyse statistique et tests d'hypothèses</h3>
+          <p>
+            Au-delà de la description, l'inférence statistique permet de tirer des conclusions
+            sur une population à partir d'un échantillon, avec un niveau de confiance quantifié.
+            J'ai appliqué des tests t, des tests du chi², des analyses de variance (ANOVA),
+            et appris à vérifier les conditions d'application avant de conclure.
+          </p>
+          <p>
+            La notion de significativité statistique est centrale — et souvent mal comprise.
+            Un résultat statistiquement significatif n'est pas forcément pertinent sur le plan métier,
+            et inversement. Faire la distinction est une compétence en soi.
+          </p>
+          <div class="tags-list">
+            <span class="tag">t-test</span>
+            <span class="tag">Chi²</span>
+            <span class="tag">ANOVA</span>
+            <span class="tag">p-valeur</span>
+            <span class="tag">Intervalles de confiance</span>
+            <span class="tag">SAS</span>
+          </div>
+        </div>
+
+        <div class="competence-block fade-in">
+          <h3>📉 Modélisation — régression et réduction de dimension</h3>
+          <p>
+            La modélisation consiste à formaliser mathématiquement une relation dans les données.
+            J'ai travaillé sur des régressions linéaires et logistiques, mais aussi sur des méthodes
+            de réduction de dimension comme l'ACP, qui permettent de synthétiser l'information
+            portée par de nombreuses variables corrélées en quelques axes principaux interprétables.
+          </p>
+          <p>
+            La question clé n'est pas "quel modèle donne les meilleures métriques" mais
+            "quel modèle est adapté à ma problématique et à mes données". Un modèle complexe
+            sur de petites données sur-apprend. Un modèle trop simple passe à côté des relations.
+          </p>
+          <div class="tags-list">
+            <span class="tag">Régression linéaire</span>
+            <span class="tag">Régression logistique</span>
+            <span class="tag">ACP</span>
+            <span class="tag">Biplot</span>
+            <span class="tag">Variance expliquée</span>
+            <span class="tag">scikit-learn</span>
+          </div>
+        </div>
+
+        <div class="competence-block fade-in">
+          <h3>📈 Analyse de séries temporelles</h3>
+          <p>
+            Les données évoluent dans le temps, et cette dimension impose des méthodes spécifiques.
+            J'ai appris à décomposer une série en ses composantes (tendance, saisonnalité, résidus),
+            à tester la stationnarité, à choisir et ajuster des modèles de prévision (ARIMA, ETS),
+            et à évaluer leurs performances sur des données hors-échantillon.
+          </p>
+          <p>
+            La SAÉ Port d'Anvers a été ma principale mise en pratique : prévoir le trafic
+            maritime à partir d'une série longue, sur un contexte économique réel.
+            C'est là que j'ai compris la différence entre un modèle qui s'ajuste bien
+            et un modèle qui prédit bien.
+          </p>
+          <div class="tags-list">
+            <span class="tag">Décomposition STL</span>
+            <span class="tag">ARIMA</span>
+            <span class="tag">ETS</span>
+            <span class="tag">Stationnarité</span>
+            <span class="tag">RMSE / MAE</span>
+            <span class="tag">R (fpp2)</span>
+          </div>
+        </div>
+
+        <div class="competence-block fade-in">
+          <h3>💬 Interprétation et production d'insights</h3>
+          <p>
+            L'interprétation est ce qui donne de la valeur à une analyse. Un résultat numérique
+            sans contexte n'est qu'un nombre. Savoir lire un coefficient de régression,
+            identifier ce qu'un axe principal d'ACP représente, expliquer pourquoi un modèle
+            ARIMA a tel ordre — c'est cela qui transforme une analyse en aide à la décision.
+          </p>
+          <p>
+            J'ai développé l'habitude de systématiquement formuler des conclusions en langage naturel
+            à partir de chaque résultat, en me demandant : <em>qu'est-ce que cela signifie pour
+            quelqu'un qui n'a pas fait le calcul ?</em>
+          </p>
+          <div class="tags-list">
+            <span class="tag">Lecture de résultats</span>
+            <span class="tag">Mise en contexte métier</span>
+            <span class="tag">Formulation d'insights</span>
+            <span class="tag">Limites du modèle</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Barres de compétences -->
+      <div class="skills-list fade-in" style="max-width:680px; margin:2rem auto 0">
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Analyse exploratoire et statistiques descriptives</span>
+            <span class="skill-value">90%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Tests statistiques et inférence</span>
+            <span class="skill-value">74%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="74%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">ACP et analyse multivariée</span>
+            <span class="skill-value">78%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="78%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Séries temporelles (ARIMA, ETS, décomposition)</span>
+            <span class="skill-value">76%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="76%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Régression linéaire et logistique</span>
+            <span class="skill-value">80%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Interprétation et communication des résultats</span>
+            <span class="skill-value">85%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       3. MISE EN PRATIQUE — PROJETS DÉTAILLÉS
+       ============================================= -->
+  <section class="section" id="projets">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Mise en pratique</span>
+        <h2 class="section-title">Projets & SAÉ</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle" style="margin-top:1rem">
+          Trois situations d'apprentissage qui illustrent la démarche analytique
+          dans des contextes concrets et variés.
+        </p>
+      </div>
+
+      <!-- SAÉ Séries temporelles — Port d'Anvers -->
+      <div class="project-detail fade-in">
+        <div class="project-detail-header">
+          <div class="project-detail-icon">⚓</div>
+          <div class="project-detail-meta">
+            <div class="project-context">SAÉ — Séries temporelles &amp; prévision</div>
+            <h3>Port d'Anvers — Prévision du trafic maritime par modélisation de séries temporelles</h3>
+          </div>
+        </div>
+        <div class="project-detail-body">
+          <div class="project-detail-col">
+            <h4>Contexte &amp; problématique</h4>
+            <p>
+              Le Port d'Anvers est l'un des plus grands ports d'Europe. À partir d'une série
+              temporelle mensuelle de trafic de conteneurs sur plusieurs années, l'objectif était
+              de modéliser l'évolution du trafic et de produire des prévisions à horizon 12 mois,
+              en quantifiant l'incertitude associée. La problématique centrale : choisir entre
+              plusieurs modèles concurrents et justifier ce choix.
+            </p>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce que j'ai fait concrètement</h4>
+            <ul>
+              <li>Analyse exploratoire de la série : visualisation, détection de tendance et saisonnalité visuelle</li>
+              <li>Décomposition STL pour isoler les trois composantes (tendance, saisonnalité, résidus)</li>
+              <li>Test de stationnarité (ADF) et application des transformations nécessaires (différenciation, log)</li>
+              <li>Ajustement de modèles ARIMA avec sélection automatique (auto.arima) et manuelle via ACF/PACF</li>
+              <li>Comparaison avec un modèle ETS (lissage exponentiel) sur jeu de test retenu</li>
+              <li>Évaluation des modèles : RMSE, MAE, MAPE sur la période de validation</li>
+              <li>Production de prévisions à 12 mois avec intervalles de confiance à 80 % et 95 %</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Méthodes et outils</h4>
+            <ul>
+              <li>R — package <code>fpp2</code> (Hyndman) : <code>auto.arima()</code>, <code>ets()</code>, <code>stl()</code>, <code>forecast()</code></li>
+              <li>Graphiques ACF / PACF pour l'identification manuelle de l'ordre ARIMA</li>
+              <li>Test de Ljung-Box sur les résidus pour valider l'ajustement</li>
+              <li>Critères d'information AIC / BIC pour la sélection de modèle</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Difficultés rencontrées</h4>
+            <ul>
+              <li>La série présentait une rupture structurelle liée à la crise COVID-19 en 2020 — difficile à intégrer dans un modèle ARIMA classique</li>
+              <li>La saisonnalité était forte mais légèrement variable d'une année à l'autre, ce qui complexifiait la décomposition</li>
+              <li>L'auto.arima recommandait un modèle différent de celui que j'aurais choisi manuellement — comprendre pourquoi a été formateur</li>
+            </ul>
+          </div>
+          <div class="project-detail-result">
+            <strong>Résultat :</strong> Le modèle ARIMA(1,1,1)(0,1,1)[12] a donné les meilleures performances
+            hors-échantillon (RMSE = 42 000 TEUs, MAPE = 4,8 %), légèrement supérieur à l'ETS(M,Ad,M).
+            Les prévisions à 12 mois montraient une reprise progressive du trafic post-pandémie,
+            cohérente avec les données publiées par le port. Ce projet m'a appris que la validation
+            out-of-sample est plus informative que toute métrique d'ajustement en échantillon.
+          </div>
+        </div>
+      </div>
+
+      <!-- SAÉ ACP — Analyse multivariée -->
+      <div class="project-detail fade-in">
+        <div class="project-detail-header">
+          <div class="project-detail-icon">🔬</div>
+          <div class="project-detail-meta">
+            <div class="project-context">SAÉ — Analyse multivariée &amp; réduction de dimension</div>
+            <h3>ACP — Analyse en Composantes Principales sur données multivariées</h3>
+          </div>
+        </div>
+        <div class="project-detail-body">
+          <div class="project-detail-col">
+            <h4>Contexte &amp; problématique</h4>
+            <p>
+              Face à un jeu de données comportant de nombreuses variables quantitatives corrélées,
+              l'objectif était de réduire la dimensionnalité pour identifier les structures
+              sous-jacentes, regrouper les individus selon leurs profils et mettre en évidence
+              les axes de variation principaux. L'ACP permettait de visualiser en 2D un espace
+              initialement à plusieurs dizaines de dimensions.
+            </p>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce que j'ai fait concrètement</h4>
+            <ul>
+              <li>Préparation des données : standardisation, vérification de la matrice de corrélation</li>
+              <li>Calcul de l'ACP (données centrées-réduites) et extraction des valeurs propres</li>
+              <li>Détermination du nombre d'axes à retenir (règle du coude, critère de Kaiser, variance cumulée)</li>
+              <li>Interprétation des axes : lecture des corrélations entre variables et composantes principales</li>
+              <li>Analyse du biplot : positionnement des individus et des variables sur le plan factoriel</li>
+              <li>Identification de groupes d'individus et qualification des profils par axe</li>
+              <li>Rédaction d'un rapport d'interprétation à destination d'un non-statisticien</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Méthodes et outils</h4>
+            <ul>
+              <li>R — packages <code>FactoMineR</code> et <code>factoextra</code></li>
+              <li>Python — <code>scikit-learn</code> : <code>PCA()</code>, visualisation avec matplotlib</li>
+              <li>Lecture du cercle des corrélations (variables) et du nuage de points (individus)</li>
+              <li>Contribution des variables par axe (cos² et contributions relatives)</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce qui était difficile</h4>
+            <ul>
+              <li>L'interprétation des axes n'est pas automatique : nommer un axe principal demande une compréhension des variables qui le composent et de leur sens métier</li>
+              <li>La frontière entre "structure réelle" et "artefact de la méthode" est parfois floue — certains regroupements visuels n'ont pas de sens substantiel</li>
+              <li>Arbitrer entre garder plus d'axes (plus d'info) et rester interprétable (moins d'axes) est un vrai choix méthodologique</li>
+            </ul>
+          </div>
+          <div class="project-detail-result">
+            <strong>Résultat :</strong> Les deux premiers axes expliquaient 68 % de la variance totale,
+            ce qui est suffisant pour une analyse exploratoire. L'axe 1 opposait des profils à forte
+            intensité économique à des profils à activité modérée. L'axe 2 discriminait selon
+            la structure temporelle des données. Ces résultats ont permis de formuler des hypothèses
+            interprétables, soumises ensuite à validation par clustering (k-means sur les composantes principales).
+          </div>
+        </div>
+      </div>
+
+      <!-- SAÉ Tests statistiques / ANOVA -->
+      <div class="project-detail fade-in">
+        <div class="project-detail-header">
+          <div class="project-detail-icon">📐</div>
+          <div class="project-detail-meta">
+            <div class="project-context">SAÉ — Tests statistiques &amp; analyse de variance</div>
+            <h3>ANOVA et tests d'hypothèses sous SAS — Données expérimentales</h3>
+          </div>
+        </div>
+        <div class="project-detail-body">
+          <div class="project-detail-col">
+            <h4>Contexte &amp; problématique</h4>
+            <p>
+              Dans le cadre d'une analyse de données expérimentales (plan factoriel),
+              l'objectif était de déterminer si les différences observées entre groupes étaient
+              statistiquement significatives ou uniquement dues au hasard de l'échantillonnage.
+              Il fallait choisir le test adapté, vérifier ses conditions d'application
+              et interpréter les résultats avec le niveau de rigueur attendu en contexte scientifique.
+            </p>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce que j'ai fait concrètement</h4>
+            <ul>
+              <li>Vérification des hypothèses préalables : normalité des résidus (Shapiro-Wilk), homogénéité des variances (test de Levene)</li>
+              <li>Application d'une ANOVA à un et deux facteurs sous SAS (PROC ANOVA, PROC GLM)</li>
+              <li>Tests post-hoc de Tukey pour identifier les paires de groupes significativement différents</li>
+              <li>Calcul et interprétation de l'effet de taille (eta²) pour qualifier la force de l'effet</li>
+              <li>Rédaction d'un compte-rendu structuré avec tableaux de résultats commentés</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Méthodes et outils</h4>
+            <ul>
+              <li>SAS : <code>PROC UNIVARIATE</code>, <code>PROC GLM</code>, <code>PROC ANOVA</code></li>
+              <li>Tests de normalité (Shapiro-Wilk, QQ-plot des résidus)</li>
+              <li>Comparaisons multiples avec correction (Tukey HSD)</li>
+              <li>Lecture des tables F et interprétation des p-valeurs</li>
+            </ul>
+          </div>
+          <div class="project-detail-col">
+            <h4>Ce que ça m'a apporté</h4>
+            <ul>
+              <li>Comprendre que la significativité statistique dépend aussi de la taille d'échantillon — avec assez de données, presque tout devient significatif</li>
+              <li>L'importance de toujours vérifier les conditions d'application avant d'appliquer un test</li>
+              <li>Savoir formuler une conclusion en intégrant à la fois la p-valeur, l'effet de taille et le contexte métier</li>
+            </ul>
+          </div>
+          <div class="project-detail-result">
+            <strong>Résultat :</strong> L'ANOVA a mis en évidence un effet significatif du facteur principal
+            (F = 12.4, p &lt; 0.001), avec un eta² = 0.31 indiquant un effet de taille modéré à fort.
+            Les tests de Tukey ont permis d'identifier précisément les groupes qui diffèrent,
+            ce qui a orienté les recommandations concrètes issues de l'analyse.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       4. OUTILS ET TECHNOLOGIES
+       ============================================= -->
+  <section class="section section-alt" id="outils">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Outils &amp; Technologies</span>
+        <h2 class="section-title">Ce que j'utilise</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="tools-grid fade-in" style="justify-content:center">
+        <div class="tool-pill"><span class="tool-pill-icon">📐</span>R — fpp2 / forecast</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📐</span>R — FactoMineR / factoextra</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🐍</span>Python — scikit-learn</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🐍</span>Python — statsmodels</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🔬</span>SAS — PROC GLM / ANOVA</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📓</span>Jupyter Notebook</div>
+        <div class="tool-pill"><span class="tool-pill-icon">🌐</span>RStudio</div>
+        <div class="tool-pill"><span class="tool-pill-icon">📉</span>seaborn / matplotlib</div>
+      </div>
+
+      <div class="cards-grid fade-in" style="margin-top:2.5rem">
+        <div class="card">
+          <div class="card-icon">📐</div>
+          <h3>R — fpp2 &amp; FactoMineR</h3>
+          <p>
+            R reste l'environnement de référence pour les méthodes statistiques avancées.
+            <code>fpp2</code> (Hyndman) pour les séries temporelles — <code>auto.arima()</code>,
+            <code>ets()</code>, <code>forecast()</code> — et <code>FactoMineR</code> pour l'ACP
+            et les méthodes factorielles, avec <code>factoextra</code> pour la visualisation.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🐍</div>
+          <h3>Python — scikit-learn &amp; statsmodels</h3>
+          <p>
+            scikit-learn pour la modélisation supervisée (régressions, cross-validation,
+            évaluation) et statsmodels pour les tests statistiques rigoureux et les modèles
+            ARIMA en Python. Les deux bibliothèques sont complémentaires plutôt que concurrentes.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔬</div>
+          <h3>SAS</h3>
+          <p>
+            Utilisé pour les analyses de variance (PROC GLM, PROC ANOVA, PROC UNIVARIATE)
+            dans le contexte des plans d'expérience. SAS impose une rigueur dans la rédaction
+            du code et la lecture des sorties qui est formative pour comprendre ce qu'on calcule.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📓</div>
+          <h3>Jupyter Notebook</h3>
+          <p>
+            Environnement de travail pour l'analyse exploratoire en Python : code, résultats
+            et commentaires dans un seul document. Utile pour la reproductibilité
+            et pour documenter la démarche analytique pas à pas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       5. APPORTS ET PROGRESSION
+       ============================================= -->
+  <section class="section" id="progression">
+    <div class="container">
+      <div class="two-col">
+        <div class="fade-in">
+          <span class="section-label">Progression</span>
+          <h2 class="section-title" style="text-align:left">De "je calcule" à "je comprends"</h2>
+          <div class="divider divider-left mb-3"></div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 1 — 2022</div>
+              <h4>Fondamentaux statistiques</h4>
+              <p>
+                Moyenne, médiane, écart-type, histogrammes, probabilités.
+                Premier contact avec R : je calculais sans vraiment comprendre ce que les résultats signifiaient.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 2 — 2023</div>
+              <h4>Tests d'hypothèses et inférence</h4>
+              <p>
+                Intervalles de confiance, t-test, chi², p-valeur.
+                Première fois que j'ai dû justifier une conclusion statistique par écrit —
+                exercice formateur sur le lien entre calcul et interprétation.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 3 — 2023</div>
+              <h4>Analyse multivariée et ACP</h4>
+              <p>
+                Réduction de dimension, biplot, axes factoriels.
+                Transition vers une approche plus exploratoire : trouver une structure
+                dans les données sans hypothèse préalable.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 4 — 2024</div>
+              <h4>Séries temporelles — Port d'Anvers</h4>
+              <p>
+                ARIMA, ETS, validation out-of-sample.
+                Projet le plus formateur sur la rigueur méthodologique :
+                choisir entre plusieurs modèles, justifier le choix, quantifier l'incertitude.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Semestre 5–6 — 2024–2025</div>
+              <h4>Interprétation et communication</h4>
+              <p>
+                Passage à une approche centrée sur le résultat métier :
+                formuler des insights actionnables, identifier les limites,
+                adapter le niveau de détail à l'audience.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-right">
+          <div class="card" style="margin-bottom:1.5rem">
+            <h3>✅ Ce que je maîtrise</h3>
+            <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.92rem">
+              <li style="margin-bottom:0.4rem">Analyse exploratoire complète d'un jeu de données</li>
+              <li style="margin-bottom:0.4rem">Modélisation et prévision de séries temporelles (ARIMA, ETS)</li>
+              <li style="margin-bottom:0.4rem">ACP et interprétation des axes factoriels</li>
+              <li style="margin-bottom:0.4rem">Tests statistiques adaptés et vérification des conditions d'application</li>
+              <li>Formulation de conclusions interprétables à partir de résultats numériques</li>
+            </ul>
+          </div>
+          <div class="card" style="margin-bottom:1.5rem">
+            <h3>📈 Ce que j'approfondis</h3>
+            <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.92rem">
+              <li style="margin-bottom:0.4rem">Modèles d'apprentissage automatique avancés (Random Forest, XGBoost)</li>
+              <li style="margin-bottom:0.4rem">Séries temporelles multivariées (VAR, modèles à état)</li>
+              <li>Analyse bayésienne et quantification de l'incertitude</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>🏢 Lien professionnel</h3>
+            <p style="font-size:0.92rem; color:var(--text-secondary)">
+              Le Data Analyst utilise ces compétences au quotidien pour répondre aux questions
+              des métiers. Ce qui distingue un bon analyste d'un mauvais, c'est la capacité
+              à choisir la bonne méthode, à en comprendre les limites et à en communiquer
+              les résultats de façon honnête et utile.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       6. REGARD CRITIQUE
+       ============================================= -->
+  <section class="section section-alt" id="bilan">
+    <div class="container" style="max-width:860px">
+      <div class="section-header fade-in">
+        <span class="section-label">Regard critique</span>
+        <h2 class="section-title">Ce que j'en retire</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="bilan-box fade-in">
+        <p>
+          Ce bloc est celui qui a le plus changé ma façon de raisonner.
+          Avant d'apprendre les statistiques, j'avais tendance à chercher une confirmation
+          dans les données — à trouver ce que je m'attendais à trouver.
+          L'apprentissage de la démarche hypothético-déductive m'a appris l'inverse :
+          formuler l'hypothèse nulle, accepter de la rejeter ou non, et ne pas sur-interpréter.
+        </p>
+        <p>
+          Sur la SAÉ Port d'Anvers, j'ai d'abord appliqué un modèle ARIMA avec des paramètres
+          que j'aurais choisis "à l'œil" sur l'ACF/PACF. L'auto.arima a donné un modèle différent
+          avec un AIC nettement meilleur. Comprendre pourquoi — la composante saisonnière que j'avais
+          sous-estimée — a été une leçon concrète sur les biais de l'analyse manuelle.
+        </p>
+        <p>
+          Sur l'ACP, j'ai réalisé que certains regroupements visuels sur le biplot n'avaient
+          aucune signification substantielle : ils étaient des artefacts de la méthode,
+          pas des structures réelles. La tentation de surinterprétation est forte dès qu'on voit
+          des points se regrouper visuellement.
+        </p>
+      </div>
+
+      <div class="two-col-eval fade-in">
+        <div class="eval-box positif">
+          <h4>✔ Points forts</h4>
+          <ul>
+            <li>Démarche méthodologique rigoureuse : vérification des conditions d'application avant tout test</li>
+            <li>Bonne maîtrise de la validation out-of-sample pour les modèles prédictifs</li>
+            <li>Capacité à interpréter des résultats en langage naturel et à les contextualiser</li>
+            <li>Recul critique sur les résultats : identification des limites du modèle</li>
+            <li>Aisance avec R pour les méthodes statistiques avancées</li>
+          </ul>
+        </div>
+        <div class="eval-box negatif">
+          <h4>↗ Axes de progression</h4>
+          <ul>
+            <li>Modèles d'apprentissage automatique non linéaires : encore superficiels par rapport aux méthodes statistiques classiques</li>
+            <li>Gestion des séries temporelles avec ruptures structurelles (chocs exogènes, données manquantes)</li>
+            <li>Inférence causale : différencier corrélation et causalité de manière formelle (DAGs, variables instrumentales)</li>
+            <li>Analyse de données textuelles (NLP) : compétence à construire</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bilan-box fade-in" style="margin-top:1.5rem">
+        <p>
+          <strong style="color:var(--teal)">Ce que j'améliorerais aujourd'hui :</strong>
+          sur la SAÉ Port d'Anvers, j'aurais mieux documenté la phase de sélection de modèle —
+          comparer systématiquement ARIMA et ETS avec un tableau récapitulatif (AIC, RMSE, MAE)
+          plutôt que de choisir après exploration informelle. Sur l'ACP, j'aurais ajouté
+          un clustering (k-means sur les composantes retenues) pour valider que les groupes
+          visuels correspondent à des structures réelles dans les données.
+        </p>
+        <p style="margin-bottom:0">
+          Plus généralement, j'ai appris que la rigueur dans la documentation de la démarche
+          analytique est aussi importante que la rigueur dans le calcul lui-même.
+          Un résultat sans trace de la méthode qui l'a produit est un résultat non reproductible —
+          donc non fiable en contexte professionnel.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       7. LIEN AVEC LE MONDE PROFESSIONNEL
+       ============================================= -->
+  <section class="section" id="pro">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Perspective professionnelle</span>
+        <h2 class="section-title">Ce bloc dans le monde data</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="cards-grid fade-in">
+        <div class="card card-accent">
+          <div class="card-icon">📊</div>
+          <h3>Data Analyst</h3>
+          <p>
+            Le Data Analyst passe l'essentiel de son temps sur les compétences de ce bloc :
+            explorer les données, identifier des tendances, construire des modèles simples,
+            formuler des recommandations. La rigueur statistique et la capacité à interpréter
+            sont ce qui distingue une analyse utile d'un rapport de chiffres sans sens.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">🧠</div>
+          <h3>Data Scientist</h3>
+          <p>
+            Le Data Scientist va plus loin dans la modélisation, mais les fondations sont les mêmes :
+            comprendre les données, valider les hypothèses, éviter le surapprentissage.
+            Un Data Scientist sans culture statistique produit des modèles performants
+            en échantillon et inutiles en production.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">⚖️</div>
+          <h3>Rigueur statistique</h3>
+          <p>
+            Dans un contexte professionnel, une analyse fausse peut conduire à une mauvaise décision
+            coûteuse. La rigueur — vérifier les conditions d'application, quantifier l'incertitude,
+            distinguer significativité statistique et pertinence pratique — est une exigence,
+            pas une option.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">🏢</div>
+          <h3>Compréhension métier</h3>
+          <p>
+            L'analyse ne se fait pas dans un vide. Comprendre le contexte — pourquoi cette donnée
+            existe, ce qu'elle mesure, ce que l'entreprise cherche à savoir — est indispensable
+            pour formuler la bonne problématique et interpréter les résultats correctement.
+            Le dialogue avec les métiers fait partie intégrante de l'analyse.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION ENTRE BLOCS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="bloc-nav fade-in">
+        <a href="traiter.html" class="bloc-nav-item prev">
+          <span style="font-size:1.4rem">←</span>
+          <div>
+            <span class="bloc-nav-label">Bloc précédent</span>
+            <span class="bloc-nav-title">Traiter</span>
+          </div>
+        </a>
+        <a href="valoriser.html" class="bloc-nav-item">
+          <div style="flex:1">
+            <span class="bloc-nav-label">Bloc suivant</span>
+            <span class="bloc-nav-title">Valoriser →</span>
+          </div>
+          <span style="font-size:1.4rem">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">SD<span>Portfolio</span></a>
+          <p>Portfolio de compétences réalisé dans le cadre du BUT Science des Données.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="traiter.html">Traiter</a></li>
+            <li><a href="analyser.html">Analyser</a></li>
+            <li><a href="valoriser.html">Valoriser</a></li>
+            <li><a href="developper.html">Développer</a></li>
+            <li><a href="projets.html">Projets</a></li>
+          </ul>
+        </div>
+        <div class="footer-info">
+          <h4>Formation</h4>
+          <p>BUT Science des Données<br>IUT — Université de Lille<br>Promotion 2022–2025</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 — Portfolio étudiant BUT Science des Données</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">↑</button>
+  <script src="../assets/js/script.js"></script>
+</body>
+</html>

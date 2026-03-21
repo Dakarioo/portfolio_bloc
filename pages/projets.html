@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projets — Portfolio BUT Science des Données</title>
+  <meta name="description" content="Découvrez les projets et SAÉ réalisés dans le cadre du BUT Science des Données : Data, Web, Automobile et plus encore." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <!-- Barre de progression de page -->
+  <style>
+    #page-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0;
+      background: linear-gradient(90deg, var(--copper), var(--gold));
+      z-index: 2000;
+      transition: width 0.1s linear;
+    }
+    body { opacity: 0; transition: opacity 0.4s ease; }
+    body.page-loaded { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- Barre de progression -->
+  <div id="page-progress"></div>
+
+  <!-- =============================================
+       NAVBAR
+       ============================================= -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">SD<span>Portfolio</span></a>
+
+      <button class="burger" id="burger" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="traiter.html">Traiter</a></li>
+        <li><a href="analyser.html">Analyser</a></li>
+        <li><a href="valoriser.html">Valoriser</a></li>
+        <li><a href="developper.html">Développer</a></li>
+        <li><a href="projets.html" class="nav-link-projets">Projets</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- =============================================
+       HERO PROJETS
+       ============================================= -->
+  <section class="hero hero-sm">
+    <div class="container">
+      <div class="hero-content" style="text-align:center; max-width:720px; margin:0 auto;">
+        <span class="section-label">Portfolio</span>
+        <h1 class="hero-title" style="font-size: clamp(2rem, 4.5vw, 3.2rem); margin-top: 0.75rem;">
+          Mes <span class="hero-name">Projets</span>
+        </h1>
+        <p class="hero-subtitle" style="max-width:560px; margin:1.25rem auto 0;">
+          SAÉ, projets personnels et études de cas réalisés au fil de la formation.
+          Les projets SAÉ disposent d'une page dédiée — cliquez sur <strong style="color:var(--teal-light)">Voir le projet</strong> pour y accéder.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FILTRES + GRILLE DE PROJETS
+       ============================================= -->
+  <section class="section" id="projets-section">
+    <div class="container">
+
+      <!-- Compteur de résultats -->
+      <div class="projets-meta fade-in">
+        <span id="projets-count" class="projets-count">Chargement…</span>
+      </div>
+
+      <!-- Boutons de filtre -->
+      <div class="filtres-bar fade-in" role="group" aria-label="Filtrer les projets">
+        <button class="filtre-btn active" data-filtre="Tous">Tous</button>
+        <button class="filtre-btn filtre-sae" data-filtre="SAE">🎓 SAÉ</button>
+        <button class="filtre-btn" data-filtre="Data">📊 Data</button>
+        <button class="filtre-btn" data-filtre="Web">🌐 Web</button>
+        <button class="filtre-btn" data-filtre="Personnel">⭐ Personnel</button>
+      </div>
+
+      <!-- Grille des cartes projets -->
+      <div class="projets-grid" id="projets-grid">
+        <!-- Rempli dynamiquement par JavaScript -->
+      </div>
+
+      <!-- Message si aucun résultat -->
+      <div class="projets-empty" id="projets-empty" style="display:none;">
+        <span class="projets-empty-icon">🔍</span>
+        <p>Aucun projet ne correspond à ce filtre.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">SD<span>Portfolio</span></a>
+          <p>Portfolio de compétences réalisé dans le cadre du BUT Science des Données.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="traiter.html">Traiter</a></li>
+            <li><a href="analyser.html">Analyser</a></li>
+            <li><a href="valoriser.html">Valoriser</a></li>
+            <li><a href="developper.html">Développer</a></li>
+            <li><a href="projets.html">Projets</a></li>
+          </ul>
+        </div>
+        <div class="footer-info">
+          <h4>Formation</h4>
+          <p>BUT Science des Données<br>IUT — Université de Lille<br>Promotion 2022–2025</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 — Portfolio étudiant BUT Science des Données</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bouton retour en haut -->
+  <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">↑</button>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/projets.js"></script>
+</body>
+</html>

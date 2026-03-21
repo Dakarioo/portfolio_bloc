@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "titre": "Reporting d'une analyse multivariée",
+    "description": "Exploration et synthèse de données complexes : Analyse en Composantes Principales (ACP), classification hiérarchique et visualisations interactives (biplots, dendrogrammes) pour identifier les axes majeurs de variabilité.",
+    "technologies": ["Python", "Pandas", "Scikit-learn", "Matplotlib"],
+    "categories": ["Data", "SAE"],
+    "github": "https://github.com/",
+    "details": "../SAE/sae-4-02-reporting-multivarie.html"
+  },
+  {
+    "id": 2,
+    "titre": "Intégration de données dans un datawarehouse",
+    "description": "Reverse engineering de la base Chinook, modélisation MCD/MLD/MPD, création d'une base Oracle, puis conception d'un schéma en étoile et alimentation du datawarehouse via scripts SQL, avec cahier de recette.",
+    "technologies": ["SQL", "Oracle", "Modélisation", "Datawarehouse", "Git/GitHub"],
+    "categories": ["Data", "SAE"],
+    "github": "https://github.com/",
+    "details": "../SAE/sae-3-02-datawarehouse.html"
+  },
+  {
+    "id": 3,
+    "titre": "MonVoyage — Application Python de planification",
+    "description": "Application Python qui automatise la collecte d'informations (hôtels, activités, météo, transports) via API et web scraping, et génère des exports CSV et une carte interactive Folium.",
+    "technologies": ["Python", "BeautifulSoup", "folium", "API REST", "csv", "json"],
+    "categories": ["Web", "SAE"],
+    "github": "https://github.com/",
+    "details": "../SAE/sae-3-vcod-01-collecte-web.html"
+  },
+  {
+    "id": 4,
+    "titre": "Description & prévision de données temporelles",
+    "description": "Analyse du trafic du Port d'Anvers-Bruges sur 2019–2023 : exploration, saisonnalité, décomposition, modèles ETS/ARIMA et évaluation RMSE/MAE pour soutenir la planification des ressources.",
+    "technologies": ["R", "fpp2", "Décomposition", "ARIMA", "ETS"],
+    "categories": ["Data", "SAE"],
+    "github": "https://github.com/",
+    "details": "../SAE/sae_analyse_tempo.html"
+  },
+  {
+    "id": 5,
+    "titre": "Conformité réglementaire (RGPD)",
+    "description": "Mise en situation professionnelle autour de la conformité RGPD : licéité des traitements, encadrement de la collecte, droits des personnes, anonymisation, pseudonymisation et sécurité des données.",
+    "technologies": ["RGPD", "Gouvernance", "Sécurité", "Anonymisation", "Pseudonymisation"],
+    "categories": ["Data", "SAE"],
+    "github": "https://github.com/",
+    "details": "../SAE/rgpd.html"
+  },
+  {
+    "id": 6,
+    "titre": "Dashboard Power BI — Suivi RH",
+    "description": "Conception d'un tableau de bord interactif pour le suivi des indicateurs RH : turnover, absentéisme, répartition des effectifs. Connexion directe à une base de données SQL.",
+    "technologies": ["Power BI", "DAX", "SQL", "Excel"],
+    "categories": ["Data"],
+    "github": "https://github.com/",
+    "details": "#"
+  },
+  {
+    "id": 7,
+    "titre": "Modèle prédictif ML — Churn client",
+    "description": "Développement d'un modèle de machine learning pour prédire le churn client. Comparaison de plusieurs algorithmes (Random Forest, XGBoost) et optimisation des hyperparamètres.",
+    "technologies": ["Python", "scikit-learn", "XGBoost", "Pandas"],
+    "categories": ["Data"],
+    "github": "https://github.com/",
+    "details": "#"
+  },
+  {
+    "id": 8,
+    "titre": "ETL Pipeline — Données météo",
+    "description": "Conception d'un pipeline ETL complet : extraction de données météorologiques via API, transformation et nettoyage en Python, chargement dans une base PostgreSQL.",
+    "technologies": ["Python", "PostgreSQL", "API REST", "Airflow"],
+    "categories": ["Data"],
+    "github": "https://github.com/",
+    "details": "#"
+  },
+  {
+    "id": 9,
+    "titre": "Application web de gestion de stock",
+    "description": "Application CRUD complète pour la gestion d'un stock produits. Interface web responsive, back-end Python Flask, base de données SQLite, authentification utilisateur.",
+    "technologies": ["Python", "Flask", "SQLite", "HTML/CSS"],
+    "categories": ["Web"],
+    "github": "https://github.com/",
+    "details": "#"
+  },
+  {
+    "id": 10,
+    "titre": "Site Portfolio Personnel",
+    "description": "Développement from scratch de ce portfolio de compétences. Design sobre et moderne, animations CSS, chargement dynamique des projets en JavaScript, entièrement responsive.",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "categories": ["Web", "Personnel"],
+    "github": "https://github.com/",
+    "details": "../index.html"
+  }
+]
