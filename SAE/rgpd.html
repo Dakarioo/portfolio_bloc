@@ -3,168 +3,230 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>SAE 3.VCOD.04 – Conformité réglementaire (RGPD)</title>
+  <title>Conformité réglementaire pour traiter des données (RGPD) | Antonin Cavory--Dupuis</title>
   <meta name="description" content="SAE 3.VCOD.04 – Conformité réglementaire pour traiter des données (RGPD) – Antonin Cavory–Dupuis. Gouvernance, licéité, consentement, sécurité, anonymisation." />
-
-  <!-- Même CSS que tes pages projets -->
   <link rel="stylesheet" href="../assets/projects.css" />
   <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
-
-  <!-- OpenGraph -->
   <meta property="og:title" content="SAE 3.VCOD.04 – Conformité réglementaire (RGPD) | Antonin Cavory--Dupuis" />
   <meta property="og:description" content="RGPD, gouvernance, licéité du traitement, consentement, anonymisation/pseudonymisation, sécurité des données." />
+  <style>
+    body { opacity: 0; transition: opacity 0.35s ease; }
+    body.page-loaded { opacity: 1; }
+    #page-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, var(--copper), var(--gold)); z-index: 2000; transition: width 0.1s linear; }
+  </style>
 </head>
-
 <body>
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <a class="logo" href="../index.html">Antonin Cavory--Dupuis</a>
+<div id="page-progress"></div>
 
-      <nav aria-label="Navigation">
-        <ul class="nav-links">
-          <li><a href="../index.html#projets">Projets</a></li>
-          <li><a href="../index.html#apropos">À propos</a></li>
-          <li><a href="../index.html#competences">Compétences</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">SD<span>Portfolio</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../pages/traiter.html">Traiter</a></li>
+      <li><a href="../pages/analyser.html">Analyser</a></li>
+      <li><a href="../pages/valoriser.html">Valoriser</a></li>
+      <li><a href="../pages/developper.html">Développer</a></li>
+    </ul>
+    <a href="../pages/projets.html" class="nav-back">← Projets</a>
+  </div>
+</nav>
 
-  <!-- FIL D'ARIANE -->
-  <nav class="breadcrumb" aria-label="Fil d’Ariane">
-    <a href="../index.html">Accueil</a><span class="sep">›</span>
-    <a href="../index.html#projets">Projets</a><span class="sep">›</span>
-    <span>SAE 3.VCOD.04</span>
-  </nav>
+<nav class="breadcrumb">
+  <a href="../index.html">Accueil</a><span class="sep">›</span>
+  <a href="../pages/projets.html">Projets</a><span class="sep">›</span>
+  <span>SAE 3.VCOD.04 – RGPD</span>
+</nav>
 
-  <!-- HERO PROJET -->
-  <section class="project-hero">
-    <div class="container">
-      <div class="project-hero-card">
-        <span class="project-tag">SAE 3.VCOD.04</span>
-        <h1 class="project-title">Conformité réglementaire pour traiter des données (RGPD)</h1>
-        <p class="project-subtitle">
-          Mise en situation professionnelle autour de la conformité : licéité des traitements, encadrement de la collecte,
-          durée de conservation, droits des personnes, et mesures de protection (anonymisation, pseudonymisation, sécurité).
-        </p>
-
-        <div class="project-meta">
-          <span class="pill">RGPD</span>
-          <span class="pill">Gouvernance</span>
-          <span class="pill">Sécurité</span>
-          <span class="pill">Anonymisation</span>
-          <span class="pill">Pseudonymisation</span>
-        </div>
+<!-- HERO -->
+<section class="project-hero">
+  <div class="container">
+    <div class="project-hero-card">
+      <span class="project-tag">SAE 3.VCOD.04</span>
+      <h1 class="project-title">Conformité réglementaire pour traiter des données (RGPD)</h1>
+      <p class="project-subtitle">
+        Mise en situation professionnelle autour de la conformité RGPD : analyse de la licéité des traitements,
+        droits des personnes, anonymisation, pseudonymisation et gouvernance des données.
+      </p>
+      <div class="project-meta" aria-label="Notions mobilisées">
+        <span class="pill">RGPD</span>
+        <span class="pill">Gouvernance</span>
+        <span class="pill">Sécurité des données</span>
+        <span class="pill">Anonymisation</span>
+        <span class="pill">Pseudonymisation</span>
+        <span class="pill">Conformité</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTENU -->
-  <main class="project-content">
-    <div class="container">
+<!-- CONTENT -->
+<main class="project-content">
+  <div class="container">
 
-      <section class="section-card">
-        <h2>Problématique / Contexte</h2>
-        <p>
-          Dans un contexte de digitalisation et de transparence, la gestion et la protection des données personnelles sont devenues centrales.
-          Les organisations doivent justifier la licéité de la collecte et du stockage, limiter la durée d’utilisation,
-          sécuriser les données et répondre aux droits des personnes concernées (accès, rectification, opposition, effacement).
-        </p>
-      </section>
+    <!-- 1. FICHE SAE -->
+    <section class="section-card">
+      <h2>Fiche SAE</h2>
+      <ul class="clean-list">
+        <li><strong>Titre :</strong> SAE 3.VCOD.04 – Conformité réglementaire pour traiter des données (RGPD)</li>
+        <li><strong>Conditions :</strong> projet encadré</li>
+        <li><strong>Rendus :</strong> analyse de conformité + recommandations + documentation de gouvernance</li>
+        <li><strong>BCC associés :</strong> ANALYSER • TRAITER • VALORISER</li>
+        <li><strong>Pré-requis :</strong> compréhension des systèmes d'information, collecte de données</li>
+      </ul>
+    </section>
 
-      <section class="section-card">
-        <h2>Objectifs</h2>
-        <ul>
-          <li>Comprendre les enjeux de la réglementation (RGPD) sur la protection des données.</li>
-          <li>Évaluer la conformité d’un traitement : finalité, base légale, consentement, minimisation, conservation.</li>
-          <li>Structurer une démarche de mise en conformité et proposer des actions correctives réalistes.</li>
-          <li>Identifier des mesures de protection : anonymisation, pseudonymisation, sécurité, traçabilité.</li>
-        </ul>
-      </section>
+    <!-- 2. CONTEXTE / PROBLÉMATIQUE -->
+    <section class="section-card">
+      <h2>Contexte / Problématique</h2>
+      <p>
+        Dans un contexte de digitalisation et de transparence, la gestion et la protection des données personnelles sont devenues centrales.
+        Depuis l'entrée en vigueur du Règlement Général sur la Protection des Données (RGPD) en mai 2018, encadré en France par la CNIL,
+        les organisations doivent justifier la licéité de la collecte et du stockage, limiter la durée d'utilisation,
+        sécuriser les données et répondre aux droits des personnes concernées (accès, rectification, opposition, effacement).
+        Cette SAE place l'étudiant en situation professionnelle pour appréhender ces exigences réglementaires et produire une démarche de conformité structurée.
+      </p>
+    </section>
 
-      <section class="section-card">
-        <h2>Démarche &amp; livrables</h2>
-        <ul>
-          <li>Analyse d’un scénario de collecte/traitement de données et identification des risques.</li>
-          <li>Vérification des conditions de licéité (base légale, consentement, information des personnes).</li>
-          <li>Recommandations sur la durée de conservation et la limitation des usages.</li>
-          <li>Proposition de mesures techniques/organisationnelles (sécurité, anonymisation/pseudonymisation).</li>
-          <li>Structuration d’une documentation de conformité (logique de gouvernance).</li>
-        </ul>
-      </section>
+    <!-- 3. OBJECTIFS -->
+    <section class="section-card">
+      <h2>Objectifs</h2>
+      <ul class="clean-list">
+        <li>Comprendre les enjeux de la réglementation (RGPD) sur la protection des données.</li>
+        <li>Évaluer la conformité d'un traitement : finalité, base légale, consentement, minimisation, conservation.</li>
+        <li>Structurer une démarche de mise en conformité et proposer des actions correctives réalistes.</li>
+        <li>Identifier des mesures de protection : anonymisation, pseudonymisation, sécurité, traçabilité.</li>
+      </ul>
+    </section>
 
-      <section class="section-card">
-        <h2>BCC mobilisés</h2>
-        <div class="proofs-grid">
-          <div class="proof-placeholder" aria-label="BCC ANALYSER">
-            <strong>BCC ANALYSER</strong><br />
-            Identifier les risques et exigences RGPD, interpréter un contexte réglementaire, analyser une situation de traitement.
+    <!-- 4. DÉMARCHE & LIVRABLES -->
+    <section class="section-card">
+      <h2>Démarche &amp; Livrables</h2>
+      <ol class="timeline">
+        <li class="timeline-step">
+          <span class="timeline-num">1</span>
+          <div class="timeline-body">
+            <strong>Analyse du scénario</strong> — Identification des risques, des acteurs impliqués (responsable de traitement, sous-traitants, personnes concernées) et des flux de données.
           </div>
-          <div class="proof-placeholder" aria-label="BCC TRAITER">
-            <strong>BCC TRAITER</strong><br />
-            Qualifier la collecte, définir les règles de conservation, cadrer la licéité et l’organisation des données.
+        </li>
+        <li class="timeline-step">
+          <span class="timeline-num">2</span>
+          <div class="timeline-body">
+            <strong>Vérification de la licéité</strong> — Contrôle de la base légale applicable (consentement, contrat, obligation légale, intérêt légitime), vérification de l'information des personnes.
           </div>
-          <div class="proof-placeholder" aria-label="BCC VALORISER">
-            <strong>BCC VALORISER</strong><br />
-            Argumenter et formaliser la démarche, produire une restitution claire et exploitable en contexte professionnel.
+        </li>
+        <li class="timeline-step">
+          <span class="timeline-num">3</span>
+          <div class="timeline-body">
+            <strong>Conservation &amp; minimisation</strong> — Définition des durées de conservation adaptées à chaque finalité, identification des données superflues à éliminer ou à limiter.
           </div>
+        </li>
+        <li class="timeline-step">
+          <span class="timeline-num">4</span>
+          <div class="timeline-body">
+            <strong>Mesures de protection</strong> — Proposition de mesures techniques et organisationnelles : sécurité des accès, anonymisation, pseudonymisation, gestion des incidents.
+          </div>
+        </li>
+        <li class="timeline-step">
+          <span class="timeline-num">5</span>
+          <div class="timeline-body">
+            <strong>Documentation de conformité</strong> — Structuration d'un registre des traitements, rédaction de recommandations et logique de gouvernance applicable en entreprise.
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 5. BCC MOBILISÉS -->
+    <section class="section-card">
+      <h2>BCC mobilisés</h2>
+      <div class="bcc-grid">
+        <div class="bcc-item analyser">
+          <strong>BCC ANALYSER</strong>
+          <p>Identifier les risques RGPD, interpréter un contexte réglementaire, analyser une situation de traitement et ses exigences de conformité.</p>
         </div>
-      </section>
-
-      <section class="section-card">
-        <h2>Compétences mises en œuvre</h2>
-        <ul class="stack-list">
-          <li>RGPD : finalités, bases légales, consentement, droits des personnes</li>
-          <li>Gouvernance : traçabilité, responsabilisation, documentation</li>
-          <li>Sécurité : principes de protection, réduction des risques</li>
-          <li>Anonymisation &amp; pseudonymisation : principes et usages</li>
-          <li>Communication professionnelle : recommandations structurées</li>
-        </ul>
-      </section>
-
-      <section class="section-card">
-        <h2>Apports / Points forts</h2>
-        <ul>
-          <li>Compréhension des enjeux légaux et éthiques liés à la donnée.</li>
-          <li>Capacité à structurer une démarche de conformité applicable en entreprise.</li>
-          <li>Vision “gouvernance” complémentaire à la technique (ETL/SQL/BI).</li>
-        </ul>
-      </section>
-
-      <section class="section-card">
-        <h2>Difficultés &amp; axes d’amélioration</h2>
-        <ul>
-          <li>Traduire une contrainte réglementaire en actions opérationnelles concrètes.</li>
-          <li>Être précis sur la documentation attendue (registre, preuves, procédures internes).</li>
-          <li>Approfondir la partie sécurité (mesures techniques, contrôle d’accès, journalisation).</li>
-        </ul>
-      </section>
-
-      <section class="section-card">
-        <h2>Preuves (à compléter)</h2>
-        <div class="proofs-grid">
-          <div class="proof-placeholder">Synthèse conformité (placeholder)</div>
-          <div class="proof-placeholder">Recommandations / plan d’actions (placeholder)</div>
-          <div class="proof-placeholder">Schéma de gouvernance (placeholder)</div>
+        <div class="bcc-item traiter">
+          <strong>BCC TRAITER</strong>
+          <p>Qualifier la collecte, définir les règles de conservation, cadrer la licéité et l'organisation des données selon les principes du RGPD.</p>
         </div>
-        <p style="margin-top: 12px;">
-          Astuce : remplace ces blocs par des captures (ou PDF) quand tu les auras, en restant sobre.
-        </p>
-      </section>
+        <div class="bcc-item valoriser">
+          <strong>BCC VALORISER</strong>
+          <p>Argumenter et formaliser la démarche, produire une restitution claire et exploitable en contexte professionnel à destination des parties prenantes.</p>
+        </div>
+      </div>
+    </section>
 
-    </div>
-  </main>
+    <!-- 6. COMPÉTENCES MISES EN ŒUVRE -->
+    <section class="section-card">
+      <h2>Compétences mises en œuvre</h2>
+      <ul class="clean-list">
+        <li>RGPD : finalités, bases légales, consentement, droits des personnes</li>
+        <li>Gouvernance : traçabilité, responsabilisation, documentation</li>
+        <li>Sécurité : principes de protection, réduction des risques</li>
+        <li>Anonymisation &amp; pseudonymisation : principes et usages</li>
+        <li>Communication professionnelle : recommandations structurées</li>
+      </ul>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="project-footer">
-    <div class="container">
-      <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
-    </div>
-  </footer>
+    <!-- 7. BILAN -->
+    <section class="section-card">
+      <h2>Bilan personnel</h2>
+      <div class="bilan-grid">
+        <div class="bilan-col bilan-acquis">
+          <h3>Acquis / points forts</h3>
+          <ul class="clean-list">
+            <li>Compréhension des enjeux légaux et éthiques liés à la donnée.</li>
+            <li>Capacité à structurer une démarche de conformité applicable en entreprise.</li>
+            <li>Vision "gouvernance" complémentaire à la technique.</li>
+            <li>Lecture transversale : réglementaire + opérationnel.</li>
+          </ul>
+        </div>
+        <div class="bilan-col bilan-axes">
+          <h3>Difficultés / axes d'amélioration</h3>
+          <ul class="clean-list">
+            <li>Traduire une contrainte réglementaire en actions opérationnelles concrètes.</li>
+            <li>Formaliser la documentation attendue (registre, preuves, procédures).</li>
+            <li>Approfondir la partie sécurité technique (contrôle d'accès, journalisation).</li>
+            <li>Intégrer des outils de DPO (registre des traitements, PIA).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <script src="../script.js"></script>
+    <!-- 8. PREUVES -->
+    <section class="section-card">
+      <h2>Preuves</h2>
+      <div class="proofs-grid">
+        <div class="proof-placeholder">Synthèse conformité (placeholder)</div>
+        <div class="proof-placeholder">Recommandations / plan d'actions (placeholder)</div>
+        <div class="proof-placeholder">Schéma de gouvernance (placeholder)</div>
+        <div class="proof-placeholder">Registre des traitements — structure type</div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="project-footer">
+  <div class="container">
+    <a class="back-link" href="../pages/projets.html">← Retour aux projets</a>
+    <span class="footer-info">Portfolio BUT Science des Données — Antonin Cavory--Dupuis</span>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('page-loaded');
+    const nb = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { nb && (window.scrollY > 20 ? nb.classList.add('scrolled') : nb.classList.remove('scrolled')); }, { passive: true });
+    const pb = document.getElementById('page-progress');
+    if (pb) window.addEventListener('scroll', () => { const t = document.documentElement.scrollHeight - window.innerHeight; pb.style.width = Math.min((window.scrollY/t)*100,100)+'%'; }, { passive: true });
+    document.querySelectorAll('.section-card').forEach((el, i) => {
+      setTimeout(() => {
+        const obs = new IntersectionObserver(([e]) => { if(e.isIntersecting){ el.classList.add('visible'); obs.disconnect(); } }, { threshold: 0.08 });
+        obs.observe(el);
+      }, i * 30);
+    });
+  });
+</script>
 </body>
 </html>

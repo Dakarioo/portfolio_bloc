@@ -1,83 +1,300 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAE 4.02 – Reporting d’une analyse multivariée | Antonin Cavory--Dupuis</title>
-    <meta name="description" content="Projet : Reporting d’une analyse multivariée (SAE 4.02) – Antonin Cavory--Dupuis. Analyse exploratoire, ACP, visualisations, restitution.">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
-    <meta property="og:title" content="SAE 4.02 – Reporting d’une analyse multivariée | Antonin Cavory--Dupuis">
-    <meta property="og:description" content="Projet : Reporting d’une analyse multivariée (SAE 4.02) – Analyse exploratoire, ACP, visualisations, restitution.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAE 4.02 – Reporting d'une analyse multivariée | Antonin Cavory--Dupuis</title>
+  <meta name="description" content="SAE 4.02 – Reporting d'une analyse multivariée : ACP, classification hiérarchique (CAH), réduction de dimension, identification de profils. Portfolio d'Antonin Cavory-Dupuis." />
+  <link rel="stylesheet" href="../assets/projects.css" />
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <meta property="og:title" content="SAE 4.02 – Reporting d'une analyse multivariée" />
+  <meta property="og:description" content="Exploration et synthèse de données complexes via ACP et CAH — identification des axes de variabilité, regroupement de profils, restitution pour l'aide à la décision." />
+  <style>
+    body { opacity: 0; transition: opacity 0.35s ease; }
+    body.page-loaded { opacity: 1; }
+    #page-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, var(--copper), var(--gold)); z-index: 2000; transition: width 0.1s linear; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('page-loaded');
+      const nb = document.getElementById('navbar');
+      window.addEventListener('scroll', () => { nb && (window.scrollY > 20 ? nb.classList.add('scrolled') : nb.classList.remove('scrolled')); }, { passive: true });
+      const pb = document.getElementById('page-progress');
+      if (pb) window.addEventListener('scroll', () => { const t = document.documentElement.scrollHeight - window.innerHeight; pb.style.width = Math.min((window.scrollY/t)*100,100)+'%'; }, { passive: true });
+      document.querySelectorAll('.section-card').forEach((el, i) => {
+        setTimeout(() => {
+          const obs = new IntersectionObserver(([e]) => { if(e.isIntersecting){ el.classList.add('visible'); obs.disconnect(); } }, { threshold: 0.08 });
+          obs.observe(el);
+        }, i * 30);
+      });
+    });
+  </script>
 </head>
+
 <body>
-    <header class="navbar">
-        <div class="container nav-container">
-            <div class="logo">Antonin Cavory--Dupuis</div>
-            <nav>
-                <ul>
-                    <li><a href="../index.html#projets">Retour aux projets</a></li>
-                </ul>
-            </nav>
+
+  <div id="page-progress"></div>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">SD<span>Portfolio</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../pages/traiter.html">Traiter</a></li>
+        <li><a href="../pages/analyser.html">Analyser</a></li>
+        <li><a href="../pages/valoriser.html">Valoriser</a></li>
+        <li><a href="../pages/developper.html">Développer</a></li>
+      </ul>
+      <a href="../pages/projets.html" class="nav-back">← Projets</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="../index.html">Accueil</a>
+      <span class="sep">›</span>
+      <a href="../pages/projets.html">Projets</a>
+      <span class="sep">›</span>
+      <span>SAE 4.02 – Reporting d'une analyse multivariée</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="project-hero">
+      <div class="container">
+        <div class="project-hero-card">
+          <span class="project-tag">SAE 4.02</span>
+          <h1 class="project-title">Reporting d'une analyse multivariée</h1>
+          <p class="project-subtitle">
+            Exploration et synthèse de données complexes via <strong>Analyse en Composantes Principales (ACP)</strong>
+            et <strong>classification hiérarchique (CAH)</strong> — identification des axes de variabilité,
+            regroupement de profils, restitution pour l'aide à la décision.
+          </p>
+          <div class="project-meta" aria-label="Technologies utilisées">
+            <span class="pill">Python</span>
+            <span class="pill">Pandas</span>
+            <span class="pill">Scikit-learn</span>
+            <span class="pill">Matplotlib</span>
+            <span class="pill">NumPy</span>
+            <span class="pill">ACP/CAH</span>
+          </div>
+          <a class="btn btn-outline" href="https://github.com/" target="_blank" rel="noopener">Voir le repository (GitHub)</a>
         </div>
-    </header>
-    <main>
-        <nav class="breadcrumb" aria-label="Fil d’Ariane">
-            <a href="../index.html">Accueil</a> &gt; <a href="../index.html#projets">Projets</a> &gt; <span>SAE 4.02</span>
-        </nav>
-        <section class="project-case-study">
-            <div class="container">
-                <div class="project-header">
-                    <span class="project-badge">SAE 4.02</span>
-                    <h1>Reporting d’une analyse multivariée</h1>
-                </div>
-                <div class="project-sections">
-                    <section>
-                        <h2>Objectif d’analyse</h2>
-                        <p>Explorer et synthétiser des données complexes pour mettre en évidence des corrélations et des axes d’explication principaux.</p>
-                    </section>
-                    <section>
-                        <h2>Méthode</h2>
-                        <p>Analyse en Composantes Principales (ACP), classification hiérarchique, visualisations interactives (biplots, dendrogrammes).</p>
-                    </section>
-                    <section>
-                        <h2>Visualisations clés</h2>
-                        <div class="proofs-grid">
-                            <div class="proof-placeholder" aria-label="Emplacement biplot">Biplot ACP (placeholder)</div>
-                            <div class="proof-placeholder" aria-label="Emplacement dendrogramme">Dendrogramme (placeholder)</div>
-                        </div>
-                    </section>
-                    <section>
-                        <h2>Résultats et interprétation</h2>
-                        <p>Identification des axes majeurs de variabilité, regroupement de profils, restitution claire pour l’aide à la décision.</p>
-                    </section>
-                    <section>
-                        <h2>Stack technique</h2>
-                        <ul class="stack-list">
-                            <li>Python</li>
-                            <li>Pandas</li>
-                            <li>Scikit-learn</li>
-                            <li>Matplotlib</li>
-                        </ul>
-                    </section>
-                </div>
-                <div class="project-actions">
-                    <a href="../index.html#projets" class="btn-secondary">Retour aux projets</a>
-                </div>
-            </div>
+      </div>
+    </section>
+
+    <!-- CONTENU -->
+    <section class="project-content">
+      <div class="container">
+
+        <!-- 1. FICHE SAE -->
+        <section class="section-card">
+          <h2>Fiche SAE</h2>
+          <ul class="clean-list">
+            <li><strong>Titre :</strong> SAE 4.02 – Reporting d'une analyse multivariée</li>
+            <li><strong>Conditions :</strong> projet encadré</li>
+            <li><strong>Rendus :</strong> rapport écrit + visualisations + restitution orale</li>
+            <li><strong>BCC :</strong> ANALYSER &bull; TRAITER &bull; VALORISER</li>
+            <li><strong>Pré-requis :</strong> Python, statistiques descriptives, algèbre linéaire de base</li>
+          </ul>
         </section>
-    </main>
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <span class="footer-name">Antonin Cavory--Dupuis</span>
-                <span class="footer-sep">|</span>
-                <span class="footer-role">Portfolio Data &amp; Décisionnel</span>
-                <span class="footer-sep">|</span>
-                <span class="footer-year">&copy; 2026</span>
+
+        <!-- 2. CONTEXTE / PROBLEMATIQUE -->
+        <section class="section-card">
+          <h2>Contexte / Problématique</h2>
+          <p>
+            Face à des jeux de données multi-dimensionnels, l'interprétation directe devient impossible.
+            Cette SAE répond à la problématique suivante : comment synthétiser l'information contenue dans
+            un grand nombre de variables corrélées pour en extraire des axes lisibles et regrouper des
+            profils similaires ?
+          </p>
+          <p>
+            L'ACP permet de réduire la dimensionnalité en préservant la variance maximale, tandis que la
+            classification hiérarchique (CAH) structure les observations en groupes homogènes — deux outils
+            complémentaires au cœur du reporting décisionnel.
+          </p>
+        </section>
+
+        <!-- 3. DONNEES & SOURCES -->
+        <section class="section-card">
+          <h2>Données &amp; Sources</h2>
+          <ul class="clean-list">
+            <li><strong>Source :</strong> dataset multidimensionnel fourni dans le cadre de la SAE</li>
+            <li><strong>Variables :</strong> multiples variables quantitatives mesurées sur un ensemble d'individus</li>
+            <li><strong>Format :</strong> CSV structuré, données numériques continues</li>
+            <li><strong>Prétraitement requis :</strong> vérification des valeurs manquantes, standardisation (centrage-réduction)</li>
+          </ul>
+        </section>
+
+        <!-- 4. METHODOLOGIE -->
+        <section class="section-card">
+          <h2>Méthodologie</h2>
+          <ol class="timeline">
+            <li class="timeline-step">
+              <span class="timeline-num">1</span>
+              <div class="timeline-body">
+                <strong>Exploration initiale</strong>
+                <p>Statistiques descriptives, détection de valeurs aberrantes, matrice de corrélations, vérification des hypothèses (normalité, linéarité).</p>
+              </div>
+            </li>
+            <li class="timeline-step">
+              <span class="timeline-num">2</span>
+              <div class="timeline-body">
+                <strong>Standardisation des données</strong>
+                <p>Centrage-réduction via <code>StandardScaler</code> (Scikit-learn) pour neutraliser les effets d'échelle entre variables.</p>
+              </div>
+            </li>
+            <li class="timeline-step">
+              <span class="timeline-num">3</span>
+              <div class="timeline-body">
+                <strong>ACP</strong>
+                <p>Calcul des valeurs propres, sélection des axes (règle du coude, variance expliquée cumulée ≥ 75%), projection des individus et variables.</p>
+              </div>
+            </li>
+            <li class="timeline-step">
+              <span class="timeline-num">4</span>
+              <div class="timeline-body">
+                <strong>Interprétation des axes</strong>
+                <p>Analyse des cercles de corrélation (biplot), identification des contributions variables/individus, nommage sémantique des composantes.</p>
+              </div>
+            </li>
+            <li class="timeline-step">
+              <span class="timeline-num">5</span>
+              <div class="timeline-body">
+                <strong>Classification hiérarchique (CAH)</strong>
+                <p>Calcul de la matrice de distances (Ward), construction du dendrogramme, choix du nombre de classes, caractérisation des groupes.</p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <!-- 5. RESULTATS CLES -->
+        <section class="section-card">
+          <h2>Résultats clés</h2>
+          <div class="result-stats">
+            <div class="stat-box">
+              <span class="stat-value">2–3</span>
+              <span class="stat-label">axes retenus / variance expliquée</span>
             </div>
-        </div>
-    </footer>
-    <script src="../script.js"></script>
+            <div class="stat-box">
+              <span class="stat-value">Profils</span>
+              <span class="stat-label">distincts identifiés / classification</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value">N</span>
+              <span class="stat-label">variables actives / corrélées aux axes</span>
+            </div>
+          </div>
+          <ul class="clean-list" style="margin-top:1.2rem;">
+            <li>Les premiers axes de l'ACP captent l'essentiel de la variabilité du jeu de données.</li>
+            <li>Le biplot révèle des groupes de variables fortement corrélées entre elles et liées à un même axe thématique.</li>
+            <li>La CAH (méthode de Ward) permet d'identifier des profils d'individus homogènes et bien séparés.</li>
+            <li>La caractérisation des groupes par leurs moyennes sur chaque variable facilite l'interprétation décisionnelle.</li>
+            <li>Les individus atypiques (outliers) détectés en exploration se retrouvent isolés dans la représentation ACP.</li>
+          </ul>
+        </section>
+
+        <!-- 6. BCC MOBILISES -->
+        <section class="section-card">
+          <h2>BCC Mobilisés</h2>
+          <div class="bcc-grid">
+            <div class="bcc-item analyser">
+              <h3>BCC ANALYSER</h3>
+              <ul class="clean-list">
+                <li>Interpréter les valeurs propres et la variance expliquée</li>
+                <li>Lire un biplot et un cercle de corrélation</li>
+                <li>Détecter des anomalies et profils atypiques</li>
+                <li>Argumenter les choix méthodologiques</li>
+              </ul>
+            </div>
+            <div class="bcc-item traiter">
+              <h3>BCC TRAITER</h3>
+              <ul class="clean-list">
+                <li>Nettoyer et préparer le jeu de données</li>
+                <li>Standardiser les variables (centrage-réduction)</li>
+                <li>Gérer les valeurs manquantes</li>
+                <li>Vérifier la cohérence des données avant modélisation</li>
+              </ul>
+            </div>
+            <div class="bcc-item valoriser">
+              <h3>BCC VALORISER</h3>
+              <ul class="clean-list">
+                <li>Produire des visualisations lisibles (biplot, dendrogramme)</li>
+                <li>Restituer les résultats à un public non-expert</li>
+                <li>Synthétiser les groupes identifiés</li>
+                <li>Rédiger un rapport structuré d'analyse</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. COMPETENCES TRANSVERSALES -->
+        <section class="section-card">
+          <h2>Compétences transversales</h2>
+          <ul class="clean-list">
+            <li><strong>Rigueur statistique :</strong> justification des choix (nombre d'axes, méthode de classification)</li>
+            <li><strong>Communication :</strong> passage du technique au décisionnel</li>
+            <li><strong>Autonomie :</strong> recherche documentaire sur les méthodes</li>
+            <li><strong>Esprit critique :</strong> limites de l'ACP (linéarité, sensibilité aux outliers)</li>
+          </ul>
+        </section>
+
+        <!-- 8. BILAN -->
+        <section class="section-card">
+          <h2>Bilan</h2>
+          <div class="bilan-grid">
+            <div class="bilan-col bilan-acquis">
+              <h3>Acquis ✓</h3>
+              <ul class="clean-list">
+                <li>Maîtrise complète du pipeline ACP (de la standardisation à l'interprétation)</li>
+                <li>Capacité à lire et commenter un biplot efficacement</li>
+                <li>Vision "réduction de dimension" applicable à tout dataset</li>
+                <li>Lien établi entre méthodes statistiques et aide à la décision</li>
+              </ul>
+            </div>
+            <div class="bilan-col bilan-axes">
+              <h3>Axes d'amélioration →</h3>
+              <ul class="clean-list">
+                <li>Approfondir l'ACP non-linéaire (t-SNE, UMAP)</li>
+                <li>Automatiser la sélection du nombre de composantes</li>
+                <li>Tester d'autres méthodes de classification (k-means, DBSCAN)</li>
+                <li>Intégrer des variables qualitatives (ACM)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. VISUALISATIONS -->
+        <section class="section-card">
+          <h2>Visualisations</h2>
+          <div class="proofs-grid">
+            <div class="proof-placeholder" aria-label="Biplot ACP — individus et variables">Biplot ACP — individus &amp; variables</div>
+            <div class="proof-placeholder" aria-label="Cercle de corrélation — contributions">Cercle de corrélation — contributions</div>
+            <div class="proof-placeholder" aria-label="Dendrogramme CAH — choix du découpage">Dendrogramme CAH — choix du découpage</div>
+            <div class="proof-placeholder" aria-label="Profils des groupes — heatmap">Profils des groupes — heatmap</div>
+          </div>
+        </section>
+
+        <!-- 10. LIENS -->
+        <section class="section-card">
+          <h2>Liens</h2>
+          <ul class="clean-list">
+            <li><strong>GitHub :</strong> <a class="inline-link" href="https://github.com/" target="_blank" rel="noopener">lien à compléter</a></li>
+            <li><strong>Rapport :</strong> <a class="inline-link" href="#" target="_blank" rel="noopener">lien à compléter</a></li>
+          </ul>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="project-footer">
+    <div class="container">
+      <a class="back-link" href="../pages/projets.html">← Retour aux projets</a>
+      <span class="footer-info">Portfolio BUT Science des Données — Antonin Cavory--Dupuis</span>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+
 </body>
 </html>

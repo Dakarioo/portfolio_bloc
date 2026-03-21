@@ -3,286 +3,332 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>SAE – Séries temporelles (Port d’Anvers-Bruges) | Antonin Cavory--Dupuis</title>
-  <meta name="description" content="Analyse 2019–2023 du trafic du Port d’Anvers-Bruges : exploration, saisonnalité, décomposition, modèles ETS/ARIMA, évaluation RMSE/MAE et prévisions." />
-
+  <title>Description &amp; prévision de données temporelles | Antonin Cavory--Dupuis</title>
+  <meta name="description" content="Analyse 2019–2023 du trafic du Port d'Anvers-Bruges : exploration, saisonnalité, décomposition, modèles ETS/ARIMA, évaluation RMSE/MAE et prévisions." />
   <link rel="stylesheet" href="../assets/projects.css" />
   <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
-
-  <meta property="og:title" content="SAE – Séries temporelles (Port d’Anvers-Bruges) | Antonin Cavory--Dupuis" />
+  <meta property="og:title" content="SAE – Séries temporelles (Port d'Anvers-Bruges) | Antonin Cavory--Dupuis" />
   <meta property="og:description" content="Exploration, décomposition, modélisation et prévisions du trafic maritime (2019–2023). Rapport + code R." />
+  <style>
+    body { opacity: 0; transition: opacity 0.35s ease; }
+    body.page-loaded { opacity: 1; }
+    #page-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, var(--copper), var(--gold)); z-index: 2000; transition: width 0.1s linear; }
+  </style>
 </head>
-
 <body>
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <a class="logo" href="../index.html">Antonin Cavory--Dupuis</a>
+<div id="page-progress"></div>
 
-      <nav aria-label="Navigation">
-        <ul class="nav-links">
-          <li><a href="../index.html#projets">Projets</a></li>
-          <li><a href="../index.html#apropos">À propos</a></li>
-          <li><a href="../index.html#competences">Compétences</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">SD<span>Portfolio</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../pages/traiter.html">Traiter</a></li>
+      <li><a href="../pages/analyser.html">Analyser</a></li>
+      <li><a href="../pages/valoriser.html">Valoriser</a></li>
+      <li><a href="../pages/developper.html">Développer</a></li>
+    </ul>
+    <a href="../pages/projets.html" class="nav-back">← Projets</a>
+  </div>
+</nav>
 
-  <!-- BREADCRUMB -->
-  <nav class="breadcrumb" aria-label="Fil d’Ariane">
-    <a href="../index.html">Accueil</a><span class="sep">›</span>
-    <a href="../index.html#projets">Projets</a><span class="sep">›</span>
-    <span>SAE – Séries temporelles</span>
-  </nav>
+<nav class="breadcrumb">
+  <a href="../index.html">Accueil</a><span class="sep">›</span>
+  <a href="../pages/projets.html">Projets</a><span class="sep">›</span>
+  <span>SAE – Séries temporelles</span>
+</nav>
 
-  <!-- HERO -->
-  <section class="project-hero">
-    <div class="container">
-      <div class="project-hero-card">
-        <span class="project-tag">SAE – Séries temporelles</span>
-
-        <h1 class="project-title">Description & prévision de données temporelles</h1>
-
-        <p class="project-subtitle">
-          Analyse du trafic du Port d’Anvers-Bruges sur 2019–2023 (<strong>données journalières</strong>) et construction de modèles de prévision
-          pour soutenir la planification des ressources et des investissements.
-        </p>
-
-        <div class="project-meta" aria-label="Technos et notions mobilisées">
-          <span class="pill">R</span>
-          <span class="pill">fpp2</span>
-          <span class="pill">Décomposition</span>
-        </div>
+<!-- HERO -->
+<section class="project-hero">
+  <div class="container">
+    <div class="project-hero-card">
+      <span class="project-tag">SAE – Séries temporelles</span>
+      <h1 class="project-title">Description &amp; prévision de données temporelles</h1>
+      <p class="project-subtitle">
+        Analyse du trafic maritime du Port d'Anvers-Bruges sur 2019–2023 : exploration, saisonnalité, décomposition,
+        modèles ETS/ARIMA et prévisions avec intervalles de confiance.
+      </p>
+      <div class="project-meta" aria-label="Technos et notions mobilisées">
+        <span class="pill">R</span>
+        <span class="pill">fpp2 / forecast</span>
+        <span class="pill">ARIMA</span>
+        <span class="pill">ETS</span>
+        <span class="pill">Décomposition</span>
+        <span class="pill">RMSE / MAE</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTENT -->
-  <main class="project-content">
-    <div class="container">
+<!-- CONTENT -->
+<main class="project-content">
+  <div class="container">
 
-      <!-- FICHE SAE (comme Datawarehouse) -->
-      <section class="section-card">
-        <h2>Fiche SAE</h2>
-        <ul>
-          <li><strong>Titre :</strong> SAE – Séries temporelles (Port d’Anvers-Bruges)</li>
-          <li><strong>Conditions :</strong> TP / projet encadré (groupe)</li>
-          <li><strong>Rendus :</strong> rapport + code R + présentation orale</li>
-          <li><strong>BCC associés :</strong> ANALYSER • TRAITER • VALORISER • MODÉLISER / DÉVELOPPER</li>
-          <li><strong>Pré-requis :</strong> statistiques descriptives, lecture de graphiques, bases de modélisation, R</li>
-        </ul>
-      </section>
+    <!-- 1. FICHE SAE -->
+    <section class="section-card">
+      <h2>Fiche SAE</h2>
+      <ul class="clean-list">
+        <li><strong>Titre :</strong> SAE – Séries temporelles (Port d'Anvers-Bruges)</li>
+        <li><strong>Conditions :</strong> TP / projet encadré (groupe)</li>
+        <li><strong>Rendus :</strong> rapport + code R + présentation orale</li>
+        <li><strong>BCC associés :</strong> ANALYSER • TRAITER • VALORISER • MODÉLISER / DÉVELOPPER</li>
+        <li><strong>Pré-requis :</strong> statistiques descriptives, lecture de graphiques, bases de modélisation, R</li>
+      </ul>
+    </section>
 
-      <!-- CONTEXTE -->
-      <section class="section-card">
-        <h2>Contexte</h2>
-        <p>
-          Le port d’Anvers-Bruges est un hub logistique majeur en Europe. Anticiper l’activité portuaire est un enjeu
-          pour optimiser les infrastructures, la gestion des ressources humaines et la compétitivité.
-          Cette SAE analyse le trafic maritime journalier sur 2019–2023 afin d’identifier tendances, saisonnalités
-          et événements exceptionnels, puis de proposer des modèles de prévision.
-        </p>
-      </section>
+    <!-- 2. CONTEXTE -->
+    <section class="section-card">
+      <h2>Contexte</h2>
+      <p>
+        Le port d'Anvers-Bruges est un hub logistique majeur en Europe. Anticiper l'activité portuaire est un enjeu
+        pour optimiser les infrastructures, la gestion des ressources humaines et la compétitivité.
+        Cette SAE analyse le trafic maritime journalier sur 2019–2023 afin d'identifier tendances, saisonnalités
+        et événements exceptionnels, puis de proposer des modèles de prévision.
+      </p>
+    </section>
 
-      <!-- DONNEES -->
-      <section class="section-card">
-        <h2>Données</h2>
-        <ul>
-          <li><strong>Période :</strong> 01/01/2019 → 31/12/2023</li>
-          <li><strong>Taille :</strong> 1826 observations</li>
-          <li><strong>Qualité :</strong> continuité temporelle vérifiée, pas de valeurs manquantes significatives</li>
-          <li><strong>Valeurs extrêmes :</strong> conservées (covid), car informatives</li>
-        </ul>
-      </section>
-
-      <!-- OBJECTIFS -->
-      <section class="section-card">
-        <h2>Objectifs</h2>
-        <ul>
-          <li>Comprendre la dynamique du trafic (tendance, saisonnalité, volatilité).</li>
-          <li>Identifier l’impact d’événements (jours fériés, covid) sur l’activité.</li>
-          <li>Évaluer la dépendance temporelle et la structure des résidus.</li>
-          <li>Construire et comparer des modèles de prévision.</li>
-          <li>Produire des prévisions interprétables avec intervalles de confiance.</li>
-        </ul>
-      </section>
-
-      <!-- DEMARCHE -->
-      <section class="section-card">
-        <h2>Démarche</h2>
-        <ol>
-          <li><strong>Exploration</strong> : visualisations, comparaison semaine/week-end, étude des événements.</li>
-          <li><strong>Dépendance temporelle</strong> : ACF, analyse des retards.</li>
-          <li><strong>Décomposition</strong> : choix additif, agrégation hebdomadaire, analyse des résidus.</li>
-          <li><strong>Modélisation</strong> : ETS et ARIMA, séparation apprentissage/test.</li>
-          <li><strong>Évaluation</strong> : RMSE/MAE, sélection du meilleur modèle.</li>
-          <li><strong>Prévision</strong> : ajustement final + intervalles de confiance, synthèse décisionnelle.</li>
-        </ol>
-      </section>
-
-      <!-- EXPLORATION -->
-      <section class="section-card">
-        <h2>Exploration & visualisation</h2>
-        <ul>
-          <li><strong>Variabilité court terme :</strong> trafic très fluctuant au quotidien.</li>
-          <li><strong>Saisonnalité hebdomadaire :</strong> trafic plus élevé en semaine qu’en week-end.</li>
-          <li><strong>Comparaisons :</strong> baisse nette le week-end ; baisse plus modérée les jours fériés.</li>
-          <li><strong>Événements exceptionnels :</strong> covid = chute brutale (anomalies majeures).</li>
-        </ul>
-      </section>
-
-      <!-- ACF / CORREL -->
-      <section class="section-card">
-        <h2>Dépendance temporelle & corrélations</h2>
-        <ul>
-          <li><strong>ACF :</strong> dépendance temporelle significative sur les premiers retards ⇒ modèles chronologiques justifiés.</li>
-          <li><strong>Corrélations :</strong> fortes relations entre variables de trafic ; corrélations plus faibles avec variables économiques.</li>
-          <li><em>Note :</em> corrélation ≠ causalité (interprétation prudente).</li>
-        </ul>
-      </section>
-
-      <!-- DECOMPOSITION -->
-      <section class="section-card">
-        <h2>Décomposition & saisonnalité</h2>
-        <ul>
-          <li><strong>Choix :</strong> modèle additif (amplitude saisonnière globalement constante).</li>
-          <li><strong>Fréquence :</strong> série agrégée en hebdomadaire pour faciliter l’analyse saisonnière.</li>
-          <li><strong>Résultat :</strong> tendance relativement stable + saisonnalité hebdomadaire marquée + résidus (fluctuations/événements).</li>
-          <li><strong>Résidus :</strong> ACF des résidus ≠ bruit blanc parfait ⇒ la décomposition seule ne capture pas toute la dépendance temporelle.</li>
-        </ul>
-      </section>
-
-      <!-- MODELISATION -->
-      <section class="section-card">
-        <h2>Modélisation & prévision</h2>
-        <ul>
-          <li><strong>Modèles testés :</strong> ETS et ARIMA.</li>
-          <li><strong>Protocole :</strong> séparation apprentissage / test pour évaluer objectivement les performances.</li>
-          <li><strong>Comparaison :</strong> métriques d’erreur (RMSE, MAE) ; modèle retenu = erreur la plus faible.</li>
-          <li><strong>Prévisions :</strong> ajustement final sur l’ensemble des données + intervalles de confiance.</li>
-        </ul>
-      </section>
-
-      <!-- RESULTATS -->
-      <section class="section-card">
-        <h2>Résultats clés</h2>
-        <ul>
-          <li>Saisonnalité hebdomadaire confirmée (activité semaine &gt; week-end).</li>
-          <li>Jours fériés : impact négatif léger ; grèves : impact très fort (anomalies majeures).</li>
-          <li>Prévisions hebdomadaires produites avec intervalles de confiance (incertitude intégrée).</li>
-        </ul>
-      </section>
-
-      <!-- REGARD CRITIQUE -->
-      <section class="section-card">
-        <h2>Regard critique</h2>
-        <p>
-          Les modèles restent sensibles aux événements exceptionnels (covid, perturbations économiques).
-          Les résultats doivent donc être interprétés avec prudence : les prévisions sont plus fiables à court terme.
-        </p>
-      </section>
-
-      <!-- BCC (comme Datawarehouse : détaillé par bloc) -->
-      <section class="section-card">
-        <h2>Compétences métier mises en œuvre (par BCC)</h2>
-
-        <div class="proofs-grid">
-          <div class="proof-placeholder" aria-label="BCC ANALYSER">
-            <strong>BCC ANALYSER</strong><br />
-            Lire/argumenter la tendance et la saisonnalité, détecter anomalies (grèves), interpréter ACF et diagnostiquer les résidus.
-          </div>
-
-          <div class="proof-placeholder" aria-label="BCC TRAITER">
-            <strong>BCC TRAITER</strong><br />
-            Préparer la série (contrôle continuité, agrégation hebdo), gérer valeurs extrêmes, produire des séries exploitables pour la modélisation.
-          </div>
-
-          <div class="proof-placeholder" aria-label="BCC VALORISER">
-            <strong>BCC VALORISER</strong><br />
-            Restituer clairement : graphiques, synthèse décisionnelle, explication des hypothèses/limites et communication de l’incertitude.
-          </div>
-
-          <div class="proof-placeholder" aria-label="BCC MODÉLISER / DÉVELOPPER">
-            <strong>BCC MODÉLISER / DÉVELOPPER</strong><br />
-            Construire/comparer ETS & ARIMA, mettre en place un protocole train/test, choisir le modèle via RMSE/MAE, produire des prévisions avec intervalles.
-          </div>
+    <!-- 3. DONNÉES -->
+    <section class="section-card">
+      <h2>Données</h2>
+      <ul class="clean-list">
+        <li><strong>Période :</strong> 01/01/2019 → 31/12/2023</li>
+        <li><strong>Taille :</strong> 1 826 observations</li>
+        <li><strong>Qualité :</strong> continuité temporelle vérifiée, pas de valeurs manquantes significatives</li>
+        <li><strong>Valeurs extrêmes :</strong> conservées (covid), car informatives</li>
+      </ul>
+      <div class="result-stats">
+        <div class="stat-box">
+          <span class="stat-value">1 826 obs.</span>
+          <span class="stat-label">données journalières 2019–2023</span>
         </div>
-      </section>
-
-      <!-- COMPETENCES TRANSVERSALES -->
-      <section class="section-card">
-        <h2>Compétences transversales</h2>
-        <ul>
-          <li><strong>Rigueur</strong> : justification des choix (additif, agrégation), contrôles, interprétation prudente.</li>
-          <li><strong>Communication</strong> : synthèse compréhensible pour non-statisticien, mise en avant de l’incertitude.</li>
-          <li><strong>Organisation</strong> : structuration du projet R (scripts, fonctions, reproductibilité), gestion des livrables.</li>
-        </ul>
-      </section>
-
-      <!-- BILAN (comme Datawarehouse) -->
-      <section class="section-card">
-        <h2>Bilan personnel</h2>
-
-        <h3>Acquis / points forts</h3>
-        <ul>
-          <li>Lecture d’une série temporelle complète : tendance, saisonnalité, anomalies, dépendance.</li>
-          <li>Compréhension des diagnostics (ACF, résidus) et intérêt du train/test.</li>
-          <li>Capacité à comparer des modèles (ETS vs ARIMA) et à justifier un choix via RMSE/MAE.</li>
-        </ul>
-
-        <h3>Difficultés / points à retravailler</h3>
-        <ul>
-          <li>Gestion des événements rares (covid) : difficulté à les prédire sans variables explicatives dédiées.</li>
-          <li>Améliorer la robustesse : enrichissement par variables + scénarios.</li>
-          <li>Approfondir l’interprétation des résidus (structure restante, hypothèses modèle).</li>
-        </ul>
-      </section>
-
-      <!-- STACK -->
-      <section class="section-card">
-        <h2>Environnement technique</h2>
-        <ul>
-          <li>R</li>
-          <li>Packages : fpp2 / forecast</li>
-          <li>Analyse : ACF, décomposition additive</li>
-          <li>Modèles : ETS, ARIMA</li>
-          <li>Évaluation : RMSE, MAE</li>
-        </ul>
-      </section>
-
-      <!-- PREUVES -->
-      <section class="section-card">
-        <h2>Preuves (à ajouter)</h2>
-        <div class="proofs-grid">
-          <div class="proof-placeholder">Graph : série 2019–2023 + points extrêmes</div>
-          <div class="proof-placeholder">Graph : comparaison semaine vs week-end</div>
-          <div class="proof-placeholder">Graph : décomposition + ACF des résidus</div>
-          <div class="proof-placeholder">Graph : prévisions + intervalles (ETS/ARIMA)</div>
+        <div class="stat-box">
+          <span class="stat-value">5 ans</span>
+          <span class="stat-label">période analysée</span>
         </div>
-      </section>
+        <div class="stat-box">
+          <span class="stat-value">0</span>
+          <span class="stat-label">valeurs manquantes significatives</span>
+        </div>
+      </div>
+    </section>
 
-      <!-- LIENS -->
-      <section class="section-card">
-        <h2>Liens</h2>
-        <ul>
-          <li><strong>Repository GitHub :</strong> <a href="#" target="_blank" rel="noopener noreferrer">Cliquer ici</a></li>
-          <li><strong>Rapport :</strong> <a href="#" target="_blank" rel="noopener noreferrer">Cliquer ici</a></li>
-        </ul>
-      </section>
+    <!-- 4. OBJECTIFS -->
+    <section class="section-card">
+      <h2>Objectifs</h2>
+      <ul class="clean-list">
+        <li>Comprendre la dynamique du trafic (tendance, saisonnalité, volatilité).</li>
+        <li>Identifier l'impact d'événements (jours fériés, covid) sur l'activité.</li>
+        <li>Évaluer la dépendance temporelle et la structure des résidus.</li>
+        <li>Construire et comparer des modèles de prévision.</li>
+        <li>Produire des prévisions interprétables avec intervalles de confiance.</li>
+      </ul>
+    </section>
 
-    </div>
-  </main>
+    <!-- 5. DÉMARCHE MÉTHODOLOGIQUE -->
+    <section class="section-card">
+      <h2>Démarche méthodologique</h2>
+      <ol class="timeline">
+        <li class="timeline-step">
+          <span class="timeline-num">1</span>
+          <div class="timeline-body">
+            <strong>Exploration</strong> — Visualisations, comparaison semaine/week-end, étude des événements exceptionnels.
+          </div>
+        </li>
+        <li class="timeline-step">
+          <span class="timeline-num">2</span>
+          <div class="timeline-body">
+            <strong>Dépendance temporelle</strong> — ACF, analyse des retards, vérification de la structure de corrélation.
+          </div>
+        </li>
+        <li class="timeline-step">
+          <span class="timeline-num">3</span>
+          <div class="timeline-body">
+            <strong>Décomposition</strong> — Choix du modèle additif, agrégation hebdomadaire, analyse des résidus.
+          </div>
+        </li>
+        <li class="timeline-step">
+          <span class="timeline-num">4</span>
+          <div class="timeline-body">
+            <strong>Modélisation</strong> — Mise en œuvre des modèles ETS et ARIMA avec séparation apprentissage / test.
+          </div>
+        </li>
+        <li class="timeline-step">
+          <span class="timeline-num">5</span>
+          <div class="timeline-body">
+            <strong>Évaluation</strong> — Comparaison via RMSE/MAE, sélection du modèle le plus performant.
+          </div>
+        </li>
+        <li class="timeline-step">
+          <span class="timeline-num">6</span>
+          <div class="timeline-body">
+            <strong>Prévision</strong> — Ajustement final sur l'ensemble des données + intervalles de confiance, synthèse décisionnelle.
+          </div>
+        </li>
+      </ol>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="project-footer">
-    <div class="container">
-      <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
-    </div>
-  </footer>
+    <!-- 6. EXPLORATION & VISUALISATION -->
+    <section class="section-card">
+      <h2>Exploration &amp; visualisation</h2>
+      <ul class="clean-list">
+        <li><strong>Variabilité court terme :</strong> trafic très fluctuant au quotidien.</li>
+        <li><strong>Saisonnalité hebdomadaire :</strong> trafic plus élevé en semaine qu'en week-end.</li>
+        <li><strong>Comparaisons :</strong> baisse nette le week-end ; baisse plus modérée les jours fériés.</li>
+        <li><strong>Événements exceptionnels :</strong> covid = chute brutale (anomalies majeures).</li>
+      </ul>
+    </section>
 
-  <script src="../script.js"></script>
+    <!-- 7. DÉPENDANCE TEMPORELLE & CORRÉLATIONS -->
+    <section class="section-card">
+      <h2>Dépendance temporelle &amp; corrélations</h2>
+      <ul class="clean-list">
+        <li><strong>ACF :</strong> dépendance temporelle significative sur les premiers retards ⇒ modèles chronologiques justifiés.</li>
+        <li><strong>Corrélations :</strong> fortes relations entre variables de trafic ; corrélations plus faibles avec variables économiques.</li>
+        <li><em>Note :</em> corrélation ≠ causalité (interprétation prudente).</li>
+      </ul>
+    </section>
+
+    <!-- 8. DÉCOMPOSITION & SAISONNALITÉ -->
+    <section class="section-card">
+      <h2>Décomposition &amp; saisonnalité</h2>
+      <ul class="clean-list">
+        <li><strong>Choix :</strong> modèle additif (amplitude saisonnière globalement constante).</li>
+        <li><strong>Fréquence :</strong> série agrégée en hebdomadaire pour faciliter l'analyse saisonnière.</li>
+        <li><strong>Résultat :</strong> tendance relativement stable + saisonnalité hebdomadaire marquée + résidus (fluctuations/événements).</li>
+        <li><strong>Résidus :</strong> ACF des résidus ≠ bruit blanc parfait ⇒ la décomposition seule ne capture pas toute la dépendance temporelle.</li>
+      </ul>
+    </section>
+
+    <!-- 9. MODÉLISATION & PRÉVISION -->
+    <section class="section-card">
+      <h2>Modélisation &amp; prévision</h2>
+      <ul class="clean-list">
+        <li><strong>Modèles testés :</strong> ETS et ARIMA.</li>
+        <li><strong>Protocole :</strong> séparation apprentissage / test pour évaluer objectivement les performances.</li>
+        <li><strong>Comparaison :</strong> métriques d'erreur (RMSE, MAE) ; modèle retenu = erreur la plus faible.</li>
+        <li><strong>Prévisions :</strong> ajustement final sur l'ensemble des données + intervalles de confiance.</li>
+      </ul>
+    </section>
+
+    <!-- 10. RÉSULTATS CLÉS -->
+    <section class="section-card">
+      <h2>Résultats clés</h2>
+      <ul class="clean-list">
+        <li>Saisonnalité hebdomadaire confirmée (activité semaine &gt; week-end).</li>
+        <li>Jours fériés : impact négatif léger ; grèves : impact très fort (anomalies majeures).</li>
+        <li>Prévisions hebdomadaires produites avec intervalles de confiance (incertitude intégrée).</li>
+      </ul>
+    </section>
+
+    <!-- 11. REGARD CRITIQUE -->
+    <section class="section-card">
+      <h2>Regard critique</h2>
+      <p>
+        Les modèles restent sensibles aux événements exceptionnels (covid, perturbations économiques).
+        Les résultats doivent donc être interprétés avec prudence : les prévisions sont plus fiables à court terme.
+      </p>
+    </section>
+
+    <!-- 12. BCC MOBILISÉS -->
+    <section class="section-card">
+      <h2>BCC mobilisés</h2>
+      <div class="bcc-grid">
+        <div class="bcc-item analyser">
+          <strong>BCC ANALYSER</strong>
+          <p>Lire/argumenter la tendance et la saisonnalité, détecter anomalies (grèves), interpréter ACF et diagnostiquer les résidus.</p>
+        </div>
+        <div class="bcc-item traiter">
+          <strong>BCC TRAITER</strong>
+          <p>Préparer la série (contrôle continuité, agrégation hebdo), gérer valeurs extrêmes, produire des séries exploitables pour la modélisation.</p>
+        </div>
+        <div class="bcc-item valoriser">
+          <strong>BCC VALORISER</strong>
+          <p>Restituer clairement : graphiques, synthèse décisionnelle, explication des hypothèses/limites et communication de l'incertitude.</p>
+        </div>
+        <div class="bcc-item modeliser">
+          <strong>BCC MODÉLISER / DÉVELOPPER</strong>
+          <p>Construire/comparer ETS &amp; ARIMA, mettre en place un protocole train/test, choisir le modèle via RMSE/MAE, produire des prévisions avec intervalles.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. COMPÉTENCES TRANSVERSALES -->
+    <section class="section-card">
+      <h2>Compétences transversales</h2>
+      <ul class="clean-list">
+        <li><strong>Rigueur :</strong> justification des choix (additif, agrégation), contrôles, interprétation prudente.</li>
+        <li><strong>Communication :</strong> synthèse compréhensible pour non-statisticien, mise en avant de l'incertitude.</li>
+        <li><strong>Organisation :</strong> structuration du projet R (scripts, fonctions, reproductibilité), gestion des livrables.</li>
+      </ul>
+    </section>
+
+    <!-- 14. BILAN -->
+    <section class="section-card">
+      <h2>Bilan personnel</h2>
+      <div class="bilan-grid">
+        <div class="bilan-col bilan-acquis">
+          <h3>Acquis / points forts</h3>
+          <ul class="clean-list">
+            <li>Lecture d'une série temporelle complète : tendance, saisonnalité, anomalies, dépendance.</li>
+            <li>Compréhension des diagnostics (ACF, résidus) et intérêt du train/test.</li>
+            <li>Capacité à comparer des modèles (ETS vs ARIMA) et à justifier un choix via RMSE/MAE.</li>
+          </ul>
+        </div>
+        <div class="bilan-col bilan-axes">
+          <h3>Difficultés / points à retravailler</h3>
+          <ul class="clean-list">
+            <li>Gestion des événements rares (covid) : difficulté à les prédire sans variables explicatives dédiées.</li>
+            <li>Améliorer la robustesse : enrichissement par variables + scénarios.</li>
+            <li>Approfondir l'interprétation des résidus (structure restante, hypothèses modèle).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15. PREUVES -->
+    <section class="section-card">
+      <h2>Preuves</h2>
+      <div class="proofs-grid">
+        <div class="proof-placeholder">Graph : série 2019–2023 + points extrêmes</div>
+        <div class="proof-placeholder">Graph : comparaison semaine vs week-end</div>
+        <div class="proof-placeholder">Graph : décomposition + ACF des résidus</div>
+        <div class="proof-placeholder">Graph : prévisions + intervalles (ETS / ARIMA)</div>
+      </div>
+    </section>
+
+    <!-- 16. LIENS -->
+    <section class="section-card">
+      <h2>Liens</h2>
+      <ul class="clean-list">
+        <li><strong>Repository GitHub :</strong> <a class="inline-link" href="#" target="_blank" rel="noopener noreferrer">Cliquer ici</a></li>
+        <li><strong>Rapport :</strong> <a class="inline-link" href="#" target="_blank" rel="noopener noreferrer">Cliquer ici</a></li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer class="project-footer">
+  <div class="container">
+    <a class="back-link" href="../pages/projets.html">← Retour aux projets</a>
+    <span class="footer-info">Portfolio BUT Science des Données — Antonin Cavory--Dupuis</span>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('page-loaded');
+    const nb = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { nb && (window.scrollY > 20 ? nb.classList.add('scrolled') : nb.classList.remove('scrolled')); }, { passive: true });
+    const pb = document.getElementById('page-progress');
+    if (pb) window.addEventListener('scroll', () => { const t = document.documentElement.scrollHeight - window.innerHeight; pb.style.width = Math.min((window.scrollY/t)*100,100)+'%'; }, { passive: true });
+    document.querySelectorAll('.section-card').forEach((el, i) => {
+      setTimeout(() => {
+        const obs = new IntersectionObserver(([e]) => { if(e.isIntersecting){ el.classList.add('visible'); obs.disconnect(); } }, { threshold: 0.08 });
+        obs.observe(el);
+      }, i * 30);
+    });
+  });
+</script>
 </body>
 </html>

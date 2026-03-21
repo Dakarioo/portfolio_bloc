@@ -3,70 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>SAE 3.02 – Intégration de données dans un datawarehouse</title>
-  <meta name="description" content="SAE 3.02 – Intégration de données dans un datawarehouse : reverse engineering de Chinook, modélisation (MCD/MLD/MPD), schéma en étoile, scripts SQL, cahier de recette. Portfolio d’Antonin Cavory-Dupuis." />
-
-  <!-- CSS dédié pages projets -->
+  <title>SAE 3.02 – Intégration de données dans un datawarehouse | Antonin Cavory--Dupuis</title>
+  <meta name="description" content="SAE 3.02 – Intégration de données dans un datawarehouse : reverse engineering de Chinook, modélisation (MCD/MLD/MPD), création Oracle, schéma en étoile, alimentation et cahier de recette. Portfolio d'Antonin Cavory-Dupuis." />
   <link rel="stylesheet" href="../assets/projects.css" />
   <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
-
-  <!-- OpenGraph -->
-  <meta property="og:title" content="SAE 3.02 – Datawarehouse" />
-  <meta property="og:description" content="Reverse engineering Chinook, modélisation, schéma en étoile, alimentation de l’entrepôt, scripts SQL, cahier de recette." />
+  <meta property="og:title" content="SAE 3.02 – Intégration de données dans un datawarehouse" />
+  <meta property="og:description" content="Reverse engineering Chinook, modélisation, schéma en étoile, alimentation de l'entrepôt, scripts SQL, cahier de recette." />
+  <style>
+    body { opacity: 0; transition: opacity 0.35s ease; }
+    body.page-loaded { opacity: 1; }
+    #page-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, var(--copper), var(--gold)); z-index: 2000; transition: width 0.1s linear; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('page-loaded');
+      const nb = document.getElementById('navbar');
+      window.addEventListener('scroll', () => { nb && (window.scrollY > 20 ? nb.classList.add('scrolled') : nb.classList.remove('scrolled')); }, { passive: true });
+      const pb = document.getElementById('page-progress');
+      if (pb) window.addEventListener('scroll', () => { const t = document.documentElement.scrollHeight - window.innerHeight; pb.style.width = Math.min((window.scrollY/t)*100,100)+'%'; }, { passive: true });
+      document.querySelectorAll('.section-card').forEach((el, i) => {
+        setTimeout(() => {
+          const obs = new IntersectionObserver(([e]) => { if(e.isIntersecting){ el.classList.add('visible'); obs.disconnect(); } }, { threshold: 0.08 });
+          obs.observe(el);
+        }, i * 30);
+      });
+    });
+  </script>
 </head>
 
 <body>
-  <header class="navbar">
-    <div class="container nav-container">
-      <a class="logo" href="../index.html">Antonin Cavory--Dupuis</a>
 
-      <nav aria-label="Navigation">
-        <ul class="nav-links">
-          <li><a href="../index.html#projets">Projets</a></li>
-          <li><a href="../index.html#apropos">À propos</a></li>
-          <li><a href="../index.html#competences">Compétences</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-      </nav>
+  <div id="page-progress"></div>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">SD<span>Portfolio</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../pages/traiter.html">Traiter</a></li>
+        <li><a href="../pages/analyser.html">Analyser</a></li>
+        <li><a href="../pages/valoriser.html">Valoriser</a></li>
+        <li><a href="../pages/developper.html">Développer</a></li>
+      </ul>
+      <a href="../pages/projets.html" class="nav-back">← Projets</a>
     </div>
-  </header>
+  </nav>
 
   <main>
-    <nav class="breadcrumb" aria-label="Fil d’Ariane">
-      <a href="../index.html">Accueil</a><span class="sep">›</span>
-      <a href="../index.html#projets">Projets</a><span class="sep">›</span>
-      <span>SAE 3.02</span>
+
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="../index.html">Accueil</a>
+      <span class="sep">›</span>
+      <a href="../pages/projets.html">Projets</a>
+      <span class="sep">›</span>
+      <span>SAE 3.02 – Intégration de données dans un datawarehouse</span>
     </nav>
 
-    <!-- HERO PROJET -->
+    <!-- HERO -->
     <section class="project-hero">
       <div class="container">
         <div class="project-hero-card">
           <span class="project-tag">SAE 3.02</span>
           <h1 class="project-title">Intégration de données dans un datawarehouse</h1>
-
           <p class="project-subtitle">
-            Reverse engineering de la base <strong>Chinook</strong>, modélisation (MCD/MLD/MPD),
-            création d’une base <strong>Oracle</strong>, puis conception d’un <strong>schéma en étoile</strong>
-            et alimentation du datawarehouse via scripts SQL, avec <strong>cahier de recette</strong>.
+            Reverse engineering de la base <strong>Chinook</strong>, modélisation MCD/MLD/MPD,
+            création d'une base <strong>Oracle</strong>, conception d'un <strong>schéma en étoile</strong>,
+            alimentation du datawarehouse via scripts SQL et rédaction d'un <strong>cahier de recette</strong>.
           </p>
-
-          <div class="project-meta" aria-label="Technologies">
+          <div class="project-meta" aria-label="Technologies utilisées">
             <span class="pill">SQL</span>
             <span class="pill">Oracle</span>
             <span class="pill">Modélisation</span>
             <span class="pill">Datawarehouse</span>
             <span class="pill">Git/GitHub</span>
           </div>
-
-            <!-- IMPORTANT : mets bien https:// -->
-            <a class="btn btn-outline" href="https://github.com/" target="_blank" rel="noopener">Voir le repository (GitHub)</a>
-          </div>
-
-          <p class="project-note">
-            <strong>Format :</strong> Binôme : Rapport + soutenance + repository GitHub des livrables
-          </p>
+          <a class="btn btn-outline" href="https://github.com/" target="_blank" rel="noopener">Voir le repository (GitHub)</a>
         </div>
       </div>
     </section>
@@ -75,33 +85,32 @@
     <section class="project-content">
       <div class="container">
 
-        <!-- FICHE RAPIDE -->
+        <!-- 1. FICHE SAE -->
         <section class="section-card">
           <h2>Fiche SAE</h2>
-
           <ul class="clean-list">
             <li><strong>Titre :</strong> SAE 3.02 – Intégration de données dans un datawarehouse</li>
             <li><strong>Conditions :</strong> travail en <strong>binôme</strong></li>
             <li><strong>Rendus :</strong> <strong>rapport</strong>, <strong>soutenance</strong>, <strong>repository GitHub</strong> (tous livrables)</li>
-            <li><strong>Organisation :</strong> mise en place et suivi d’un <strong>planning</strong> (tâches, estimation, responsable, échéance) mis à jour tout au long du projet</li>
-            <li><strong>Pré-requis :</strong> SQL (requêtes), bases de la modélisation (MCD/MLD/MPD), compréhension d’un système d'intégration et d’un schéma relationnel</li>
+            <li><strong>Organisation :</strong> mise en place et suivi d'un <strong>planning</strong> (tâches, estimation, responsable, échéance) mis à jour tout au long du projet</li>
+            <li><strong>Pré-requis :</strong> SQL (requêtes), bases de la modélisation (MCD/MLD/MPD), compréhension d'un système d'intégration et d'un schéma relationnel</li>
           </ul>
         </section>
 
-        <!-- CONTEXTE -->
+        <!-- 2. CONTEXTE / PROBLEME -->
         <section class="section-card">
-          <h2>Problème / Contexte</h2>
+          <h2>Contexte / Problème</h2>
           <p>
-            L’objectif est de partir d’une base de production existante (<strong>Chinook</strong>) afin de :
+            L'objectif est de partir d'une base de production existante (<strong>Chinook</strong>) afin de :
             <strong>comprendre</strong> son organisation, <strong>reconstruire</strong> sa modélisation,
-            <strong>l’implémenter</strong> en Oracle, puis <strong>construire un entrepôt</strong> (schéma en étoile)
-            pour faciliter l’analyse décisionnelle et la restitution.
+            <strong>l'implémenter</strong> en Oracle, puis <strong>construire un entrepôt</strong> (schéma en étoile)
+            pour faciliter l'analyse décisionnelle et la restitution.
           </p>
         </section>
 
-        <!-- DONNEES -->
+        <!-- 3. DONNEES & SOURCES -->
         <section class="section-card">
-          <h2>Données & sources</h2>
+          <h2>Données &amp; Sources</h2>
           <p>
             <strong>Chinook Database</strong> : base qui simule la vente de musique (artistes, albums, titres, factures, clients).
             Elle couvre notamment les entités : <em>artist</em>, <em>album</em>, <em>track</em>, <em>invoice</em>, <em>invoiceline</em>, <em>customer</em>.
@@ -111,148 +120,163 @@
           </p>
         </section>
 
-        <!-- OBJECTIFS -->
+        <!-- 4. OBJECTIFS -->
         <section class="section-card">
           <h2>Objectifs</h2>
           <ul class="clean-list">
-            <li><strong>Conception</strong> : comprendre la base, produire dictionnaire de données + MCD/MLD/MPD</li>
-            <li><strong>Implémentation Oracle</strong> : scripts de création et d’alimentation de la base</li>
-            <li><strong>Analyse SQL</strong> : requêtes répondant à une liste de questions métier</li>
-            <li><strong>Datawarehouse</strong> : concevoir un <strong>modèle en étoile</strong> et créer l’entrepôt</li>
-            <li><strong>Alimentation</strong> : scripts d’alimentation + <strong>cahier de recette</strong> (tests, contrôles)</li>
-            <li><strong>Industrialisation</strong> : dépôt GitHub complet, structuré, documenté</li>
+            <li><strong>Conception :</strong> comprendre la base, produire dictionnaire de données + MCD/MLD/MPD</li>
+            <li><strong>Implémentation Oracle :</strong> scripts de création et d'alimentation de la base</li>
+            <li><strong>Analyse SQL :</strong> requêtes répondant à une liste de questions métier</li>
+            <li><strong>Datawarehouse :</strong> concevoir un <strong>modèle en étoile</strong> et créer l'entrepôt</li>
+            <li><strong>Alimentation :</strong> scripts d'alimentation + <strong>cahier de recette</strong> (tests, contrôles)</li>
+            <li><strong>Industrialisation :</strong> dépôt GitHub complet, structuré, documenté</li>
           </ul>
         </section>
 
-        <!-- DEMARCHE -->
+        <!-- 5. METHODOLOGIE (TIMELINE) -->
         <section class="section-card">
-          <h2>Démarche & étapes</h2>
-
-          <h3>1) Reverse engineering (conception)</h3>
-          <ul class="clean-list">
-            <li>Analyse du schéma relationnel existant et des dépendances</li>
-            <li>Production des livrables : <strong>dictionnaire de données</strong>, <strong>MCD</strong>, <strong>MLD</strong>, <strong>MPD</strong></li>
-          </ul>
-
-          <h3>2) Création & alimentation de la base Oracle</h3>
-          <ul class="clean-list">
-            <li>Écriture des <strong>scripts SQL</strong> : tables, clés primaires/étrangères, contraintes</li>
-            <li>Écriture des <strong>scripts d’alimentation</strong> pour injecter les données</li>
-          </ul>
-
-          <h3>3) Analyse SQL (exemples de questions)</h3>
-          <p>
-            Mise en place de requêtes SQL pour répondre à des questions d’analyse, par exemple :
-          </p>
-          <ul class="clean-list">
-            <li>Pays avec le plus grand nombre de clients</li>
-            <li>Client ayant dépensé le plus</li>
-            <li>Genre le plus représenté</li>
-            <li>Pourcentage de chansons jamais achetées</li>
-            <li>Classement des pistes par durée au sein de chaque album</li>
-          </ul>
-
-          <h3>4) Création & alimentation du Datawarehouse</h3>
-          <ul class="clean-list">
-            <li>Conception d’un <strong>schéma en étoile</strong> (faits + dimensions) adapté aux analyses</li>
-            <li>Scripts SQL de création de l’entrepôt</li>
-            <li>Scripts d’alimentation de l’entrepôt</li>
-            <li>Rédaction d’un <strong>cahier de recette</strong> : règles, contrôles, cas de test, résultats attendus</li>
-          </ul>
+          <h2>Méthodologie</h2>
+          <ol class="timeline">
+            <li class="timeline-step">
+              <span class="timeline-num">1</span>
+              <div class="timeline-body">
+                <strong>Reverse engineering (conception)</strong>
+                <p>Analyse du schéma relationnel existant et des dépendances entre tables. Production des livrables : <strong>dictionnaire de données</strong>, <strong>MCD</strong>, <strong>MLD</strong>, <strong>MPD</strong>.</p>
+              </div>
+            </li>
+            <li class="timeline-step">
+              <span class="timeline-num">2</span>
+              <div class="timeline-body">
+                <strong>Création &amp; alimentation de la base Oracle</strong>
+                <p>Écriture des <strong>scripts SQL</strong> : tables, clés primaires/étrangères, contraintes. Écriture des <strong>scripts d'alimentation</strong> pour injecter les données dans la base Oracle.</p>
+              </div>
+            </li>
+            <li class="timeline-step">
+              <span class="timeline-num">3</span>
+              <div class="timeline-body">
+                <strong>Analyse SQL (questions métier)</strong>
+                <p>Mise en place de requêtes SQL pour répondre à des questions d'analyse : pays avec le plus grand nombre de clients, client ayant dépensé le plus, genre le plus représenté, pourcentage de chansons jamais achetées, classement des pistes par durée au sein de chaque album.</p>
+              </div>
+            </li>
+            <li class="timeline-step">
+              <span class="timeline-num">4</span>
+              <div class="timeline-body">
+                <strong>Création &amp; alimentation du Datawarehouse</strong>
+                <p>Conception d'un <strong>schéma en étoile</strong> (faits + dimensions) adapté aux analyses. Scripts SQL de création de l'entrepôt, scripts d'alimentation, puis rédaction d'un <strong>cahier de recette</strong> : règles, contrôles, cas de test, résultats attendus.</p>
+              </div>
+            </li>
+          </ol>
         </section>
 
-        <!-- LIVRABLES -->
+        <!-- 6. LIVRABLES -->
         <section class="section-card">
           <h2>Livrables</h2>
           <ul class="clean-list">
             <li><strong>Dictionnaire de données</strong> (base de production)</li>
             <li><strong>MCD / MLD / MPD</strong> de la base</li>
             <li><strong>Scripts SQL</strong> : création Oracle + alimentation Oracle</li>
-            <li><strong>Requêtes d’analyse</strong> (liste de questions)</li>
-            <li><strong>Modèle en étoile</strong> + scripts de création de l’entrepôt</li>
-            <li><strong>Scripts d’alimentation</strong> du datawarehouse</li>
+            <li><strong>Requêtes d'analyse</strong> (liste de questions)</li>
+            <li><strong>Modèle en étoile</strong> + scripts de création de l'entrepôt</li>
+            <li><strong>Scripts d'alimentation</strong> du datawarehouse</li>
             <li><strong>Cahier de recette</strong> (tests + contrôles)</li>
             <li><strong>Rapport</strong> + supports de soutenance</li>
           </ul>
         </section>
 
-        <!-- BCC -->
+        <!-- 7. BCC MOBILISES -->
         <section class="section-card">
-          <h2>BCC mobilisés (compétences)</h2>
-
+          <h2>BCC Mobilisés</h2>
           <div class="bcc-grid">
-            <div class="bcc-item">
+            <div class="bcc-item traiter">
+              <h3>BCC TRAITER</h3>
+              <ul class="clean-list">
+                <li>Nettoyage/normalisation lors de l'intégration</li>
+                <li>Contrôles d'intégrité (clés, doublons, cohérence des volumes)</li>
+                <li>Alimentation de la base Oracle et de l'entrepôt</li>
+              </ul>
+            </div>
+            <div class="bcc-item analyser">
               <h3>BCC ANALYSER</h3>
               <ul class="clean-list">
                 <li>Questionner la donnée via SQL (indicateurs, classements, agrégations)</li>
-                <li>Interpréter des résultats (ex : top clients, genres dominants, titres non vendus)</li>
+                <li>Interpréter des résultats (top clients, genres dominants, titres non vendus)</li>
+                <li>Identifier les questions métier à adresser via le datawarehouse</li>
               </ul>
             </div>
-
-            <div class="bcc-item">
-              <h3>BCC TRAITER</h3>
+            <div class="bcc-item valoriser">
+              <h3>BCC VALORISER</h3>
               <ul class="clean-list">
-                <li>Nettoyage/normalisation si nécessaire lors de l’intégration</li>
-                <li>Contrôles d’intégrité (clés, doublons, cohérence des volumes)</li>
+                <li>Documentation (dictionnaire de données, modèle, cahier de recette)</li>
+                <li>Structuration du dépôt GitHub</li>
+                <li>Présentation et soutenance du travail</li>
               </ul>
             </div>
-
-            <div class="bcc-item">
+            <div class="bcc-item modeliser">
               <h3>BCC MODÉLISER / DÉVELOPPER</h3>
               <ul class="clean-list">
                 <li>Rétro-conception (MCD/MLD/MPD)</li>
                 <li>Conception DW : faits / dimensions, clés de substitution</li>
-                <li>Scripts SQL</li>
-              </ul>
-            </div>
-
-            <div class="bcc-item">
-              <h3>BCC VALORISER</h3>
-              <ul class="clean-list">
-                <li>Documentation (dictionnaire, modèle, cahier de recette)</li>
-                <li>Structuration du GitHub + capacité à présenter le travail en soutenance</li>
+                <li>Écriture et structuration des scripts SQL</li>
               </ul>
             </div>
           </div>
         </section>
 
-        <!-- COMPETENCES TRANSVERSALES -->
+        <!-- 8. COMPETENCES TRANSVERSALES -->
         <section class="section-card">
           <h2>Compétences transversales</h2>
           <ul class="clean-list">
-            <li>Gestion de projet : planning, répartition des tâches, suivi d’avancement</li>
-            <li>Travail en binôme : coordination, revue croisée, résolution de problèmes</li>
-            <li>Rigueur et traçabilité : dépôt GitHub, documentation, tests</li>
+            <li><strong>Gestion de projet :</strong> planning, répartition des tâches, suivi d'avancement</li>
+            <li><strong>Travail en binôme :</strong> coordination, revue croisée, résolution de problèmes</li>
+            <li><strong>Rigueur et traçabilité :</strong> dépôt GitHub, documentation, tests</li>
           </ul>
         </section>
 
-        <!-- RETOUR -->
+        <!-- 9. BILAN -->
         <section class="section-card">
-          <h2>Acquis & points d’attention</h2>
+          <h2>Bilan</h2>
+          <div class="bilan-grid">
+            <div class="bilan-col bilan-acquis">
+              <h3>Acquis ✓</h3>
+              <ul class="clean-list">
+                <li>Capacité à comprendre un schéma existant et à le reconstruire proprement</li>
+                <li>Maîtrise des scripts SQL (création, intégration, analyse)</li>
+                <li>Vision complète "production → entrepôt → exploitation"</li>
+              </ul>
+            </div>
+            <div class="bilan-col bilan-axes">
+              <h3>Axes d'amélioration →</h3>
+              <ul class="clean-list">
+                <li>Choix des dimensions : arbitrages et impacts sur les analyses</li>
+                <li>Contrôles qualité : formalisation des règles + automatisation progressive</li>
+                <li>Industrialisation : rendre les scripts plus paramétrables / réutilisables</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-          <h3>Acquis / points forts</h3>
-          <ul class="clean-list">
-            <li>Capacité à comprendre un schéma existant et à le reconstruire proprement</li>
-            <li>Maîtrise des scripts SQL (création, intégration, analyse)</li>
-            <li>Vision complète “production → entrepôt → exploitation”</li>
-          </ul>
-
-          <h3>Difficultés / points à retravailler</h3>
-          <ul class="clean-list">
-            <li>Choix des dimensions : arbitrages et impacts sur les analyses</li>
-            <li>Contrôles qualité : formalisation des règles + automatisation progressive</li>
-            <li>Industrialisation : rendre les scripts plus paramétrables / réutilisables</li>
-          </ul>
+        <!-- 10. VISUALISATIONS -->
+        <section class="section-card">
+          <h2>Visualisations</h2>
+          <div class="proofs-grid">
+            <div class="proof-placeholder" aria-label="Schéma MCD/MLD — base Chinook">Schéma MCD/MLD — base Chinook</div>
+            <div class="proof-placeholder" aria-label="Modèle en étoile — Datawarehouse">Modèle en étoile — Datawarehouse</div>
+            <div class="proof-placeholder" aria-label="Extrait cahier de recette">Extrait cahier de recette</div>
+          </div>
         </section>
 
       </div>
     </section>
+
   </main>
 
   <footer class="project-footer">
     <div class="container">
-      <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
+      <a class="back-link" href="../pages/projets.html">← Retour aux projets</a>
+      <span class="footer-info">Portfolio BUT Science des Données — Antonin Cavory--Dupuis</span>
     </div>
   </footer>
+  <script src="../script.js"></script>
+
 </body>
 </html>
