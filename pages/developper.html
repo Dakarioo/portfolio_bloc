@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Développer — Portfolio BUT Science des Données</title>
+  <title>Développer - Portfolio BUT Science des Données</title>
   <meta name="description" content="Bloc Développer : programmation Python, automatisation, outils data et développement de solutions concrètes." />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <style>
@@ -253,7 +253,7 @@
           <div class="divider divider-left mb-2"></div>
           <p>
             Le bloc <strong class="highlight">Développer</strong> regroupe les compétences qui permettent
-            de passer d'une analyse ponctuelle à une solution pérenne : écrire du code structuré,
+            de passer d'une analyse ponctuelle à une solution concrète : écrire du code structuré,
             automatiser des traitements répétitifs, intégrer des données depuis des sources externes,
             et concevoir des outils que d'autres peuvent utiliser et faire évoluer.
           </p>
@@ -264,8 +264,8 @@
             C'est ce qui rend un profil data vraiment autonome.
           </p>
           <p>
-            Dans le référentiel du BUT Science des Données, ce bloc insiste sur la capacité à répondre
-            à un besoin concret par une solution technique fiable, maintenable et documentée —
+            Dans le BUT Science des Données, ce bloc insiste sur la capacité à répondre
+            à un besoin concret par une solution technique fiable, maintenable et documentée
             pas juste un script qui fonctionne une fois.
           </p>
           <div class="tags-list mt-2">
@@ -332,7 +332,7 @@
           </p>
           <p>
             Sur la SAE MonVoyage, j'ai structuré l'application en classes distinctes
-            (collecteur API, parseur HTML, exporteur CSV/JSON) — une architecture qui a rendu
+            (collecteur API, exporteur CSV/JSON) une architecture qui a rendu
             le débogage et les tests unitaires nettement plus simples que sur mes premières
             SAE où tout était dans un seul script de 300 lignes.
           </p>
@@ -380,7 +380,7 @@
           </p>
           <p>
             Sur MonVoyage, j'ai combiné deux sources avec des structures radicalement différentes.
-            Le travail de normalisation a représenté autant d'effort que la collecte elle-même —
+            Le travail de normalisation a représenté autant d'effort que la collecte elle-même
             et la logique de correspondance entre les deux sources a demandé une réflexion
             algorithmique précise (nettoyage de chaînes, comparaison floue de noms).
           </p>
@@ -406,7 +406,7 @@
             Cette discipline de conception est ce qui permet à un projet de grandir sans devenir
             ingérable. Sur le Datawarehouse, la séparation entre les scripts de création de schéma,
             les scripts d'alimentation et les scripts de vérification a permis de modifier
-            un composant sans casser les autres — ce qui n'était pas le cas dans mes premières SAE.
+            un composant sans casser les autres ce qui n'était pas le cas dans mes premières SAE.
           </p>
           <div class="tags-list">
             <span class="tag">Architecture projet</span>
@@ -423,12 +423,12 @@
             le SQL lui-même (requêtes, transactions, gestion des contraintes) et l'intégration
             dans le code Python (connexion, curseur, commit, gestion des erreurs de contrainte).
             Sur le Datawarehouse sous Oracle, j'ai écrit des scripts d'alimentation qui devaient
-            garantir l'intégrité référentielle à chaque insertion — ce qui implique un ordre
+            garantir l'intégrité référentielle à chaque insertion ce qui implique un ordre
             d'exécution précis et des rollbacks en cas d'erreur.
           </p>
           <div class="tags-list">
             <span class="tag">SQL / Oracle</span>
-            <span class="tag">cx_Oracle</span>
+            <span class="tag">Oracle</span>
             <span class="tag">Transactions</span>
             <span class="tag">Intégrité référentielle</span>
             <span class="tag">Pipelines de données</span>
@@ -505,8 +505,8 @@
         <div class="project-detail-header">
           <div class="project-detail-icon">🌍</div>
           <div class="project-detail-meta">
-            <div class="project-context">SAE — Application Python de collecte</div>
-            <h3>MonVoyage — Application de collecte multi-sources avec génération de carte interactive</h3>
+            <div class="project-context">SAE - Application Python de collecte</div>
+            <h3>MonVoyage - Application de collecte multi-sources avec génération de carte interactive</h3>
           </div>
         </div>
         <div class="project-detail-body">
@@ -536,16 +536,16 @@
             <ul>
               <li>Architecture en classes plutôt qu'en fonctions isolées : facilite le test unitaire de chaque composant indépendamment</li>
               <li><code>requests.Session()</code> pour réutiliser la connexion HTTP et les headers sur les appels paginés</li>
-              <li>Logging avec le module <code>logging</code> standard (niveaux DEBUG/INFO/ERROR) plutôt que des <code>print()</code> — permet de désactiver les logs en production</li>
-              <li>Fichier <code>config.py</code> séparé pour les constantes (URL, timeout, noms de colonnes) — évite les valeurs magiques dispersées dans le code</li>
+              <li>Logging avec le module <code>logging</code> standard (niveaux DEBUG/INFO/ERROR) plutôt que des <code>print()</code> permet de désactiver les logs en production</li>
+              <li>Fichier <code>config.py</code> séparé pour les constantes (URL, timeout, noms de colonnes) évite les valeurs magiques dispersées dans le code</li>
             </ul>
           </div>
           <div class="project-detail-col">
             <h4>Difficultés rencontrées</h4>
             <ul>
-              <li>Le site scrappé modifiait sa structure HTML selon le type de destination : les sélecteurs CSS fallaient pour certaines pages — résolu avec des sélecteurs alternatifs et une vérification de la présence de l'élément avant extraction</li>
-              <li>La réconciliation des noms entre les deux sources était la partie la plus complexe : "Côte d'Azur" vs "cote-d-azur" vs "French Riviera" — la normalisation seule ne suffisait pas, il a fallu implémenter une correspondance floue</li>
-              <li>La pagination de l'API retournait parfois des pages vides avant d'avoir atteint la dernière — condition d'arrêt à affiner pour éviter les requêtes inutiles</li>
+              <li>Le site scrappé modifiait sa structure HTML selon le type de destination : les sélecteurs CSS fallaient pour certaines pages résolu avec des sélecteurs alternatifs et une vérification de la présence de l'élément avant extraction</li>
+              <li>La réconciliation des noms entre les deux sources était la partie la plus complexe : "Côte d'Azur" vs "cote-d-azur" vs "French Riviera" la normalisation seule ne suffisait pas, il a fallu implémenter une correspondance floue</li>
+              <li>La pagination de l'API retournait parfois des pages vides avant d'avoir atteint la dernière condition d'arrêt à affiner pour éviter les requêtes inutiles</li>
             </ul>
           </div>
           <div class="project-detail-result">
@@ -563,8 +563,8 @@
         <div class="project-detail-header">
           <div class="project-detail-icon">🏗️</div>
           <div class="project-detail-meta">
-            <div class="project-context">SAE — Scripts SQL et alimentation de datawarehouse</div>
-            <h3>Datawarehouse Chinook — Scripts d'alimentation ETL sous Oracle</h3>
+            <div class="project-context">SAE - Scripts SQL et alimentation de datawarehouse</div>
+            <h3>Datawarehouse Chinook - Scripts d'alimentation ETL sous Oracle</h3>
           </div>
         </div>
         <div class="project-detail-body">
@@ -592,8 +592,8 @@
           <div class="project-detail-col">
             <h4>Choix techniques</h4>
             <ul>
-              <li>Séquences Oracle (<code>CREATE SEQUENCE</code>) pour les clés de substitution — plus fiable que ROWNUM sur des insertions séquentielles</li>
-              <li>Découpage en fichiers numérotés par ordre d'exécution — convention claire qui évite les erreurs d'ordre lors d'une exécution manuelle ou automatisée</li>
+              <li>Séquences Oracle (<code>CREATE SEQUENCE</code>) pour les clés de substitution plus fiable que ROWNUM sur des insertions séquentielles</li>
+              <li>Découpage en fichiers numérotés par ordre d'exécution convention claire qui évite les erreurs d'ordre lors d'une exécution manuelle ou automatisée</li>
               <li>Requêtes de vérification intégrées au pipeline : on ne considère pas le chargement terminé tant que les checks ne passent pas</li>
               <li>Commentaires SQL sur chaque INSERT complexe expliquant la logique de transformation</li>
             </ul>
@@ -601,9 +601,9 @@
           <div class="project-detail-col">
             <h4>Difficultés rencontrées</h4>
             <ul>
-              <li>La table de faits référence toutes les dimensions — une clé de substitution manquante dans une dimension bloquait l'insertion. Il a fallu comprendre l'ordre exact et gérer les cas où un enregistrement source n'avait pas de correspondance dans la dimension cible</li>
+              <li>La table de faits référence toutes les dimensions une clé de substitution manquante dans une dimension bloquait l'insertion. Il a fallu comprendre l'ordre exact et gérer les cas où un enregistrement source n'avait pas de correspondance dans la dimension cible</li>
               <li>La dimension Temps nécessitait de décomposer chaque date en attributs (année, mois, trimestre, semaine) : développement d'une requête de génération de calendrier SQL</li>
-              <li>Oracle SQL*Plus imposait une syntaxe différente de MySQL pour certaines opérations — notamment la gestion des séquences et des fonctions de date</li>
+              <li>Oracle SQL*Plus imposait une syntaxe différente de MySQL pour certaines opérations notamment la gestion des séquences et des fonctions de date</li>
             </ul>
           </div>
           <div class="project-detail-result">
@@ -611,7 +611,7 @@
             qui créent le schéma, chargent les dimensions, alimentent les faits et vérifient la cohérence.
             Le datawarehouse est chargé en moins de 2 minutes avec 100% des enregistrements source
             correctement intégrés. Le script de reset permet de rejouer l'alimentation complète
-            proprement à tout moment — une propriété essentielle pour un pipeline ETL fiable.
+            proprement à tout moment une propriété essentielle pour un pipeline ETL fiable.
           </div>
         </div>
       </div>
@@ -651,20 +651,20 @@
             <ul>
               <li>Pas de framework : charge plus légère, meilleure maîtrise du résultat, compréhension de ce qui se passe réellement dans le navigateur</li>
               <li>CSS custom properties (variables) pour les couleurs, espacements et transitions : modification globale en un seul endroit</li>
-              <li><code>IntersectionObserver</code> pour les animations au scroll plutôt que des événements <code>scroll</code> — plus performant (pas de calculs à chaque frame)</li>
-              <li>Animations CSS avec <code>animation-fill-mode: forwards</code> pour les éléments hero — pas de JavaScript pour la visibilité initiale</li>
+              <li><code>IntersectionObserver</code> pour les animations au scroll plutôt que des événements <code>scroll</code> plus performant (pas de calculs à chaque frame)</li>
+              <li>Animations CSS avec <code>animation-fill-mode: forwards</code> pour les éléments hero pas de JavaScript pour la visibilité initiale</li>
             </ul>
           </div>
           <div class="project-detail-col">
             <h4>Ce que ça m'a appris</h4>
             <ul>
-              <li>Le débogage CSS est aussi exigeant que le débogage Python — les règles de priorité et la cascade demandent une rigueur similaire à la logique algorithmique</li>
+              <li>Le débogage CSS est aussi exigeant que le débogage Python les règles de priorité et la cascade demandent une rigueur similaire à la logique algorithmique</li>
               <li>La performance web ne s'improvise pas : les animations GPU-accélérées (<code>transform</code>, <code>opacity</code>) vs les animations qui déclenchent un reflow (hauteur, marges) ont un impact visible</li>
-              <li>Concevoir pour mobile en premier force à hiérarchiser l'information — ce qui améliore aussi le design desktop</li>
+              <li>Concevoir pour mobile en premier force à hiérarchiser l'information ce qui améliore aussi le design desktop</li>
             </ul>
           </div>
           <div class="project-detail-result">
-            <strong>Résultat :</strong> Ce site — 5 pages HTML, 1 fichier CSS partagé, 1 fichier JavaScript.
+            <strong>Résultat :</strong> Ce site 5 pages HTML, 1 fichier CSS partagé, 1 fichier JavaScript.
             Entièrement développé à la main, sans générateur ni template. Architecture cohérente,
             thème par page, animations fluides, responsive sur mobile. Ce projet est à la fois
             un livrable de portfolio et une démonstration concrète de compétences de développement.
@@ -702,7 +702,7 @@
       <div class="cards-grid fade-in" style="margin-top:2.5rem">
         <div class="card">
           <div class="card-icon">🐍</div>
-          <h3>Python — requests &amp; BeautifulSoup</h3>
+          <h3>Python - requests &amp; BeautifulSoup</h3>
           <p>
             Le duo central de la collecte automatisée. <code>requests</code> pour les appels HTTP
             (avec gestion des timeouts, des codes d'erreur et des sessions) ;
@@ -726,8 +726,6 @@
           <p>
             DDL (création de schéma, contraintes, index, séquences) et DML (insertions de masse,
             requêtes de transformation) pour l'alimentation du datawarehouse.
-            Interaction depuis Python via <code>cx_Oracle</code> pour les scripts
-            d'alimentation automatisés.
           </p>
         </div>
         <div class="card">
@@ -736,7 +734,7 @@
           <p>
             Versionnage systématique du code : commits atomiques et descriptifs, branches
             par fonctionnalité sur les projets en équipe, messages de commit qui expliquent
-            le "pourquoi" et pas juste le "quoi". Git n'est pas seulement un outil de sauvegarde —
+            le "pourquoi" et pas juste le "quoi". Git n'est pas seulement un outil de sauvegarde
             c'est un outil de communication sur l'intention du code.
           </p>
         </div>
@@ -757,7 +755,7 @@
 
           <div class="timeline">
             <div class="timeline-item">
-              <div class="timeline-date">Semestre 1 — 2022</div>
+              <div class="timeline-date">Semestre 1 - 2024</div>
               <h4>Premiers scripts Python</h4>
               <p>
                 Variables, boucles, fonctions, manipulation de fichiers CSV.
@@ -766,7 +764,7 @@
               </p>
             </div>
             <div class="timeline-item">
-              <div class="timeline-date">Semestre 2 — 2023</div>
+              <div class="timeline-date">Semestre 2 - 2024</div>
               <h4>Modules et programmation orientée objet</h4>
               <p>
                 Premiers scripts découpés en fonctions réutilisables, puis en classes.
@@ -775,7 +773,7 @@
               </p>
             </div>
             <div class="timeline-item">
-              <div class="timeline-date">Semestre 3 — 2023</div>
+              <div class="timeline-date">Semestre 3 - 2025</div>
               <h4>Collecte, API et scraping</h4>
               <p>
                 SAE MonVoyage : première application Python multi-modules,
@@ -784,21 +782,12 @@
               </p>
             </div>
             <div class="timeline-item">
-              <div class="timeline-date">Semestre 4 — 2024</div>
+              <div class="timeline-date">Semestre 4 - 2025</div>
               <h4>Scripts SQL et pipelines ETL</h4>
               <p>
                 Datawarehouse Oracle : scripts d'alimentation structurés, gestion de l'intégrité
                 référentielle, scripts de vérification. Compréhension de la logique ETL
                 comme un pipeline reproductible, pas un traitement ad hoc.
-              </p>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">Semestre 5–6 — 2024–2025</div>
-              <h4>Qualité du code et développement web</h4>
-              <p>
-                Développement de ce portfolio (HTML/CSS/JS vanilla), premiers tests unitaires,
-                amélioration des pratiques Git. Passage d'une logique "ça fonctionne"
-                à une logique "c'est maintenable et lisible par quelqu'un d'autre".
               </p>
             </div>
           </div>
@@ -845,7 +834,7 @@
     <div class="container" style="max-width:860px">
       <div class="section-header fade-in">
         <span class="section-label">Regard critique</span>
-        <h2 class="section-title">Ce que j'en retire</h2>
+        <h2 class="section-title">Ce que j'en retiens</h2>
         <div class="divider"></div>
       </div>
 
@@ -853,7 +842,7 @@
         <p>
           Ce bloc est celui où je mesure le mieux l'écart entre "coder" et "bien coder".
           Sur mes premières SAE, j'écrivais du code qui fonctionnait dans les conditions
-          où je l'avais testé — et qui tombait dès que quelque chose changeait.
+          où je l'avais testé et qui tombait dès que quelque chose changeait.
           La gestion des erreurs était inexistante, la structure était aléatoire,
           et la documentation nulle. Ça "marchait" mais ce n'était pas du développement.
         </p>
@@ -862,7 +851,7 @@
           quelles classes, quelles responsabilités, quelles interfaces entre elles.
           Résultat : quand le format de réponse de l'API a changé en cours de SAE,
           j'ai modifié un seul module sans toucher au reste. C'est ce que la modularité
-          apporte concrètement — et je ne l'avais pas compris avant de l'expérimenter.
+          apporte concrètement et je ne l'avais pas compris avant de l'expérimenter.
         </p>
         <p>
           Sur le Datawarehouse, j'ai réalisé que le code SQL peut aussi être bien ou mal structuré.
@@ -887,7 +876,7 @@
           <ul>
             <li>Tests unitaires : je ne teste pas encore systématiquement avant de considérer une fonction terminée</li>
             <li>Performance : mes scripts de collecte ne sont pas optimisés pour la parallélisation (requêtes séquentielles alors que du async serait possible)</li>
-            <li>Documentation : les docstrings sont inégales selon les modules — à uniformiser</li>
+            <li>Documentation : les docstrings sont inégales selon les modules à uniformiser</li>
             <li>Déploiement : je n'ai pas encore de pratique des environnements de production (Docker, CI/CD)</li>
           </ul>
         </div>
@@ -901,13 +890,6 @@
           à 10 sur les pages longues. J'aurais aussi ajouté des tests unitaires sur le module
           de réconciliation des sources, qui est la partie la plus critique et la plus fragile
           de l'application.
-        </p>
-        <p style="margin-bottom:0">
-          Sur le Datawarehouse, j'aurais écrit le script d'alimentation en Python avec
-          <code>cx_Oracle</code> plutôt qu'en SQL pur — ce qui aurait permis une gestion
-          d'erreur ligne par ligne avec rollback sélectif, un logging détaillé des insertions,
-          et une rejouabilité plus fine. Le SQL pur est lisible mais moins contrôlable
-          quand on veut du fault-tolerance.
         </p>
       </div>
     </div>
@@ -931,7 +913,7 @@
           <p>
             Le Data Engineer construit et maintient les pipelines de données :
             collecte, transformation, chargement, orchestration.
-            Les compétences de ce bloc — Python structuré, SQL, APIs, architecture —
+            Les compétences de ce bloc Python structuré, SQL, APIs, architecture
             sont exactement ce que ce rôle mobilise au quotidien.
             C'est le métier le plus directement aligné avec le bloc Développer.
           </p>
@@ -952,7 +934,7 @@
           <p>
             Dans les entreprises, tout ce qui est répétitif doit être automatisé.
             Les rapports hebdomadaires, les extractions de données, les vérifications
-            de qualité — autant de tâches manuelles coûteuses en temps.
+            de qualité autant de tâches manuelles coûteuses en temps.
             Savoir développer ces automatisations est une valeur ajoutée directe
             et mesurable pour une équipe data.
           </p>

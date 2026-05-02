@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Traiter — Portfolio BUT Science des Données</title>
+  <title>Traiter - Portfolio BUT Science des Données</title>
   <meta name="description" content="Bloc Traiter : collecte via API et scraping, nettoyage, modélisation, datawarehouse et gouvernance RGPD." />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <style>
@@ -199,7 +199,7 @@
           <p>
             Dans la chaîne de valeur de la donnée, le bloc <strong class="highlight">Traiter</strong>
             désigne tout ce qui se passe avant l'analyse : collecter les données à la bonne source,
-            les nettoyer, les structurer dans un format cohérent, les stocker de manière pérenne
+            les nettoyer, les structurer dans un format cohérent, les stocker de manière sûre
             et garantir leur qualité tout au long du processus.
           </p>
           <p>
@@ -208,7 +208,7 @@
             Maîtriser ce bloc, c'est s'assurer que tout ce qui vient ensuite repose sur des bases solides.
           </p>
           <p>
-            Dans le référentiel du BUT Science des Données, ce bloc couvre la collecte
+            Dans le BUT Science des Données, ce bloc couvre la collecte
             (API, scraping, fichiers), la modélisation de bases de données, les transformations
             de données (ETL), et les enjeux de gouvernance et de conformité (RGPD).
           </p>
@@ -218,7 +218,6 @@
             <span class="tag">Modélisation</span>
             <span class="tag">ETL</span>
             <span class="tag">Gouvernance</span>
-            <span class="tag">RGPD</span>
           </div>
         </div>
         <div class="slide-right">
@@ -230,7 +229,7 @@
               mais il est toujours décisif. »
             </p>
             <p style="color: var(--copper); font-weight:600; font-size:0.9rem; margin-bottom:0">
-              — Réflexion personnelle, issue de la SAE MonVoyage
+              Réflexion personnelle, issue de la SAE MonVoyage
             </p>
           </div>
           <div class="card mt-2">
@@ -253,7 +252,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-label">Compétences</span>
-        <h2 class="section-title">Ce que j'ai développé</h2>
+        <h2 class="section-title">Ce que j'ai appris</h2>
         <div class="divider"></div>
         <p class="section-subtitle" style="margin-top:1rem">
           Cinq axes de compétences construits progressivement tout au long du BUT,
@@ -275,13 +274,13 @@
             hétérogènes qui n'ont pas le même format, le même niveau de fiabilité, ni les mêmes
             contraintes d'accès. Sur la SAE MonVoyage, j'ai dû combiner deux sources
             (API + scraping) et réconcilier des données qui ne partageaient pas les mêmes
-            identifiants — ce qui m'a confronté très concrètement à la notion de clé de jointure
+            identifiants. Ce qui m'a confronté très concrètement à la notion de clé de jointure
             implicite.
           </p>
           <div class="tags-list">
             <span class="tag">requests</span>
             <span class="tag">BeautifulSoup</span>
-            <span class="tag">API REST</span>
+            <span class="tag">API</span>
             <span class="tag">JSON</span>
             <span class="tag">Gestion d'erreurs HTTP</span>
           </div>
@@ -292,18 +291,17 @@
           <p>
             Un jeu de données brut est rarement exploitable directement. J'ai développé
             des réflexes systématiques : détecter les valeurs manquantes et décider de leur
-            traitement (suppression, imputation, signalement), identifier les doublons,
+            traitement (suppression, signalement), identifier les doublons,
             normaliser les formats (dates, chaînes de caractères, unités), et vérifier
             la cohérence logique des valeurs (bornes, types, cardinalités).
           </p>
           <p>
             Ces opérations semblent simples en théorie. En pratique, elles demandent
-            de comprendre le sens métier de chaque variable — on ne traite pas
+            de comprendre le sens métier de chaque variable. On ne traite pas
             un âge manquant de la même façon qu'un prix manquant.
           </p>
           <div class="tags-list">
             <span class="tag">Python</span>
-            <span class="tag">pandas</span>
             <span class="tag">Valeurs manquantes</span>
             <span class="tag">Normalisation</span>
             <span class="tag">Cohérence logique</span>
@@ -449,8 +447,8 @@
         <div class="project-detail-header">
           <div class="project-detail-icon">🌍</div>
           <div class="project-detail-meta">
-            <div class="project-context">SAE — Collecte et structuration</div>
-            <h3>MonVoyage — Collecte multi-sources via API et scraping</h3>
+            <div class="project-context">SAE - Collecte et structuration</div>
+            <h3>MonVoyage - Collecte multi-sources via API et scraping</h3>
           </div>
         </div>
         <div class="project-detail-body">
@@ -486,7 +484,6 @@
           <div class="project-detail-col">
             <h4>Difficultés rencontrées</h4>
             <ul>
-              <li>Structure HTML du site cible non uniforme selon les pages — sélecteurs CSS fragiles</li>
               <li>Données manquantes côté API pour certaines destinations moins populaires</li>
               <li>Absence de clé commune entre les deux sources : nécessité d'une correspondance approchée sur le nom de la destination (normalisation des chaînes)</li>
             </ul>
@@ -504,8 +501,8 @@
         <div class="project-detail-header">
           <div class="project-detail-icon">🏗️</div>
           <div class="project-detail-meta">
-            <div class="project-context">SAE — Modélisation et entrepôt de données</div>
-            <h3>Datawarehouse — De Chinook à un schéma décisionnel sous Oracle</h3>
+            <div class="project-context">SAE - Modélisation et entrepôt de données</div>
+            <h3>Datawarehouse - De Chinook à un schéma décisionnel sous Oracle</h3>
           </div>
         </div>
         <div class="project-detail-body">
@@ -561,8 +558,8 @@
         <div class="project-detail-header">
           <div class="project-detail-icon">🔒</div>
           <div class="project-detail-meta">
-            <div class="project-context">SAE — Gouvernance et conformité</div>
-            <h3>RGPD — Conformité et sécurisation d'un traitement de données personnelles</h3>
+            <div class="project-context">SAE - Gouvernance et conformité</div>
+            <h3>RGPD - Conformité et sécurisation d'un traitement de données personnelles</h3>
           </div>
         </div>
         <div class="project-detail-body">
@@ -743,7 +740,7 @@
               <h4>Premières bases de données</h4>
               <p>
                 Découverte de la modélisation E/A, création de tables SQL, premières requêtes
-                SELECT / INSERT / UPDATE. Tout semblait simple — jusqu'aux premières jointures.
+                SELECT / INSERT / UPDATE. Tout semblait simple jusqu'aux premières jointures.
               </p>
             </div>
             <div class="timeline-item">
@@ -767,7 +764,7 @@
               <h4>Datawarehouse et modélisation décisionnelle</h4>
               <p>
                 Schéma en étoile, Oracle, reverse engineering de base existante, alimentation ETL.
-                Passage de la logique transactionnelle à la logique analytique — semestre actuel.
+                Passage de la logique transactionnelle à la logique analytique.
               </p>
             </div>
           </div>
@@ -813,7 +810,7 @@
     <div class="container" style="max-width:860px">
       <div class="section-header fade-in">
         <span class="section-label">Regard critique</span>
-        <h2 class="section-title">Ce que j'en retire</h2>
+        <h2 class="section-title">Ce que j'en retiens</h2>
         <div class="divider"></div>
       </div>
 
@@ -822,7 +819,7 @@
           Le bloc Traiter est celui qui m'a le plus appris sur la nature réelle du travail en data.
           Avant le BUT, j'imaginais qu'analyser des données était la partie difficile.
           En pratique, le nettoyage, la réconciliation de sources et la modélisation représentent
-          souvent la majorité du temps de travail — et c'est là que les erreurs coûtent le plus cher.
+          souvent la majorité du temps de travail et c'est là que les erreurs coûtent le plus cher.
         </p>
         <p>
           Sur la SAE MonVoyage, j'ai dû recommencer entièrement ma logique de correspondance entre
@@ -865,14 +862,14 @@
           <strong style="color:var(--copper)">Ce que j'améliorerais aujourd'hui :</strong>
           sur la SAE MonVoyage, j'aurais structuré le script de collecte en modules distincts
           (un pour l'API, un pour le scraping, un pour la réconciliation) dès le départ,
-          plutôt que d'avoir un script monolithique difficile à déboguer.
+          plutôt que d'avoir un script difficile à déboguer.
           Sur le Datawarehouse, j'aurais rédigé les règles de transformation en amont,
           avant de commencer le SQL, pour éviter les allers-retours lors de l'alimentation.
         </p>
         <p style="margin-bottom:0">
-          Ces réflexes — modularité, documentation préalable, tests — sont ceux que
+          Ces réflexes : modularité, documentation préalable, tests sont ceux que
           j'essaie d'intégrer systématiquement aujourd'hui, et que je vois appliqués
-          dans les équipes data professionnelles.
+          dans les équipes data.
         </p>
       </div>
     </div>
@@ -906,7 +903,7 @@
           <p>
             Un Data Analyst qui maîtrise le traitement des données n'est pas dépendant
             d'une équipe technique pour préparer ses jeux de données. Il peut aller
-            chercher ses données, les nettoyer et les structurer lui-même — ce qui
+            chercher ses données, les nettoyer et les structurer lui-même ce qui
             réduit considérablement le délai entre une question et une réponse.
           </p>
         </div>
@@ -916,7 +913,7 @@
           <p>
             La RGPD et plus largement la gouvernance des données sont devenus des enjeux
             stratégiques pour les entreprises. Savoir évaluer la conformité d'un traitement,
-            rédiger un registre, mettre en œuvre des techniques de protection — c'est
+            rédiger un registre, mettre en œuvre des techniques de protection c'est
             une compétence différenciante sur le marché.
           </p>
         </div>
